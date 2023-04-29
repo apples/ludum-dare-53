@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var angular_acceleration: float = 100
+@export var angular_acceleration: float = 200
 @export var black_hole_spawn_distance: float = 16
 
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")

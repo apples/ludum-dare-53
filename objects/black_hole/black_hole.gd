@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var strength: float = 10
 var _influenced_objects: Array[RigidBody2D]
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,10 @@ func _process(delta):
 # Called every physics frame. Use to apply physics forces, move things, etc.
 func _physics_process(delta):
 	for obj in self._influenced_objects:
-		obj.apply_force(self.global_position - obj.global_position)
+		#obj.apply_force(self.global_position - obj.global_position)
+		obj.linear_velocity += (
+			(self.position - obj.position).normalized() * delta * (strength / (1 if obj.name == "player_ship" else 5))
+			* minf(($CollisionShape2D.shape.radius)/(self.position - obj.position).length(), 10))
 
 func _on_body_entered(body):
 	if body is RigidBody2D:
