@@ -1,4 +1,5 @@
 using Api.Features.Player.Create;
+using System.Text;
 
 namespace Api.Test.Player;
 
@@ -39,7 +40,16 @@ public class CreateTests
         result.Should().NotBeNull();
         result!.Key.Should().NotBeEmpty();
 
-        var playerID = hashService.DecodePlayerID(result.Key);
+        var decodedBytes = Convert.FromBase64String(result.Key);
+        var decodedString = Encoding.UTF8.GetString(decodedBytes);
+
+        var keySplit = decodedString.Split(':');
+        var playerUserName = keySplit[0];
+        var playerIDHash = keySplit[1];
+
+        playerUserName.Should().Be(username);
+
+        var playerID = hashService.DecodePlayerID(playerIDHash);
         playerID.Should().NotBeNull();
 
         var createDbPlayer = await dbContext.Players.FindAsync(playerID);
