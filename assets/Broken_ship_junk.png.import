@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1mho20cxc1rh"
-path="res://.godot/imported/hal_junk.png-797f217f156da085fe3f9ef9e4334fee.ctex"
+uid="uid://1a07bnhmi2h4"
+path="res://.godot/imported/Broken_ship_junk.png-5e7b267d5fe33a3a6f1cd550b86720b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hal_junk.png"
-dest_files=["res://.godot/imported/hal_junk.png-797f217f156da085fe3f9ef9e4334fee.ctex"]
+source_file="res://assets/Broken_ship_junk.png"
+dest_files=["res://.godot/imported/Broken_ship_junk.png-5e7b267d5fe33a3a6f1cd550b86720b4.ctex"]
 
 [params]
 
