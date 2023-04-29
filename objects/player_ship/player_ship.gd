@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var angular_acceleration: float = 1
+@export var angular_acceleration: float = 100
 @export var black_hole_spawn_distance: float = 16
 
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
@@ -20,3 +20,4 @@ func _physics_process(delta):
 	
 	var turn_direction = Input.get_axis("turn_left", "turn_right")
 	
+	apply_torque(turn_direction * angular_acceleration)
