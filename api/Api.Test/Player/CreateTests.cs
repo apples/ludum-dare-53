@@ -39,6 +39,6 @@ public class CreateTests
         var playerID = hashService.DecodePlayerID(result.Key);
         playerID.Should().NotBeNull();
 
-        playerID!.Value.Value.Should().Be(username.Length);
+        playerID!.Value.Should().Be(username.Length);
     }
 }

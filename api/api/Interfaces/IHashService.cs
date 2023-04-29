@@ -1,10 +1,8 @@
-﻿using Api.Entities;
-
-namespace Api.Interfaces;
+﻿namespace Api.Interfaces;
 
 public interface IHashService
 {
-    public string EncodePlayerID(PlayerID playerID);
+    public string EncodePlayerID(int playerID);
 
-    public PlayerID? DecodePlayerID(string playerHash);
+    public int? DecodePlayerID(string playerHash);
 }

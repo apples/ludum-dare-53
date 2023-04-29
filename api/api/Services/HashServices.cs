@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.Options;
 using Api.Options;
-using Api.Entities;
 
 namespace Api.Services;
 
@@ -17,9 +16,9 @@ public class HashService : IHashService
         _playerHashids = new Hashids(hashSettings.PlayerSalt, hashSettings.PlayerMinLength);
     }
 
-    public string EncodePlayerID(PlayerID playerID) =>
-        _playerHashids.Encode(playerID.Value);
+    public string EncodePlayerID(int playerID) =>
+        _playerHashids.Encode(playerID);
 
-    public PlayerID? DecodePlayerID(string playerHash) =>
-        _playerHashids.TryDecodeSingle(playerHash, out var id) ? new PlayerID(id) : null;
+    public int? DecodePlayerID(string playerHash) =>
+        _playerHashids.TryDecodeSingle(playerHash, out var id) ? id: null;
 }

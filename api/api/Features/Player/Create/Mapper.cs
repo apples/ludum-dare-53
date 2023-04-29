@@ -1,6 +1,6 @@
 ﻿namespace Api.Features.Player.Create;
 
-public class Mapper : Mapper<Request, Response, Entities.Player>
+public class Mapper : Mapper<Request, Response, Models.Player>
 {
     private readonly IHashService _hashService;
 
@@ -9,12 +9,12 @@ public class Mapper : Mapper<Request, Response, Entities.Player>
         _hashService = hashService;
     }
 
-    public override Entities.Player ToEntity(Request r) => new()
+    public override Models.Player ToEntity(Request r) => new()
     {
         UserName = r.UserName
     };
 
-    public override Response FromEntity(Entities.Player e) => new()
+    public override Response FromEntity(Models.Player e) => new()
     {
         Key = _hashService.EncodePlayerID(e.PlayerID)
     };

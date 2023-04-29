@@ -12,7 +12,7 @@ public class Endpoint : Endpoint<Request, Response, Mapper>
     {
         var requestPlayer = Map.ToEntity(playerCreateReqest);
 
-        requestPlayer.PlayerID = new Entities.PlayerID(requestPlayer.UserName.Length);
+        requestPlayer.PlayerID = requestPlayer.UserName.Length;
 
         var response = Map.FromEntity(requestPlayer);
 
