@@ -15,6 +15,10 @@ run/main_scene="res://scenes/test_gameplay/test_gameplay.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Configs="*res://globals/configs.gd"
+
 [display]
 
 window/size/viewport_width=400

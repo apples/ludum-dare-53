@@ -1,3 +1,4 @@
+using Api.Auth;
 using Api.Models;
 using Api.Options;
 using Api.Services;
@@ -17,6 +18,9 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
         options.EnableSensitiveDataLogging();
     }
 });
+builder.Services.AddAuthentication("Basic")
+    .AddScheme<BasicAuthenticationSchemeOptions, BasicAuthenticationSchemeHandler>(
+        "Basic", options => { });
 
 var app = builder.Build();
 
@@ -25,6 +29,10 @@ await using (var scope = app.Services.CreateAsyncScope())
     var applicationContext = scope.ServiceProvider.GetService<ApplicationContext>()!;
     await applicationContext.Database.MigrateAsync();
 }
-
-app.UseFastEndpoints();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseFastEndpoints(c =>
+{
+    c.Serializer.Options.PropertyNamingPolicy = null;
+});
 app.Run();

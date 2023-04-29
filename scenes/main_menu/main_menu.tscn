@@ -61,7 +61,7 @@ offset_bottom = 214.0
 action_mode = 0
 text = "Play"
 
-[node name="online_mode" type="CheckButton" parent="."]
+[node name="online_mode_toggle" type="CheckButton" parent="."]
 layout_mode = 0
 offset_left = 183.0
 offset_top = 131.0
@@ -78,6 +78,7 @@ offset_bottom = 133.0
 text = "Online Mode"
 
 [node name="online_mode_details" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 61.0
 offset_top = 7.0
@@ -91,7 +92,7 @@ offset_top = 66.0
 offset_right = 220.0
 offset_bottom = 97.0
 
-[node name="Label" type="Label" parent="online_mode_details"]
+[node name="username_label" type="Label" parent="online_mode_details"]
 layout_mode = 0
 offset_left = 109.0
 offset_top = 47.0
@@ -99,7 +100,7 @@ offset_right = 161.0
 offset_bottom = 62.0
 text = "Username:"
 
-[node name="details_cancel_button" type="Button" parent="online_mode_details"]
+[node name="online_mode_cancel" type="Button" parent="online_mode_details"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
@@ -110,5 +111,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_eigp7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_it2gt")
 text = "X"
 
+[node name="online_mode_confirm" type="Button" parent="online_mode_details"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 124.0
+offset_right = 186.0
+offset_bottom = 173.0
+text = "Confirm"
+
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="online_mode_details/details_cancel_button" to="." method="_on_details_cancel_button_pressed"]
+[connection signal="pressed" from="online_mode_details/online_mode_cancel" to="." method="_on_online_mode_cancel_pressed"]
+[connection signal="pressed" from="online_mode_details/online_mode_confirm" to="." method="_on_online_mode_confirm_pressed"]

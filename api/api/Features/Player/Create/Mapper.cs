@@ -1,4 +1,6 @@
-﻿namespace Api.Features.Player.Create;
+﻿using System.Text;
+
+namespace Api.Features.Player.Create;
 
 public class Mapper : Mapper<Request, Response, Models.Player>
 {
@@ -16,6 +18,6 @@ public class Mapper : Mapper<Request, Response, Models.Player>
 
     public override Response FromEntity(Models.Player e) => new()
     {
-        Key = _hashService.EncodePlayerID(e.PlayerID)
+        Key = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{e.UserName}:{_hashService.EncodePlayerID(e.PlayerID)}"))
     };
 }

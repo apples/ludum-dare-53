@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Data.Common;
+using System.Text;
 
 namespace Api.Test;
 public class ApiWebFactory : WebApplicationFactory<IApiMarker>
@@ -46,6 +47,18 @@ public class ApiWebFactory : WebApplicationFactory<IApiMarker>
     private HttpClient CreateUnauthorizedClient()
     {
         var client = CreateClient();
+
+        return client;
+    }
+
+    public HttpClient CreateAuthorizedClient(string username, int playerID)
+    {
+        var client = CreateClient();
+
+        var hashService = Services.GetRequiredService<IHashService>();
+
+        var authorization = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{hashService.EncodePlayerID(playerID)}"));
+        client.DefaultRequestHeaders.Add("Authorization", $"Basic {authorization}");
 
         return client;
     }
