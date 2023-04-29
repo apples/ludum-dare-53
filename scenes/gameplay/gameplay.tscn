@@ -1,22 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=9 format=3 uid="uid://b7y7slt0wot4i"]
 
+[ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="2_evmdc"]
 [ext_resource type="Script" path="res://objects/follow_camera/follow_camera.gd" id="3_mux8x"]
 [ext_resource type="Script" path="res://scenes/gameplay/buoy_system.gd" id="4_jgiui"]
+[ext_resource type="Script" path="res://scenes/gameplay/trash_system.gd" id="5_kyuvg"]
+[ext_resource type="PackedScene" uid="uid://coyy7bdw7mjku" path="res://objects/docking_station/docking_station.tscn" id="6_p8cvc"]
+[ext_resource type="PackedScene" uid="uid://i41tlcy3s2r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
 
 [node name="Gameplay" type="Node"]
+script = ExtResource("1_6ac20")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
 texture = ExtResource("1_cj313")
 
 [node name="PlayerShip" parent="." instance=ExtResource("2_evmdc")]
-angular_acceleration = 400.0
-black_hole_strength = 60.0
+unique_name_in_owner = true
+enable_input = false
 
 [node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
 position_smoothing_enabled = true
@@ -27,5 +33,24 @@ stabilization_window = 30.0
 
 [node name="BuoySystem" type="Node" parent="."]
 script = ExtResource("4_jgiui")
+count = 19
 
 [node name="TrashSystem" type="Node" parent="."]
+script = ExtResource("5_kyuvg")
+
+[node name="StartDockingStation" parent="." instance=ExtResource("6_p8cvc")]
+position = Vector2(-240, 0)
+
+[node name="DestinationDockingStation" parent="." instance=ExtResource("6_p8cvc")]
+position = Vector2(4000, 0)
+scale = Vector2(-1, 1)
+allow_docking = true
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="UI" parent="." instance=ExtResource("8_3q44v")]
+
+[connection signal="ship_docked" from="DestinationDockingStation" to="." method="_on_docking_station_ship_docked"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

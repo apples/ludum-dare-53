@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://coyy7bdw7mjku"]
+
+[ext_resource type="Texture2D" uid="uid://biwa1svcq2oci" path="res://objects/docking_station/station.png" id="1_asqmx"]
+[ext_resource type="Script" path="res://objects/docking_station/docking_station.gd" id="1_p5sp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3551k"]
+size = Vector2(479, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73224"]
+size = Vector2(33, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmbea"]
+size = Vector2(34, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3ydr"]
+size = Vector2(130, 512)
+
+[sub_resource type="Gradient" id="Gradient_y04sp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.375691, 0.701657, 1)
+colors = PackedColorArray(0, 1, 1, 1, 0.353982, 1, 1, 0.646018, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5jgoe"]
+gradient = SubResource("Gradient_y04sp")
+
+[node name="DockingStation" type="StaticBody2D"]
+script = ExtResource("1_p5sp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_asqmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_3551k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(239.5, -136.5)
+shape = SubResource("RectangleShape2D_73224")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(239.5, 136.5)
+shape = SubResource("RectangleShape2D_73224")
+
+[node name="DockArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DockArea"]
+position = Vector2(240, 0)
+shape = SubResource("RectangleShape2D_tmbea")
+
+[node name="DampingZone" type="Area2D" parent="."]
+linear_damp_space_override = 1
+linear_damp = 2.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DampingZone"]
+position = Vector2(270, 0)
+shape = SubResource("RectangleShape2D_e3ydr")
+
+[node name="AtmosphereSprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(272.5, 256)
+scale = Vector2(0.496094, 512)
+texture = SubResource("GradientTexture1D_5jgoe")
+
+[connection signal="body_entered" from="DockArea" to="." method="_on_dock_area_body_entered"]
