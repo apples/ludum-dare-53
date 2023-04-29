@@ -14,7 +14,7 @@ func _process(delta):
 	pass
 
 func generate_trash():
-	for i in range(0, 10):
+	for i in range(0, 2):
 		var new_trash = trash_scene.instantiate()
 		$trash_container.call_deferred("add_child", new_trash)
 

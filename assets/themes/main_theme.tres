@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b4i4qyx8hd1tk"]
+
+[ext_resource type="FontFile" uid="uid://d1yiskm0tggiw" path="res://fonts/Silver_nodescent.ttf" id="1_dxvcq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ndf0"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e38c6"]
+bg_color = Color(0, 0.74902, 0.603922, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0.717647, 0.717647, 0.717647, 0.6)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kb1n"]
+bg_color = Color(0, 0.666667, 0.552941, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xewha"]
+bg_color = Color(0, 0.537255, 0.458824, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0.717647, 0.717647, 0.717647, 0.6)
+shadow_size = 7
+
+[resource]
+Button/font_sizes/font_size = 19
+Button/fonts/font = ExtResource("1_dxvcq")
+Button/styles/focus = SubResource("StyleBoxFlat_3ndf0")
+Button/styles/hover = SubResource("StyleBoxFlat_e38c6")
+Button/styles/normal = SubResource("StyleBoxFlat_3kb1n")
+Button/styles/pressed = SubResource("StyleBoxFlat_xewha")
+Label/font_sizes/font_size = 19
+Label/fonts/font = ExtResource("1_dxvcq")

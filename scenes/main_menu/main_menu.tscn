@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://df2vl01lewk1g"]
+
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
+[ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
+[ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nftfj")
+script = ExtResource("2_df8q7")
+
+[node name="space_bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ue0hb")
+
+[node name="logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = -2.0
+offset_right = 305.0
+offset_bottom = 135.0
+texture = ExtResource("2_6glrw")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="play_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 158.0
+offset_right = 246.0
+offset_bottom = 214.0
+action_mode = 0
+text = "Play"
+
+[node name="online_mode" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 131.0
+offset_right = 215.0
+offset_bottom = 147.0
+button_pressed = true
+
+[node name="online_mode_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 110.0
+offset_right = 235.0
+offset_bottom = 133.0
+text = "Online Mode"
+
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
