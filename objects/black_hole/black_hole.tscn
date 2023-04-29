@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://8cxavae42hg8"]
+[gd_scene load_steps=5 format=3 uid="uid://8cxavae42hg8"]
 
 [ext_resource type="Texture2D" uid="uid://d3cbf0eb2cwm6" path="res://objects/black_hole/black_hole.png" id="1_5we1p"]
 [ext_resource type="Script" path="res://objects/black_hole/black_hole.gd" id="1_htcia"]
+[ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="2_hql3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fgl44"]
 radius = 67.2681
 
-[node name="black_hole" type="Area2D"]
+[node name="BlackHole" type="Area2D"]
 script = ExtResource("1_htcia")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_hql3m")
 texture = ExtResource("1_5we1p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

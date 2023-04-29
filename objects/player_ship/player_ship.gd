@@ -2,8 +2,11 @@ extends RigidBody2D
 
 @export var angular_acceleration: float = 200
 @export var black_hole_spawn_distance: float = 16
+@export var black_hole_strength: float = 10
+
 @export var thruster_spawn_distance: float = 16
 @export var thruster_spawn_velocity: float = 5
+
 
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var thruster_scene = preload("res://objects/thruster/thruster.tscn")
@@ -24,6 +27,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("spawn_black_hole"):
 		current_black_hole = black_hole_scene.instantiate()
 		current_black_hole.global_position = global_position + global_transform.basis_xform(Vector2.RIGHT) * black_hole_spawn_distance
+		current_black_hole.strength = black_hole_strength
 		get_parent().add_child(current_black_hole)
 	
 	if current_black_hole and not Input.is_action_pressed("spawn_black_hole"):
