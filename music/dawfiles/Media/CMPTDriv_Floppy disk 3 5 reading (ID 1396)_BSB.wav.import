@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c35s66oocq4m6"
+path="res://.godot/imported/CMPTDriv_Floppy disk 3 5 reading (ID 1396)_BSB.wav-1cdb40747727583ef4c2431694a9d6ef.sample"
+
+[deps]
+
+source_file="res://music/dawfiles/Media/CMPTDriv_Floppy disk 3 5 reading (ID 1396)_BSB.wav"
+dest_files=["res://.godot/imported/CMPTDriv_Floppy disk 3 5 reading (ID 1396)_BSB.wav-1cdb40747727583ef4c2431694a9d6ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
