@@ -1,6 +1,6 @@
 ﻿using Api.Features.Cycle.Get;
 
-namespace Api.Test.Cycle.Get;
+namespace Api.Test.Cycle;
 
 [Collection(ApiWebFactoryCollection.Name)]
 public class GetTests
@@ -41,7 +41,7 @@ public class GetTests
         {
             Level = "Main"
         });
-        
+
         // Assert
         response.Should().NotBeNull();
         response.StatusCode.Should().Be(HttpStatusCode.OK);

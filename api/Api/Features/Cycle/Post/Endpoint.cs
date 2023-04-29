@@ -1,11 +1,9 @@
-﻿using Api.Auth;
-using Api.Models;
+﻿using Api.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
-namespace Api.Features.Cycle.Get;
+namespace Api.Features.Cycle.Post;
 
-public sealed class Endpoint : Endpoint<Request, Response>
+public sealed class Endpoint : Endpoint<Request>
 {
     private readonly ApplicationContext _dbContext;
 
@@ -16,7 +14,7 @@ public sealed class Endpoint : Endpoint<Request, Response>
 
     public override void Configure()
     {
-        Get("/cycle/{Level}");
+        Post("/cycle/{Level}");
     }
 
     public override async Task HandleAsync(Request request, CancellationToken cancellationToken)
@@ -31,9 +29,8 @@ public sealed class Endpoint : Endpoint<Request, Response>
             ThrowError("Player not found");
         }
 
-        await SendOkAsync(new Response
-        {
-            Cycle = player.CurrentCycle
-        }, cancellationToken);
+        // TODO: Update player cycle tables
+
+        await SendOkAsync(cancellationToken);
     }
 }
