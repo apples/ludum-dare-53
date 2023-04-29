@@ -17,7 +17,8 @@ func _physics_process(delta):
 	for obj in self._influenced_objects:
 		#obj.apply_force(self.global_position - obj.global_position)
 		obj.linear_velocity += (
-			(self.position - obj.position).normalized() * delta * (strength / (1 if obj.name == "player_ship" else 5))
+			(self.position - obj.position).normalized() * delta
+			* (strength / (1 if obj.is_in_group("player_ship") else (5 if obj.is_in_group("small_trash") else 10)))
 			* minf(($CollisionShape2D.shape.radius)/(self.position - obj.position).length(), 10))
 
 func _on_body_entered(body):

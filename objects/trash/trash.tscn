@@ -6,8 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_k26ln"]
 radius = 18.0278
 
-[node name="trash" type="RigidBody2D"]
-mass = 10.0
+[node name="trash" type="RigidBody2D" groups=["small_trash"]]
 script = ExtResource("1_dibna")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
