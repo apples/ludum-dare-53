@@ -9,3 +9,7 @@
 
 # API Test Artifacts
 test.db*
+
+# Mac Shittery
+._.DS_Store
+.DS_Store
