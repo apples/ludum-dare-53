@@ -1,6 +1,6 @@
 extends Area2D
 
-var _influenced_objects: Array
+var _influenced_objects: Array[RigidBody2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,11 +9,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for obj in self._influenced_objects:
+		obj.apply_force(self.global_position - obj.global_position)
 
 
 func _on_body_entered(body):
-	self._influenced_objects.push_back(body)
+	if body is RigidBody2D:
+		self._influenced_objects.push_back(body)
 
 
 func _on_body_exited(body):
