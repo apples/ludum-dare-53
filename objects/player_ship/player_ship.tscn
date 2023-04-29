@@ -12,6 +12,8 @@ shader_parameter/pixel_scale = 1.0
 radius = 13.0
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
+linear_damp = 0.1
+angular_damp = 10.0
 script = ExtResource("1_qnons")
 
 [node name="Sprite" type="Sprite2D" parent="."]
