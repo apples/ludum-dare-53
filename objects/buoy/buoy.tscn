@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omylu"]
 size = Vector2(28, 26)
 
-[node name="Buoy" type="RigidBody2D"]
+[node name="Buoy" type="RigidBody2D" groups=["thrustable"]]
 physics_material_override = SubResource("PhysicsMaterial_usntf")
 script = ExtResource("1_46x73")
 
