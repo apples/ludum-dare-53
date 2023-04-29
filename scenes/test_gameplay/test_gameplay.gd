@@ -1,14 +1,22 @@
 extends Node2D
 const buoy_scene = preload("res://objects/buoy/buoy.tscn")
+const trash_scene = preload("res://objects/trash/trash.tscn")
 var buoys: Array[RigidBody2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_buoys()
+	generate_trash()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func generate_trash():
+	for i in range(0, 10):
+		var new_trash = trash_scene.instantiate()
+		$trash_container.call_deferred("add_child", new_trash)
 
 func generate_buoys():
 	var buoy_pos_x = 20
