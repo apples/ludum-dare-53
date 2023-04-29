@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://df2vl01lewk1g"]
+[gd_scene load_steps=8 format=3 uid="uid://df2vl01lewk1g"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
 [ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk0xk"]
+bg_color = Color(0.776471, 0.156863, 0.156863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eigp7"]
+bg_color = Color(1, 0.541176, 0.501961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it2gt"]
+bg_color = Color(0.717647, 0.109804, 0.109804, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -57,12 +78,11 @@ offset_bottom = 133.0
 text = "Online Mode"
 
 [node name="online_mode_details" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 61.0
-offset_top = 8.0
+offset_top = 7.0
 offset_right = 337.0
-offset_bottom = 218.0
+offset_bottom = 217.0
 
 [node name="username_input" type="LineEdit" parent="online_mode_details"]
 layout_mode = 0
@@ -79,4 +99,16 @@ offset_right = 161.0
 offset_bottom = 62.0
 text = "Username:"
 
+[node name="details_cancel_button" type="Button" parent="online_mode_details"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 31.0
+offset_bottom = 30.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk0xk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eigp7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_it2gt")
+text = "X"
+
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="online_mode_details/details_cancel_button" to="." method="_on_details_cancel_button_pressed"]

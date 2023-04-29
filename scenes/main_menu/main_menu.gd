@@ -24,3 +24,7 @@ func create_random_client_id():
 		clientId += chars[randi_range(0, chars.length() - 1)]
 		
 	return clientId
+
+
+func _on_details_cancel_button_pressed():
+	$online_mode_details.visible = false
