@@ -48,6 +48,7 @@ spawn_black_hole={
 
 2d/default_gravity_vector=Vector2(0, 0)
 2d/default_linear_damp=0.0
+2d/default_angular_damp=0.0
 
 [rendering]
 
@@ -55,3 +56,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/anisotropic_filtering_level=0
+2d/snap/snap_2d_transforms_to_pixel=true
