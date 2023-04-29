@@ -21,6 +21,7 @@ func _physics_process(delta):
 		var direction = global_transform.basis_xform(Vector2.RIGHT)
 		new_thruster.global_position = global_position + direction * thruster_spawn_distance
 		new_thruster.linear_velocity = direction * thruster_spawn_velocity
+		new_thruster.rotation = self.rotation
 		thruster_count -= 1
 		get_parent().add_child(new_thruster)
 	
@@ -37,3 +38,6 @@ func _physics_process(delta):
 	var turn_direction = Input.get_axis("turn_left", "turn_right")
 	
 	apply_torque(turn_direction * angular_acceleration)
+
+func anchor_to(anchor_point: Vector2, anchor_rotation: float):
+	pass

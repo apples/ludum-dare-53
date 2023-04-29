@@ -169,6 +169,7 @@ size = Vector2(7.25, 7.5)
 [node name="thruster" type="RigidBody2D"]
 max_contacts_reported = 1
 contact_monitor = true
+angular_damp = 0.5
 script = ExtResource("1_osgha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
