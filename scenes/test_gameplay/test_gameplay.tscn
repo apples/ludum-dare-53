@@ -20,3 +20,5 @@ position = Vector2(22, 109)
 position = Vector2(191, 107)
 
 [node name="buoy_container" type="Node2D" parent="."]
+
+[node name="trash_container" type="Node2D" parent="."]
