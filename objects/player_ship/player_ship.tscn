@@ -9,8 +9,9 @@ shader = ExtResource("2_5x1vc")
 shader_parameter/pixel_scale = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3qbf"]
+radius = 13.0
 
-[node name="player_ship" type="RigidBody2D"]
+[node name="PlayerShip" type="RigidBody2D"]
 script = ExtResource("1_qnons")
 
 [node name="Sprite" type="Sprite2D" parent="."]
