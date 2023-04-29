@@ -1,2 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
+
+# .Net/Visual Studio specific ignores
+.vs/
+[Oo]bj/
+[Bb]in/
+*.user
