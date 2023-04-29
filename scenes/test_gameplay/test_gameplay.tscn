@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="1_8lbc0"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_r08jo"]
 [ext_resource type="PackedScene" uid="uid://wwlp86oq8yt8" path="res://objects/buoy/buoy.tscn" id="3_0lxys"]
+[ext_resource type="PackedScene" uid="uid://dpg8kd7nmr4h5" path="res://objects/trash/trash.tscn" id="3_cmauw"]
 
 [node name="test_gameplay" type="Node2D"]
 
@@ -15,3 +16,5 @@ texture = ExtResource("1_r08jo")
 position = Vector2(22, 109)
 
 [node name="Buoy" parent="." instance=ExtResource("3_0lxys")]
+[node name="trash" parent="." instance=ExtResource("3_cmauw")]
+position = Vector2(191, 107)
