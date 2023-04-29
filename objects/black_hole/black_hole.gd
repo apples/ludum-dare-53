@@ -11,6 +11,9 @@ func _ready():
 func _process(delta):
 	pass
 
+# Called every physics frame. Use to apply physics forces, move things, etc.
+func _physics_process(delta):
+	pass
 
 func _on_body_entered(body):
 	self._influenced_objects.push_back(body)
