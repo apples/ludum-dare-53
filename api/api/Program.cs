@@ -1,3 +1,4 @@
+using Api.Auth;
 using Api.Models;
 using Api.Options;
 using Api.Services;
@@ -17,6 +18,9 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
         options.EnableSensitiveDataLogging();
     }
 });
+builder.Services.AddAuthentication("Basic")
+    .AddScheme<BasicAuthenticationSchemeOptions, BasicAuthenticationSchemeHandler>(
+        "Basic", options => { });
 
 var app = builder.Build();
 
