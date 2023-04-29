@@ -1,19 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://df2vl01lewk1g"]
+[gd_scene load_steps=4 format=3 uid="uid://df2vl01lewk1g"]
 
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
 [ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ynr7"]
-bg_color = Color(0, 0.666667, 0.552941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfpv0"]
-bg_color = Color(0, 0.74902, 0.603922, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwh45"]
-bg_color = Color(0, 0.537255, 0.458824, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1sca"]
-draw_center = false
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -22,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nftfj")
 
 [node name="space_bg" type="TextureRect" parent="."]
 layout_mode = 0
@@ -45,9 +35,5 @@ offset_left = 150.0
 offset_top = 141.0
 offset_right = 246.0
 offset_bottom = 197.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_1ynr7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vfpv0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hwh45")
-theme_override_styles/focus = SubResource("StyleBoxFlat_p1sca")
 action_mode = 0
 text = "Play"
