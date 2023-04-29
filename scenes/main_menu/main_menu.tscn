@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://df2vl01lewk1g"]
+[gd_scene load_steps=5 format=3 uid="uid://df2vl01lewk1g"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
 [ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nftfj")
+script = ExtResource("2_df8q7")
 
 [node name="space_bg" type="TextureRect" parent="."]
 layout_mode = 0
@@ -37,3 +39,5 @@ offset_right = 246.0
 offset_bottom = 197.0
 action_mode = 0
 text = "Play"
+
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
