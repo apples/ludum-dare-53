@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0i07hflossjo"]
+
+[ext_resource type="Shader" path="res://materials/rotsprite/rotsprite.gdshader" id="1_8qt7e"]
+
+[resource]
+shader = ExtResource("1_8qt7e")
+shader_parameter/pixel_scale = 1.0

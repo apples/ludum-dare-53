@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wwlp86oq8yt8"]
+[gd_scene load_steps=6 format=3 uid="uid://wwlp86oq8yt8"]
 
 [ext_resource type="Script" path="res://objects/buoy/buoy.gd" id="1_46x73"]
 [ext_resource type="Texture2D" uid="uid://db8d21mg26ua1" path="res://objects/buoy/buoy01.png" id="1_qpruy"]
+[ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="2_b4aq2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usntf"]
 
@@ -13,6 +14,7 @@ physics_material_override = SubResource("PhysicsMaterial_usntf")
 script = ExtResource("1_46x73")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_b4aq2")
 texture = ExtResource("1_qpruy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

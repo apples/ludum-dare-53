@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxu4i370hhlh6"]
+
+[ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="1_k7aw6"]
+[ext_resource type="Script" path="res://scenes/test_gameplay/material_test.gd" id="1_snsn8"]
+[ext_resource type="Texture2D" uid="uid://b1gl4hlu1p58r" path="res://objects/trash/tempTrash.png" id="2_ubh7p"]
+
+[node name="material_test" type="Node2D"]
+script = ExtResource("1_snsn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_k7aw6")
+position = Vector2(231, 85)
+texture = ExtResource("2_ubh7p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(172, 85)
+texture = ExtResource("2_ubh7p")

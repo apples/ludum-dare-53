@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var angular_acceleration: float = 100
+@export var angular_acceleration: float = 300
 @export var black_hole_spawn_distance: float = 16
 
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
@@ -8,6 +8,9 @@ var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var current_black_hole
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		$Sprite.visible = not $Sprite.visible
+		$Sprite2.visible = not $Sprite2.visible
 	
 	if Input.is_action_just_pressed("spawn_black_hole"):
 		current_black_hole = black_hole_scene.instantiate()
