@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://wwlp86oq8yt8"]
+
+[ext_resource type="Script" path="res://objects/buoy/buoy.gd" id="1_46x73"]
+[ext_resource type="Texture2D" uid="uid://db8d21mg26ua1" path="res://objects/buoy/buoy01.png" id="1_qpruy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usntf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omylu"]
+size = Vector2(28, 26)
+
+[node name="Buoy" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_usntf")
+script = ExtResource("1_46x73")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qpruy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_omylu")
