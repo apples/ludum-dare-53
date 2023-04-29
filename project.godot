@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=400
-window/size/viewport_height=224
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1200
+window/size/viewport_height=672
+window/stretch/mode="viewport"
+window/stretch/scale=3.0
 
 [input]
 
@@ -46,6 +47,7 @@ spawn_black_hole={
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
+2d/default_linear_damp=0.0
 
 [rendering]
 

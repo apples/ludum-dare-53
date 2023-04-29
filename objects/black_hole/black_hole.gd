@@ -14,7 +14,7 @@ func _process(delta):
 # Called every physics frame. Use to apply physics forces, move things, etc.
 func _physics_process(delta):
 	for obj in self._influenced_objects:
-		obj.apply_force((self.global_position - obj.global_position) * delta)
+		obj.apply_force(self.global_position - obj.global_position)
 
 func _on_body_entered(body):
 	if body is RigidBody2D:
