@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://wwlp86oq8yt8"]
+
+[ext_resource type="Texture2D" uid="uid://db8d21mg26ua1" path="res://objects/buoy/buoy01.png" id="1_qpruy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omylu"]
+size = Vector2(28, 26)
+
+[node name="Buoy" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qpruy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_omylu")
