@@ -86,8 +86,8 @@ public class BasicAuthenticationSchemeHandler : AuthenticationHandler<BasicAuthe
 
         var claims = new Claim[]
         {
-            new UserNameClaim(player.UserName),
-            new PlayerIDClaim(player.PlayerID)
+            new Claim("UserName", player.UserName),
+            new Claim("PlayerID", player.PlayerID.ToString())
         };
         var identity = new ClaimsIdentity(claims, "Basic");
         var principal = new ClaimsPrincipal(identity);

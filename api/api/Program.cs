@@ -29,7 +29,8 @@ await using (var scope = app.Services.CreateAsyncScope())
     var applicationContext = scope.ServiceProvider.GetService<ApplicationContext>()!;
     await applicationContext.Database.MigrateAsync();
 }
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseFastEndpoints(c =>
 {
     c.Serializer.Options.PropertyNamingPolicy = null;
