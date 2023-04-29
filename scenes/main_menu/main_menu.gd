@@ -24,7 +24,7 @@ func switch_to_gameplay_scene():
 	get_tree().change_scene_to_file(gameplay_scene)
 
 func _on_online_mode_confirm_pressed():
-	print("pass username to autoload globals")
+	Configs.username = $online_mode_details/username_input.text
 	switch_to_gameplay_scene()
 	
 
