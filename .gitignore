@@ -6,3 +6,6 @@
 [Oo]bj/
 [Bb]in/
 *.user
+
+# API Test Artifacts
+test.db*

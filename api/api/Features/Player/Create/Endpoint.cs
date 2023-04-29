@@ -1,7 +1,16 @@
-﻿namespace Api.Features.Player.Create;
+﻿using Api.Models;
+
+namespace Api.Features.Player.Create;
 
 public class Endpoint : Endpoint<Request, Response, Mapper>
 {
+    private readonly ApplicationContext _dbContext;
+
+    public Endpoint(ApplicationContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
     public override void Configure()
     {
         Post("/player");
@@ -12,7 +21,8 @@ public class Endpoint : Endpoint<Request, Response, Mapper>
     {
         var requestPlayer = Map.ToEntity(playerCreateReqest);
 
-        requestPlayer.PlayerID = requestPlayer.UserName.Length;
+        _dbContext.Players.Add(requestPlayer);
+        await _dbContext.SaveChangesAsync(cancellationToken);
 
         var response = Map.FromEntity(requestPlayer);
 

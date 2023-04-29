@@ -22,6 +22,9 @@ public class CreateTests
         );
 
         var hashService = _apiWebFactory.Services.GetService<IHashService>()!;
+        
+        await using var scope = _apiWebFactory.Services.CreateAsyncScope();
+        var dbContext = scope.ServiceProvider.GetService<ApplicationContext>()!;
 
         // Act
         var (response, result) = await _apiWebFactory.UnauthorizedClient.POSTAsync<Endpoint, Request, Response>(new()
@@ -39,6 +42,9 @@ public class CreateTests
         var playerID = hashService.DecodePlayerID(result.Key);
         playerID.Should().NotBeNull();
 
-        playerID!.Value.Should().Be(username.Length);
+        var createDbPlayer = await dbContext.Players.FindAsync(playerID);
+        createDbPlayer.Should().NotBeNull();
+        createDbPlayer!.UserName.Should().Be(username);
+        createDbPlayer!.CurrentCycle.Should().Be(0);
     }
 }
