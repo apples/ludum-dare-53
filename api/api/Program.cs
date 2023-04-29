@@ -30,5 +30,8 @@ await using (var scope = app.Services.CreateAsyncScope())
     await applicationContext.Database.MigrateAsync();
 }
 
-app.UseFastEndpoints();
+app.UseFastEndpoints(c =>
+{
+    c.Serializer.Options.PropertyNamingPolicy = null;
+});
 app.Run();
