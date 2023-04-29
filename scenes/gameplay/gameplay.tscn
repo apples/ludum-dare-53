@@ -36,7 +36,12 @@ script = ExtResource("4_jgiui")
 [node name="TrashSystem" type="Node" parent="."]
 script = ExtResource("5_kyuvg")
 
-[node name="DockingStation" parent="." instance=ExtResource("6_p8cvc")]
+[node name="StartDockingStation" parent="." instance=ExtResource("6_p8cvc")]
 position = Vector2(-240, 0)
 
-[connection signal="ship_docked" from="DockingStation" to="." method="_on_docking_station_ship_docked"]
+[node name="DestinationDockingStation" parent="." instance=ExtResource("6_p8cvc")]
+position = Vector2(644, 0)
+scale = Vector2(-1, 1)
+allow_docking = true
+
+[connection signal="ship_docked" from="DestinationDockingStation" to="." method="_on_docking_station_ship_docked"]

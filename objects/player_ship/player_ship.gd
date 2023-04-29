@@ -7,6 +7,7 @@ extends RigidBody2D
 @export var thruster_spawn_distance: float = 16
 @export var thruster_spawn_velocity: float = 5
 
+@export var dock_anchor_strength: float = 1
 
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var thruster_scene = preload("res://objects/thruster/thruster.tscn")
@@ -40,4 +41,8 @@ func _physics_process(delta):
 	apply_torque(turn_direction * angular_acceleration)
 
 func anchor_to(anchor_point: Vector2, anchor_rotation: float):
-	pass
+	var anchor = Anchor.new()
+	anchor.anchor_position = anchor_point
+	anchor.anchor_angle = anchor_rotation
+	anchor.linear_spring_constant = dock_anchor_strength
+	add_child(anchor)

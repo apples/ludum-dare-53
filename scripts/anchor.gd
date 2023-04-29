@@ -1,4 +1,4 @@
-extends Node2D
+class_name Anchor extends Node2D
 
 var anchor_position: Vector2
 var anchor_angle: float
