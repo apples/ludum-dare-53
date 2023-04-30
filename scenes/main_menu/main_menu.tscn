@@ -78,7 +78,6 @@ offset_bottom = 133.0
 text = "Online Mode"
 
 [node name="online_mode_details" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 61.0
 offset_top = 7.0
@@ -119,6 +118,17 @@ offset_right = 186.0
 offset_bottom = 173.0
 text = "Confirm"
 
+[node name="username_validation_label" type="Label" parent="online_mode_details"]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 181.0
+offset_right = 244.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(0.776471, 0.156863, 0.156863, 1)
+text = "Username taken please select another!"
+
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="text_changed" from="online_mode_details/username_input" to="." method="_on_username_input_text_changed"]
 [connection signal="pressed" from="online_mode_details/online_mode_cancel" to="." method="_on_online_mode_cancel_pressed"]
 [connection signal="pressed" from="online_mode_details/online_mode_confirm" to="." method="_on_online_mode_confirm_pressed"]

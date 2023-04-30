@@ -16,7 +16,11 @@ func get_api_status():
 func send_create_player(username):
 	const endpoint = "player"
 	var response = await send_request(endpoint, HTTPClient.METHOD_POST, {"username": username})
-	return response.body.Key
+	if response.response_code != 200:
+		return false
+	else:
+		Configs.user_key = response.body.Key
+		return true
 #	print(response.body)
 
 func get_healthcheck():
