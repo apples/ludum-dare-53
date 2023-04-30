@@ -14,4 +14,6 @@ public class ApplicationContext : DbContext
     }
 
     public DbSet<Player> Players { get; set; } = default!;
+
+    public DbSet<Interaction> Interactions { get; set; } = default!;
 }
