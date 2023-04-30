@@ -28,6 +28,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ov0n")
 
 [node name="OwnedCountLabel" type="Label" parent="OwnedCountContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "99"
 horizontal_alignment = 1
@@ -44,12 +45,15 @@ script = ExtResource("2_e3wbe")
 layout_mode = 2
 
 [node name="ItemNameLabel" type="Label" parent="ItemDetails/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Trhsuters"
 
 [node name="ItemCostLabel" type="Label" parent="ItemDetails/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "$5"
 
 [connection signal="clicked" from="ItemDetails" to="." method="_on_item_details_clicked"]
+[connection signal="focus_entered" from="ItemDetails" to="." method="_on_item_details_focus_entered"]
