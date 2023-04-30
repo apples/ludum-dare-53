@@ -16,6 +16,7 @@ func _ready():
 			prev_up.tape_neighbor = buoy_up
 		var buoy_down = buoy_scene.instantiate()
 		buoy_down.position = Vector2(i * spacing, -lane_height / 2)
+		buoy_down.rotation_degrees = 180
 		if prev_down:
 			prev_down.tape_neighbor = buoy_down
 		add_child(buoy_up)

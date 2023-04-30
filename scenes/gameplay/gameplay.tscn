@@ -16,6 +16,14 @@ script = ExtResource("1_6ac20")
 [node name="GameplayState" type="Node" parent="."]
 script = ExtResource("2_7hbcy")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+texture = ExtResource("1_cj313")
+
 [node name="StartDockingStation" parent="." instance=ExtResource("6_p8cvc")]
 position = Vector2(-240, 0)
 
@@ -24,14 +32,6 @@ position = Vector2(4000, 0)
 rotation = -3.14159
 scale = Vector2(1, -1)
 allow_docking = true
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-texture = ExtResource("1_cj313")
 
 [node name="PlayerShip" parent="." instance=ExtResource("2_evmdc")]
 unique_name_in_owner = true

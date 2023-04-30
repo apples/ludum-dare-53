@@ -18,6 +18,9 @@ var tape_neighbor: Node2D = null:
 
 @onready var tape_sprite = $TapeSprite
 
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var blink_sprite = $BlinkSprite
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stationary_pos_x = self.position.x
@@ -66,3 +69,15 @@ func _reconcile_tape():
 	tape_sprite.scale.x = 1
 	tape_sprite.region_rect = Rect2(0, 0, dist, 8)
 	tape_sprite.offset.x = dist/2
+
+
+func _on_animated_sprite_2d_frame_changed():
+	match animated_sprite_2d.frame:
+		6:
+			blink_sprite.visible = true
+			blink_sprite.position.y = -7
+		7:
+			blink_sprite.visible = true
+			blink_sprite.position.y = 7
+		_:
+			blink_sprite.visible = false
