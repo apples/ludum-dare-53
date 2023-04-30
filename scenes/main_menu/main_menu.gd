@@ -1,5 +1,6 @@
 extends Control
-var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
+
+var mission_scene = "res://scenes/mission_menu/mission_menu.tscn"
 
 func _ready():
 	Configs.load()
@@ -46,7 +47,7 @@ func create_random_client_id():
 	return clientId
 
 func switch_to_gameplay_scene():
-	get_tree().change_scene_to_file(gameplay_scene)
+	get_tree().change_scene_to_file(mission_scene)
 
 func _on_online_mode_confirm_pressed():
 	var success = await Api.send_create_player($online_mode_details/username_input.text)

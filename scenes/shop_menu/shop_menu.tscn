@@ -58,6 +58,7 @@ offset_bottom = 224.0
 theme = ExtResource("2_wn6f2")
 
 [node name="ShopGroup" type="Control" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

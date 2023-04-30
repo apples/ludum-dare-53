@@ -1,6 +1,7 @@
 extends Node2D
 
 var item_scene = preload("res://scenes/mission_menu/mission_item.tscn")
+var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 
 var _item_infos = [
 ]
@@ -56,38 +57,13 @@ func _process(delta):
 
 func _on_item_clicked(i: int):
 	var info = _item_infos[i]
-	print("Buying %s" % info.name)
-	
-	if SaveGame.current.money < info.cost:
-		say_dialog([
-			"I CANNOT EAT EXPOSURE.",
-			"Can't afford that one, cowboy...",
-		])
-	
-	if info.key == null:
-		return
-	
-	SaveGame.current.money -= info.cost
-	if info.key in SaveGame.current.inventory:
-		SaveGame.current.inventory[info.key] += 1
-	else:
-		SaveGame.current.inventory[info.key] = 1
-	
-	SaveGame.save()
+	print("Staring mission %s" % info.name)
+	GameplaySingleton.current_mission = info
+	get_tree().change_scene_to_file(gameplay_scene)
 
 func _on_item_focused(i: int):
 	var info = _item_infos[i]
 	say_dialog(info.desc)
-
-func _on_done_panel_clicked():
-	say_dialog("Goodbye!")
-
-
-func _on_done_panel_focus_entered():
-	say_dialog([
-		"Done already?",
-		"W-wait! I need the money for college!",
-	])
 
 func say_dialog(options):
 	if options is String:

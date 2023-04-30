@@ -1,6 +1,6 @@
 extends Node2D
 
-var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
+var mission_scene = "res://scenes/mission_menu/mission_menu.tscn"
 var item_scene = preload("res://scenes/shop_menu/shop_item.tscn")
 
 var _item_infos = [
@@ -13,6 +13,7 @@ var _items = []
 @onready var shop_list = %ShopList
 @onready var dialog_label = %DialogLabel
 @onready var money_label = %MoneyLabel
+@onready var shop_group = %ShopGroup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,6 +73,7 @@ func _on_item_focused(i: int):
 func _on_done_panel_clicked():
 	say_dialog("Goodbye!")
 	$ShoppingDoneTimer.start()
+	shop_group.visible = false
 
 func _on_done_panel_focus_entered():
 	say_dialog([
@@ -86,4 +88,4 @@ func say_dialog(options):
 	dialog_label.speak(options.pick_random())
 
 func _on_shopping_done_timer_timeout():
-	get_tree().change_scene_to_file(gameplay_scene)
+	get_tree().change_scene_to_file(mission_scene)
