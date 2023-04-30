@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var angular_acceleration: float = 5000
-@export var black_hole_spawn_distance: float = 16
+@export var black_hole_spawn_distance: float = 32
 @export var black_hole_strength: float = 100
 
 @export var thruster_spawn_distance: float = 16
@@ -11,6 +11,8 @@ extends RigidBody2D
 
 @export var enable_input: bool = true
 
+@export var thrust_strength: float = 50
+
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var thruster_scene = preload("res://objects/thruster/thruster.tscn")
 
@@ -18,11 +20,13 @@ var current_black_hole
 var thruster_count: int = 5
 
 var _turn_direction: float
+var _thrust_direction: float
 var _queue_thruster: bool = false
 
 func _process(delta):
 	if not enable_input:
 		_turn_direction = 0
+		_thrust_direction = 0
 		_queue_thruster = false
 		return
 	
@@ -40,6 +44,7 @@ func _process(delta):
 		current_black_hole = null
 	
 	_turn_direction = Input.get_axis("turn_left", "turn_right")
+	_thrust_direction = -Input.get_axis("thrust_forward", "thrust_backwards")
 	
 
 func _physics_process(delta):
@@ -55,6 +60,7 @@ func _physics_process(delta):
 		get_parent().add_child(new_thruster)
 	
 	apply_torque(_turn_direction * angular_acceleration)
+	apply_force(_thrust_direction * global_transform.basis_xform(Vector2.RIGHT) * thrust_strength)
 
 func anchor_to(anchor_point: Vector2, anchor_rotation: float):
 	var anchor = Anchor.new()
