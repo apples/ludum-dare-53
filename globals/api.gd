@@ -1,15 +1,15 @@
 extends Node
 
 # local
-var scheme = "http"
-var domain = "localhost"
-var port = "5006"
-var api_url = "%s://%s:%s" %[scheme, domain, port]
+#var scheme = "http"
+#var domain = "localhost"
+#var port = "5006"
+#var api_url = "%s://%s:%s" %[scheme, domain, port]
 
 # production
-#var scheme = "https"
-#var domain = "ludum-dare-53-api.rareskelly.com/"
-#var api_url = "%s://%s" %[scheme, domain]
+var scheme = "https"
+var domain = "ludum-dare-53-api.rareskelly.com/"
+var api_url = "%s://%s" %[scheme, domain]
 
 func get_player():
 	var endpoint = "player?username=%s" %[Configs.username]
