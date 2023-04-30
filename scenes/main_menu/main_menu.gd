@@ -28,9 +28,11 @@ func _on_play_button_pressed():
 		if Configs.user_key == null:
 			$online_mode_details.visible = true
 		else:
-			# Check key against server
-			Api.get_player()
-			switch_to_gameplay_scene()
+			var serverPlayer = await Api.get_player()
+			if serverPlayer == null:
+				$online_mode_details.visible = true
+			else:
+				switch_to_gameplay_scene()
 	else:
 		switch_to_gameplay_scene()
 
