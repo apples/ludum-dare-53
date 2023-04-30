@@ -2,10 +2,10 @@ class_name Anchor extends Node2D
 
 var anchor_position: Vector2
 var anchor_angle: float
-var use_anchor_angle: bool = false
+@export var use_anchor_angle: bool = false
 var body: RigidBody2D
-var linear_spring_constant = 10
-var angular_spring_constant = 250
+@export var linear_spring_constant = 10
+@export var angular_spring_constant = 250
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
