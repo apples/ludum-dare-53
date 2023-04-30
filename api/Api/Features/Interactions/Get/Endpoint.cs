@@ -34,6 +34,7 @@ public class Endpoint : Endpoint<Request, Response>
                 i.Cycle <= request.Cycle &&
                 (includeTypes.Length == 0 || includeTypes.Contains(i.InteractionType)) &&
                 (excludeTypes.Length == 0 || excludeTypes.Contains(i.InteractionType)))
+            .OrderByDescending(i => EF.Functions.Random() * i.Cycle)
             .Join(_dbContext.Players,
                 i => i.PlayerID,
                 p => p.PlayerID,
@@ -53,8 +54,6 @@ public class Endpoint : Endpoint<Request, Response>
             })
             .Take(request.Count)
             .ToListAsync(cancellationToken);
-
-        // TODO: Randomly select interactions, probably have to use raw SQL
 
         await SendOkAsync(new Response
         {
