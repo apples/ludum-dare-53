@@ -8,6 +8,8 @@ func _ready():
 func _on_play_button_pressed():
 	if $online_mode_toggle.button_pressed:
 		$online_mode_details.visible = true
+#		Api.get_healthcheck()
+		print(await Api.get_api_status())
 	else:
 		switch_to_gameplay_scene()
 
@@ -30,3 +32,4 @@ func _on_online_mode_confirm_pressed():
 
 func _on_online_mode_cancel_pressed():
 	$online_mode_details.visible = false
+
