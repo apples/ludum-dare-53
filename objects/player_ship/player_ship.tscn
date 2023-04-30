@@ -13,7 +13,7 @@ radius = 13.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp25r"]
 radius = 3.0
-height = 22.0
+height = 20.0
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
 linear_damp = 0.1
@@ -29,8 +29,8 @@ texture = ExtResource("1_iwfba")
 shape = SubResource("CircleShape2D_p3qbf")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-24, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-24, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vp25r")

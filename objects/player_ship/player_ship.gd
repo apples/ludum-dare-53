@@ -13,6 +13,8 @@ extends RigidBody2D
 
 @export var thrust_strength: float = 50
 
+@export var tether_strength: float = 5
+
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var thruster_scene = preload("res://objects/thruster/thruster.tscn")
 
@@ -48,6 +50,12 @@ func _process(delta):
 	_turn_direction = Input.get_axis("turn_left", "turn_right")
 	_thrust_direction = -Input.get_axis("thrust_forward", "thrust_backwards")
 	
+	if Input.is_action_just_pressed("grab"):
+		var objects = $Area2D.get_overlapping_bodies()
+		for obj in objects:
+			if obj.is_in_group("small_trash"):
+				tethered_objects.push_back(obj)
+				break
 
 func _physics_process(delta):
 	
@@ -63,6 +71,10 @@ func _physics_process(delta):
 	
 	apply_torque(_turn_direction * angular_acceleration)
 	apply_force(_thrust_direction * global_transform.basis_xform(Vector2.RIGHT) * thrust_strength)
+	
+	for obj in tethered_objects:
+		#print($Area2D.position)
+		obj.linear_velocity += ($Area2D.global_position - obj.position) * tether_strength * delta
 
 func anchor_to(anchor_point: Vector2, anchor_rotation: float):
 	var anchor = Anchor.new()
