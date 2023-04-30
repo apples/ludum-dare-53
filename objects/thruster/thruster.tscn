@@ -361,5 +361,17 @@ frame_progress = 1.0
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_myw7t")
 
+[node name="BurnTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[node name="DetonationTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="BurnTimer" to="." method="_on_burn_timer_timeout"]
+[connection signal="timeout" from="DetonationTimer" to="." method="_on_detonation_timer_timeout"]
