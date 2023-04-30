@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnbgjfm0ioyad"]
+[gd_scene load_steps=7 format=3 uid="uid://dnbgjfm0ioyad"]
 
 [ext_resource type="Texture2D" uid="uid://b6imq1foo3y7b" path="res://objects/player_ship/ship.png" id="1_iwfba"]
 [ext_resource type="Script" path="res://objects/player_ship/player_ship.gd" id="1_qnons"]
@@ -10,6 +10,10 @@ shader_parameter/pixel_scale = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3qbf"]
 radius = 13.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp25r"]
+radius = 3.0
+height = 22.0
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
 linear_damp = 0.1
@@ -23,3 +27,10 @@ texture = ExtResource("1_iwfba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p3qbf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-24, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vp25r")

@@ -32,7 +32,7 @@ func _ready():
 
 
 func _process(delta):
-	current_timer -= delta
+	current_timer -= delta * (player_ship.linear_velocity.x / 8)
 	if(current_timer <= 0):
 		current_timer = trash_spawn_timer
 		

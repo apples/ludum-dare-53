@@ -23,6 +23,8 @@ var _turn_direction: float
 var _thrust_direction: float
 var _queue_thruster: bool = false
 
+var tethered_objects: Array[RigidBody2D]
+
 func _process(delta):
 	if not enable_input:
 		_turn_direction = 0
