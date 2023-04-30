@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wwlp86oq8yt8"]
+[gd_scene load_steps=7 format=3 uid="uid://wwlp86oq8yt8"]
 
 [ext_resource type="Script" path="res://objects/buoy/buoy.gd" id="1_46x73"]
 [ext_resource type="Texture2D" uid="uid://db8d21mg26ua1" path="res://objects/buoy/buoy01.png" id="1_qpruy"]
 [ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="2_b4aq2"]
+[ext_resource type="Texture2D" uid="uid://dmmmt7h5tm0io" path="res://objects/buoy/space_tape.png" id="4_wt7qh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usntf"]
 
@@ -19,3 +20,11 @@ texture = ExtResource("1_qpruy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_omylu")
+
+[node name="TapeSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.721569)
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("4_wt7qh")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)

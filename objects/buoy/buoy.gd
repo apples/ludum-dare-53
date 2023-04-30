@@ -6,17 +6,40 @@ var spring_factor = 10
 var angular_spring_factor = 250
 var damping_factor = 25
 var tangent_damping_factor = 0.5
+var tape_thickness: float = 8
+
+var tape_neighbor: Node2D = null:
+	get:
+		return tape_neighbor
+	set(value):
+		tape_neighbor = value
+		if tape_neighbor.is_inside_tree() and self.is_inside_tree():
+			_reconcile_tape()
+
+@onready var tape_sprite = $TapeSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stationary_pos_x = self.position.x
 	stationary_pos_y = self.position.y
+	
+	if tape_neighbor:
+		_reconcile_tape()
+		tape_sprite.visible = true
+
+func _process(delta):
+	if tape_neighbor:
+		tape_sprite.visible = true
+		tape_sprite.global_rotation = global_position.angle_to_point(tape_neighbor.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	apply_linear_spring()
 	apply_angular_spring()
 	
+	if tape_neighbor:
+		_reconcile_tape()
+
 func apply_angular_spring():
 	var current_angle = self.rotation
 #	var direction = sign(current_angle - stationary_angle)
@@ -36,3 +59,10 @@ func apply_linear_spring():
 		var tangent_force = -tangent_velocity * tangent_damping_factor
 		var result = spring_force + damping_force + tangent_force
 		apply_force(result)
+
+
+func _reconcile_tape():
+	var dist = global_position.distance_to(tape_neighbor.global_position)
+	tape_sprite.scale.x = 1
+	tape_sprite.region_rect = Rect2(0, 0, dist, 8)
+	tape_sprite.offset.x = dist/2
