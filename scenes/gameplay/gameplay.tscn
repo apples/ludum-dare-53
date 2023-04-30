@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=11 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
 [ext_resource type="Script" path="res://scripts/gameplay_state.gd" id="2_7hbcy"]
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="2_evmdc"]
 [ext_resource type="Script" path="res://objects/follow_camera/follow_camera.gd" id="3_mux8x"]
+[ext_resource type="Texture2D" uid="uid://u0hydqbe274r" path="res://assets/textures/8192clouds1.png" id="4_17a53"]
 [ext_resource type="Script" path="res://scenes/gameplay/buoy_system.gd" id="4_jgiui"]
 [ext_resource type="Script" path="res://scenes/gameplay/trash_system.gd" id="5_kyuvg"]
 [ext_resource type="PackedScene" uid="uid://coyy7bdw7mjku" path="res://objects/docking_station/docking_station.tscn" id="6_p8cvc"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
+[ext_resource type="PackedScene" uid="uid://i41tlcy3s2r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
@@ -23,6 +24,12 @@ motion_mirroring = Vector2(1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
 texture = ExtResource("1_cj313")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("4_17a53")
 
 [node name="StartDockingStation" parent="." instance=ExtResource("6_p8cvc")]
 position = Vector2(-240, 0)
