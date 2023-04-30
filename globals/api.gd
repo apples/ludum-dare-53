@@ -53,17 +53,20 @@ func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_he
 #	response type = [result, response_code, headers, body]
 	var response = await http_request.request_completed
 	if response[0] == 0:
-		var jsonResponse = {
+		var responseBodyString = response[3].get_string_from_utf8()
+		var responseBody = null
+		if responseBodyString != null && responseBodyString.is_empty() == false:
+			responseBody = JSON.parse_string(responseBodyString)
+			
+		return {
 			"response_code": response[1],
-			"body": JSON.parse_string(response[3].get_string_from_utf8())
+			"body": responseBody
 		}
-		return jsonResponse
 	else:
-		var jsonResponse = {
+		return {
 			"response_code": null,
 			"body": null
 		}
-		return jsonResponse
 
 func _on_request_completed(result, response_code, headers, body):
 	print(response_code)
