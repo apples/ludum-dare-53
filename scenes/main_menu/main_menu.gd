@@ -27,8 +27,8 @@ func switch_to_gameplay_scene():
 
 func _on_online_mode_confirm_pressed():
 	Configs.username = $online_mode_details/username_input.text
+	Configs.user_key = await Api.send_create_player(Configs.username)
 	switch_to_gameplay_scene()
-	
 
 func _on_online_mode_cancel_pressed():
 	$online_mode_details.visible = false

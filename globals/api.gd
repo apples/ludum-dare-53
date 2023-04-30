@@ -12,17 +12,23 @@ func get_api_status():
 		return true
 	else:
 		return false
+		
+func send_create_player(username):
+	const endpoint = "player"
+	var response = await send_request(endpoint, HTTPClient.METHOD_POST, {"username": username})
+	return response.body.Key
+#	print(response.body)
 
 func get_healthcheck():
 	const endpoint = "healthcheck"
 	var response = await send_request(endpoint)
 	print(response.body.Status)
 
-func send_request(endpoint):
+func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_header = ["Content-Type: application/json"]):
 	var http_request = HTTPRequest.new()
 	http_request.timeout = 10
 	self.add_child(http_request)
-	http_request.request("%s/%s" %[api_url, endpoint])
+	http_request.request("%s/%s" %[api_url, endpoint], custom_header, method, JSON.stringify(body))
 #	response type = [result, response_code, headers, body]
 	var response = await http_request.request_completed
 	if response[0] == 0:
