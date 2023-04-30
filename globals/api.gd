@@ -1,15 +1,15 @@
 extends Node
 
 # local
-#var scheme = "http"
-#var domain = "localhost"
-#var port = "5006"
-#var api_url = "%s://%s:%s" %[scheme, domain, port]
+var scheme = "http"
+var domain = "localhost"
+var port = "5006"
+var api_url = "%s://%s:%s" %[scheme, domain, port]
 
 # production
-var scheme = "https"
-var domain = "ludum-dare-53-api.rareskelly.com/"
-var api_url = "%s://%s" %[scheme, domain]
+#var scheme = "https"
+#var domain = "ludum-dare-53-api.rareskelly.com/"
+#var api_url = "%s://%s" %[scheme, domain]
 
 func get_api_status():
 	const endpoint = "healthcheck"
@@ -23,9 +23,12 @@ func send_create_player(username):
 	const endpoint = "player"
 	var response = await send_request(endpoint, HTTPClient.METHOD_POST, {"username": username})
 	if response.response_code != 200:
+		print(response.body)
 		return false
 	else:
+		Configs.username = username
 		Configs.user_key = response.body.Key
+		Configs.save()
 		return true
 
 func get_healthcheck():

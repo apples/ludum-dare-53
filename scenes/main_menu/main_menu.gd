@@ -2,8 +2,12 @@ extends Control
 var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 
 func _ready():
+	Configs.load()
 	$spinner_wheel.play("default")
-	$online_mode_details/username_input.text = "Player_%s" %[create_random_client_id()]
+	if Configs.username == null:
+		$online_mode_details/username_input.text = "Player_%s" %[create_random_client_id()]
+	else:
+		$online_mode_details/username_input.text = Configs.username
 	check_api_sever()
 	
 func check_api_sever():
@@ -17,8 +21,11 @@ func check_api_sever():
 
 func _on_play_button_pressed():
 	if $online_mode_toggle.button_pressed:
-		$online_mode_details.visible = true
-#		Api.get_healthcheck()
+		if Configs.user_key == null:
+			$online_mode_details.visible = true
+		else:
+			# Check key against server
+			switch_to_gameplay_scene()
 	else:
 		switch_to_gameplay_scene()
 
@@ -35,8 +42,7 @@ func switch_to_gameplay_scene():
 	get_tree().change_scene_to_file(gameplay_scene)
 
 func _on_online_mode_confirm_pressed():
-	Configs.username = $online_mode_details/username_input.text
-	var success = await Api.send_create_player(Configs.username)
+	var success = await Api.send_create_player($online_mode_details/username_input.text)
 	if success:
 		switch_to_gameplay_scene()
 	else:
