@@ -9,8 +9,10 @@
 script = ExtResource("1_2hpes")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 4096.0
-offset_bottom = 2048.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 4099.0
+offset_bottom = 2050.0
 texture = ExtResource("1_r08jo")
 
 [node name="player_ship" parent="." instance=ExtResource("1_8lbc0")]
