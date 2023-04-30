@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://fwf0ie0j21f5"]
+
+[ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="1_if454"]
+[ext_resource type="Script" path="res://objects/trash/small_trash/trash.gd" id="2_8vvgi"]
+[ext_resource type="Texture2D" uid="uid://dydwo08wbn8ef" path="res://objects/trash/small_trash/Plantetoid_junk.png" id="3_me35x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k26ln"]
+radius = 9.0
+
+[node name="Small_Trash" type="RigidBody2D" groups=["thrustable"]]
+material = ExtResource("1_if454")
+script = ExtResource("2_8vvgi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_me35x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k26ln")
