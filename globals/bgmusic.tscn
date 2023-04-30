@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs5nv3lm22exp"]
+
+[ext_resource type="AudioStream" uid="uid://cnmxmndxvri1r" path="res://assets/audio/Gravity Way.ogg" id="1_vegvn"]
+
+[node name="bgmusic" type="Node2D"]
+
+[node name="Gravity_Way" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_vegvn")
+autoplay = true
+bus = &"BGM_1"

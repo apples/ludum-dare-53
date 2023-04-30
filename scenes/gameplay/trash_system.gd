@@ -1,10 +1,24 @@
 extends Node
 
-var trash_scene = preload("res://objects/trash/trash.tscn")
+@export var small_count: int = 500
+@export var medium_count: int = 200
 
+var small_trash_scene = preload("res://objects/trash/small_trash/small_trash.tscn")
+var medium_trash_scene = preload("res://objects/trash/medium_trash/medium_trash.tscn")
 
 func _ready():
-	pass
+	var rng = RandomNumberGenerator.new()
+	for i in range(0, small_count - 1):
+		var new_trash = small_trash_scene.instantiate()
+		new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(-75, 75))
+		new_trash.position = Vector2(rng.randf_range(200, 3500), rng.randf_range(-300, 300))
+		add_child(new_trash)
+		#$trash_container.call_deferred("add_child", new_trash)
+	for i in range(0, medium_count - 1):
+		var new_trash = medium_trash_scene.instantiate()
+		new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(-75, 75))
+		new_trash.position = Vector2(rng.randf_range(200, 3500), rng.randf_range(-300, 300))
+		add_child(new_trash)
 
 
 func _process(delta):

@@ -15,10 +15,15 @@ run/main_scene="res://scenes/test_gameplay/test_gameplay.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
+
 [autoload]
 
 Configs="*res://globals/configs.gd"
 Api="*res://globals/api.gd"
+Bgmusic="*res://globals/bgmusic.tscn"
 
 [display]
 
