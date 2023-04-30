@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1qcqgfpqwm40"
-path="res://.godot/imported/cone_junk .png-5130005b5544844a5dc6aae7e8925ad7.ctex"
+uid="uid://88vqnftdx00d"
+path="res://.godot/imported/buoy.png-e0d41b3a743c744852683689d770ed51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/trash/small_trash/cone_junk .png"
-dest_files=["res://.godot/imported/cone_junk .png-5130005b5544844a5dc6aae7e8925ad7.ctex"]
+source_file="res://objects/buoy/buoy.png"
+dest_files=["res://.godot/imported/buoy.png-e0d41b3a743c744852683689d770ed51.ctex"]
 
 [params]
 

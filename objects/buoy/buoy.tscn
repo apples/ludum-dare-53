@@ -1,21 +1,85 @@
-[gd_scene load_steps=6 format=3 uid="uid://wwlp86oq8yt8"]
+[gd_scene load_steps=14 format=3 uid="uid://wwlp86oq8yt8"]
 
 [ext_resource type="Script" path="res://objects/buoy/buoy.gd" id="1_46x73"]
-[ext_resource type="Texture2D" uid="uid://db8d21mg26ua1" path="res://objects/buoy/buoy01.png" id="1_qpruy"]
-[ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="2_b4aq2"]
+[ext_resource type="Texture2D" uid="uid://cwug1hb73xdk1" path="res://objects/buoy/buoy-sheet.png" id="4_33vda"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usntf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_omylu"]
-size = Vector2(28, 26)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07bp6"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vheas"]
+atlas = ExtResource("4_33vda")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4j8f"]
+atlas = ExtResource("4_33vda")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0xwc"]
+atlas = ExtResource("4_33vda")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr4ge"]
+atlas = ExtResource("4_33vda")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly462"]
+atlas = ExtResource("4_33vda")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cel5q"]
+atlas = ExtResource("4_33vda")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj7qf"]
+atlas = ExtResource("4_33vda")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50kcf"]
+atlas = ExtResource("4_33vda")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_es8fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vheas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4j8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0xwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr4ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly462")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cel5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj7qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50kcf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Buoy" type="RigidBody2D" groups=["thrustable"]]
 physics_material_override = SubResource("PhysicsMaterial_usntf")
 script = ExtResource("1_46x73")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_b4aq2")
-texture = ExtResource("1_qpruy")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_omylu")
+shape = SubResource("CapsuleShape2D_07bp6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_es8fn")
+autoplay = "default"
