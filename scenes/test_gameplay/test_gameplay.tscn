@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://d13j8467pe41e"]
 
 [ext_resource type="Script" path="res://scenes/test_gameplay/material_test.gd" id="1_2hpes"]
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="1_8lbc0"]
