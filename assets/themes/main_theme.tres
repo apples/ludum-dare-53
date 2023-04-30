@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b4i4qyx8hd1tk"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b4i4qyx8hd1tk"]
 
 [ext_resource type="FontFile" uid="uid://d1yiskm0tggiw" path="res://fonts/Silver_nodescent.ttf" id="1_dxvcq"]
 
@@ -36,6 +36,23 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj2m5"]
+bg_color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkog1"]
+bg_color = Color(0.913725, 0.913725, 0.913725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6d5v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqf5e"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.286275, 0.0705882, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ouru"]
+
 [resource]
 Button/font_sizes/font_size = 19
 Button/fonts/font = ExtResource("1_dxvcq")
@@ -48,3 +65,8 @@ Label/fonts/font = ExtResource("1_dxvcq")
 LineEdit/font_sizes/font_size = 19
 LineEdit/fonts/font = ExtResource("1_dxvcq")
 Panel/styles/panel = SubResource("StyleBoxFlat_qdg4x")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_hj2m5")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_hkog1")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_p6d5v")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_xqf5e")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_0ouru")

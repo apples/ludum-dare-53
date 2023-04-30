@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://p7fyrmiso7q7"]
+
+[ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_02nj2"]
+[ext_resource type="Script" path="res://scenes/shop_menu/shop_menu.gd" id="1_5eg3u"]
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="2_wn6f2"]
+[ext_resource type="Texture2D" uid="uid://bpfelndvo760m" path="res://assets/textures/shop_keeper2.png" id="3_2ecpr"]
+[ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="5_io3g6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ov0n"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ola4j"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0.443137, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy6gk"]
+bg_color = Color(0, 0.611765, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ae1"]
+bg_color = Color(0.815686, 0.333333, 0, 1)
+border_color = Color(0.960784, 1, 0.909804, 1)
+
+[node name="ShopMenu" type="Node2D"]
+script = ExtResource("1_5eg3u")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(512, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+texture = ExtResource("1_02nj2")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 224.0
+theme = ExtResource("2_wn6f2")
+
+[node name="ShopListMargin" type="MarginContainer" parent="UI"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 169.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ShopListPanel" type="PanelContainer" parent="UI/ShopListMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ov0n")
+
+[node name="ShopListScrollContainer" type="ScrollContainer" parent="UI/ShopListMargin/ShopListPanel"]
+layout_mode = 2
+
+[node name="ShopList" type="VBoxContainer" parent="UI/ShopListMargin/ShopListPanel/ShopListScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DialogPanel" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ola4j")
+
+[node name="DialogLabel" type="Label" parent="UI/DialogPanel"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Howdy I'm some dialog lets get reaaaaaaaaaaaaaaaaaaaaaaaaaaaaal long so I can test the wrapping.
+Third line!"
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="ShopkeeperSprite" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 41.0
+offset_right = 400.0
+offset_bottom = 169.0
+texture = ExtResource("3_2ecpr")
+
+[node name="MoneyPanelContainer" type="PanelContainer" parent="UI"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 2.0
+offset_right = 285.0
+offset_bottom = 17.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sy6gk")
+
+[node name="MoneyLabel" type="Label" parent="UI/MoneyPanelContainer"]
+layout_mode = 2
+text = "$9999"
+horizontal_alignment = 1
+
+[node name="DonePanel" type="PanelContainer" parent="UI"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 145.0
+offset_right = 284.0
+offset_bottom = 167.0
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m1ae1")
+script = ExtResource("5_io3g6")
+
+[node name="DoneLabel" type="Label" parent="UI/DonePanel"]
+layout_mode = 2
+text = "Done"
+horizontal_alignment = 1
+
+[connection signal="clicked" from="UI/DonePanel" to="." method="_on_done_panel_clicked"]

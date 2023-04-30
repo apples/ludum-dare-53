@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2datn5yunorg"]
+
+[ext_resource type="Script" path="res://scenes/shop_menu/shop_item.gd" id="1_gycvr"]
+[ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="2_e3wbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ov0n"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.729412, 0, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6pjf"]
+resource_local_to_scene = true
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.729412, 0, 0.305882, 1)
+border_color = Color(0.960784, 1, 0.909804, 1)
+
+[node name="ShopItem" type="HBoxContainer"]
+script = ExtResource("1_gycvr")
+
+[node name="OwnedCountContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ov0n")
+
+[node name="OwnedCountLabel" type="Label" parent="OwnedCountContainer"]
+layout_mode = 2
+text = "99"
+horizontal_alignment = 1
+
+[node name="ItemDetails" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6pjf")
+script = ExtResource("2_e3wbe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemDetails"]
+layout_mode = 2
+
+[node name="ItemNameLabel" type="Label" parent="ItemDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Trhsuters"
+
+[node name="ItemCostLabel" type="Label" parent="ItemDetails/HBoxContainer"]
+layout_mode = 2
+text = "$5"
+
+[connection signal="clicked" from="ItemDetails" to="." method="_on_item_details_clicked"]
