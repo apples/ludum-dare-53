@@ -1,10 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://df2vl01lewk1g"]
+[gd_scene load_steps=16 format=3 uid="uid://xwyjyl3nvweh"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
-[ext_resource type="Texture2D" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
+[ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu_trash_system.gd" id="3_7p820"]
 [ext_resource type="Texture2D" uid="uid://bci8w72um5ako" path="res://assets/textures/spinner.png" id="5_3y0fk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5kpp"]
+size = Vector2(20, 1998.63)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30bss"]
 atlas = ExtResource("5_3y0fk")
@@ -73,11 +77,27 @@ grow_vertical = 2
 theme = ExtResource("1_nftfj")
 script = ExtResource("2_df8q7")
 
+[node name="trash_collector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trash_collector"]
+position = Vector2(-46, 213.688)
+shape = SubResource("RectangleShape2D_e5kpp")
+
+[node name="spawn_trash_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="main_menu_trash_system" type="Node" parent="."]
+script = ExtResource("3_7p820")
+
 [node name="space_bg" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_ue0hb")
+
+[node name="trash_container" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="logo" type="TextureRect" parent="."]
 layout_mode = 0
@@ -123,7 +143,6 @@ offset_top = 203.0
 offset_right = 48.0
 offset_bottom = 218.0
 theme_override_colors/font_color = Color(0, 0.627451, 0, 1)
-text = "test"
 
 [node name="online_mode_label" type="Label" parent="."]
 layout_mode = 0
@@ -189,6 +208,8 @@ offset_bottom = 196.0
 theme_override_colors/font_color = Color(0.776471, 0.156863, 0.156863, 1)
 text = "Username taken please select another!"
 
+[connection signal="body_entered" from="trash_collector" to="main_menu_trash_system" method="_on_trash_collector_body_entered"]
+[connection signal="timeout" from="spawn_trash_timer" to="main_menu_trash_system" method="_on_spawn_trash_timer_timeout"]
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
 [connection signal="toggled" from="online_mode_toggle" to="." method="_on_online_mode_toggle_toggled"]
 [connection signal="text_changed" from="online_mode_details/username_input" to="." method="_on_username_input_text_changed"]

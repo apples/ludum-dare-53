@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvve2g154euo"
-path.s3tc="res://.godot/imported/space4096.png-943e538e0f13b6eac359e3b9adb82969.s3tc.ctex"
+uid="uid://c48v1yk08x0qh"
+path="res://.godot/imported/blink.png-ba649d7c30a791e8b52afc6419427b9b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/space4096.png"
-dest_files=["res://.godot/imported/space4096.png-943e538e0f13b6eac359e3b9adb82969.s3tc.ctex"]
+source_file="res://objects/buoy/blink.png"
+dest_files=["res://.godot/imported/blink.png-ba649d7c30a791e8b52afc6419427b9b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

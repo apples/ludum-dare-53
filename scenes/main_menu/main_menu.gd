@@ -63,7 +63,7 @@ func _on_username_input_text_changed(new_text):
 
 
 func _on_online_mode_toggle_toggled(button_pressed):
-	if button_pressed:
+	if button_pressed and Configs.username != null:
 		$logged_in_as_label.visible = true
 		$logged_in_username_label.visible = true
 	else:
