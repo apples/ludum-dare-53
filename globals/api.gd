@@ -11,6 +11,14 @@ var api_url = "%s://%s:%s" %[scheme, domain, port]
 #var domain = "ludum-dare-53-api.rareskelly.com/"
 #var api_url = "%s://%s" %[scheme, domain]
 
+func get_player():
+	var endpoint = "player?username=%s" %[Configs.username]
+	var response = await send_request(endpoint, HTTPClient.METHOD_GET, "", ["Authorization: Basic %s" %[Configs.user_key]])
+	if response.response_code == 200:
+		print("good!")
+	else:
+		print("clear out username and user key")
+
 func get_api_status():
 	const endpoint = "healthcheck"
 	var response = await send_request(endpoint)

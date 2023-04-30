@@ -29,6 +29,7 @@ func _on_play_button_pressed():
 			$online_mode_details.visible = true
 		else:
 			# Check key against server
+			Api.get_player()
 			switch_to_gameplay_scene()
 	else:
 		switch_to_gameplay_scene()
