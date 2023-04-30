@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://coyy7bdw7mjku"]
 
-[ext_resource type="Texture2D" uid="uid://biwa1svcq2oci" path="res://objects/docking_station/station.png" id="1_asqmx"]
 [ext_resource type="Script" path="res://objects/docking_station/docking_station.gd" id="1_p5sp4"]
+[ext_resource type="Texture2D" uid="uid://df84xfb3rraa6" path="res://assets/spacestation1.png" id="2_xbj5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3551k"]
 size = Vector2(479, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73224"]
-size = Vector2(33, 239)
+size = Vector2(33, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmbea"]
-size = Vector2(34, 34)
+size = Vector2(34, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3ydr"]
 size = Vector2(130, 512)
@@ -27,18 +27,19 @@ gradient = SubResource("Gradient_y04sp")
 script = ExtResource("1_p5sp4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_asqmx")
+position = Vector2(9, 154)
+texture = ExtResource("2_xbj5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-16.5, 0)
 shape = SubResource("RectangleShape2D_3551k")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(239.5, -136.5)
+position = Vector2(239.5, -143)
 shape = SubResource("RectangleShape2D_73224")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(239.5, 136.5)
+position = Vector2(239.5, 143)
 shape = SubResource("RectangleShape2D_73224")
 
 [node name="DockArea" type="Area2D" parent="."]
