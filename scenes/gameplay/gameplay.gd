@@ -1,4 +1,5 @@
 extends Node
+var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 
 var given_boxes: int = 5
 
@@ -16,9 +17,14 @@ func _process(delta):
 
 func _on_docking_station_ship_docked(ship_body, anchor_point, anchor_rotation):
 	%PlayerShip.anchor_to(anchor_point, anchor_rotation)
+	$DockingCompletedTimer.start()
 
 
 func _on_start_timer_timeout():
 	$PlayerShip.enable_input = true
 	$PlayerShip.apply_impulse(Vector2.RIGHT * start_impulse)
 	$StartTimer.queue_free()
+
+func _on_docking_completed_timer_timeout():
+	print("unload cargo, load shop, reset level")
+	get_tree().change_scene_to_file(gameplay_scene)
