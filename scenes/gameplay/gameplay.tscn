@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ewd2sbop6mf5"]
+[gd_scene load_steps=10 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
+[ext_resource type="Script" path="res://scripts/gameplay_state.gd" id="2_7hbcy"]
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="2_evmdc"]
 [ext_resource type="Script" path="res://objects/follow_camera/follow_camera.gd" id="3_mux8x"]
 [ext_resource type="Script" path="res://scenes/gameplay/buoy_system.gd" id="4_jgiui"]
@@ -11,6 +12,18 @@
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
+
+[node name="GameplayState" type="Node" parent="."]
+script = ExtResource("2_7hbcy")
+
+[node name="StartDockingStation" parent="." instance=ExtResource("6_p8cvc")]
+position = Vector2(-240, 0)
+
+[node name="DestinationDockingStation" parent="." instance=ExtResource("6_p8cvc")]
+position = Vector2(4000, 0)
+rotation = -3.14159
+scale = Vector2(1, -1)
+allow_docking = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -22,7 +35,6 @@ texture = ExtResource("1_cj313")
 
 [node name="PlayerShip" parent="." instance=ExtResource("2_evmdc")]
 unique_name_in_owner = true
-enable_input = false
 
 [node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
 position_smoothing_enabled = true
@@ -38,17 +50,9 @@ count = 19
 [node name="TrashSystem" type="Node" parent="."]
 script = ExtResource("5_kyuvg")
 
-[node name="StartDockingStation" parent="." instance=ExtResource("6_p8cvc")]
-position = Vector2(-240, 0)
-
-[node name="DestinationDockingStation" parent="." instance=ExtResource("6_p8cvc")]
-position = Vector2(4000, 0)
-scale = Vector2(-1, 1)
-allow_docking = true
-
 [node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
-autostart = true
 
 [node name="UI" parent="." instance=ExtResource("8_3q44v")]
 

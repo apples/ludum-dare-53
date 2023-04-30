@@ -1,5 +1,6 @@
 ﻿using Api.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
@@ -28,6 +29,12 @@ public class BasicAuthenticationSchemeHandler : AuthenticationHandler<BasicAuthe
 
     protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
+        var endpoint = Context.GetEndpoint();
+        if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() != null)
+        {
+            return AuthenticateResult.NoResult();
+        }
+
         if (Request.Headers.TryGetValue("Authorization", out var authorizations) == false)
         {
             return AuthenticateResult.Fail("No Authorization headers");

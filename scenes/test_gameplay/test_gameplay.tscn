@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://d13j8467pe41e"]
 
 [ext_resource type="Script" path="res://scenes/test_gameplay/material_test.gd" id="1_2hpes"]
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="1_8lbc0"]
@@ -9,8 +9,10 @@
 script = ExtResource("1_2hpes")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 4096.0
-offset_bottom = 2048.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 4099.0
+offset_bottom = 2050.0
 texture = ExtResource("1_r08jo")
 
 [node name="player_ship" parent="." instance=ExtResource("1_8lbc0")]
