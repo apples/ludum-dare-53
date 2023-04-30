@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6s62v1rlft3b"
-path="res://.godot/imported/strut_junk .png-515767feea2bf0509fd269e69d63f453.ctex"
+uid="uid://dn5pdf8kvj7n8"
+path="res://.godot/imported/medrock1.png-0b6e5bebe326b9096ae118ec82cbbcc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/strut_junk .png"
-dest_files=["res://.godot/imported/strut_junk .png-515767feea2bf0509fd269e69d63f453.ctex"]
+source_file="res://objects/trash/medium_trash/medrock1.png"
+dest_files=["res://.godot/imported/medrock1.png-0b6e5bebe326b9096ae118ec82cbbcc1.ctex"]
 
 [params]
 
