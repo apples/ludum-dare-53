@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn1cv7tlbt43"
-path="res://.godot/imported/longstrutjunk.png-7a000cb9a03014ee58f394b7c09e7661.ctex"
+uid="uid://dydwo08wbn8ef"
+path="res://.godot/imported/Plantetoid_junk.png-cdbd853633d78a1a4a205d94a5bbcbaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/longstrutjunk.png"
-dest_files=["res://.godot/imported/longstrutjunk.png-7a000cb9a03014ee58f394b7c09e7661.ctex"]
+source_file="res://objects/trash/small_trash/Plantetoid_junk.png"
+dest_files=["res://.godot/imported/Plantetoid_junk.png-cdbd853633d78a1a4a205d94a5bbcbaa.ctex"]
 
 [params]
 

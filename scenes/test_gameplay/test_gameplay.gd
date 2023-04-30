@@ -1,6 +1,6 @@
 extends Node2D
 const buoy_scene = preload("res://objects/buoy/buoy.tscn")
-const trash_scene = preload("res://objects/trash/trash.tscn")
+const trash_scene = preload("res://objects/trash/small_trash/small_trash.tscn")
 var buoys: Array[RigidBody2D]
 
 # Called when the node enters the scene tree for the first time.

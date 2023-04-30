@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn5pdf8kvj7n8"
-path="res://.godot/imported/medrock1.png-3b62110df6b7f035f38c26310f2710f8.ctex"
+uid="uid://b1gl4hlu1p58r"
+path="res://.godot/imported/tempTrash.png-8a1633b0305353a722cd5e7de32c76b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/medrock1.png"
-dest_files=["res://.godot/imported/medrock1.png-3b62110df6b7f035f38c26310f2710f8.ctex"]
+source_file="res://objects/trash/medium_trash/tempTrash.png"
+dest_files=["res://.godot/imported/tempTrash.png-8a1633b0305353a722cd5e7de32c76b8.ctex"]
 
 [params]
 
