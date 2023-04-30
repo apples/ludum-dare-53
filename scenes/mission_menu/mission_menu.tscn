@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://r7gw7cl25ax8"]
+[gd_scene load_steps=10 format=3 uid="uid://blhx5ro6fgjwe"]
 
 [ext_resource type="Script" path="res://scenes/mission_menu/mission_menu.gd" id="1_dkxkc"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="2_faakx"]
@@ -81,6 +81,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="DonePanel" type="PanelContainer" parent="UI/MissionSelectWrapper"]
+layout_mode = 0
 offset_left = 144.0
 offset_top = 145.0
 offset_right = 204.0
