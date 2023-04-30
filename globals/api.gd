@@ -1,9 +1,15 @@
 extends Node
 
-var scheme = "http"
-var domain = "localhost"
-var port = "5006"
-var api_url = "%s://%s:%s" %[scheme, domain, port]
+# local
+#var scheme = "http"
+#var domain = "localhost"
+#var port = "5006"
+#var api_url = "%s://%s:%s" %[scheme, domain, port]
+
+# production
+var scheme = "https"
+var domain = "ludum-dare-53-api.rareskelly.com/"
+var api_url = "%s://%s" %[scheme, domain]
 
 func get_api_status():
 	const endpoint = "healthcheck"
@@ -32,7 +38,7 @@ func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_he
 	var http_request = HTTPRequest.new()
 	http_request.timeout = 10
 	self.add_child(http_request)
-	http_request.request("%s/%s" %[api_url, endpoint], custom_header, method, JSON.stringify(body))
+	http_request.request(api_url.path_join(endpoint), custom_header, method, JSON.stringify(body))
 #	response type = [result, response_code, headers, body]
 	var response = await http_request.request_completed
 	if response[0] == 0:
