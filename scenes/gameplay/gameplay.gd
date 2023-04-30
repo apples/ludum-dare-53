@@ -1,6 +1,5 @@
 extends Node
-var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
-
+var shop_menu_scene = "res://scenes/shop_menu/shop_menu.tscn"
 var given_boxes: int = 5
 
 var start_impulse = 500
@@ -27,4 +26,6 @@ func _on_start_timer_timeout():
 
 func _on_docking_completed_timer_timeout():
 	print("unload cargo, load shop, reset level")
-	get_tree().change_scene_to_file(gameplay_scene)
+	SaveGame.current.current_cycle += 1
+	SaveGame.save()
+	get_tree().change_scene_to_file(shop_menu_scene)

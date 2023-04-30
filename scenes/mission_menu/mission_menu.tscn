@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://r7gw7cl25ax8"]
+
+[ext_resource type="Script" path="res://scenes/mission_menu/mission_menu.gd" id="1_dkxkc"]
+[ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="2_faakx"]
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="3_5hdau"]
+[ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="4_q87r1"]
+[ext_resource type="Texture2D" uid="uid://bpfelndvo760m" path="res://assets/textures/shop_keeper2.png" id="5_os0rl"]
+[ext_resource type="Script" path="res://scenes/shop_menu/dialog_label.gd" id="6_jomx8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ov0n"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88gi6"]
+bg_color = Color(0.231373, 0.6, 0, 1)
+border_color = Color(0.960784, 1, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ola4j"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0.443137, 0.6, 1)
+
+[node name="MissionMenu" type="Node2D"]
+script = ExtResource("1_dkxkc")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(512, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+texture = ExtResource("2_faakx")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 224.0
+theme = ExtResource("3_5hdau")
+
+[node name="MissionSelectWrapper" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MissionSelectMargin" type="MarginContainer" parent="UI/MissionSelectWrapper"]
+layout_mode = 0
+offset_left = 205.0
+offset_right = 400.0
+offset_bottom = 169.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MissionSelectPanel" type="PanelContainer" parent="UI/MissionSelectWrapper/MissionSelectMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ov0n")
+
+[node name="MissionSelectScrollContainer" type="ScrollContainer" parent="UI/MissionSelectWrapper/MissionSelectMargin/MissionSelectPanel"]
+layout_mode = 2
+
+[node name="MissionSelect" type="VBoxContainer" parent="UI/MissionSelectWrapper/MissionSelectMargin/MissionSelectPanel/MissionSelectScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DonePanel" type="PanelContainer" parent="UI/MissionSelectWrapper"]
+offset_left = 144.0
+offset_top = 145.0
+offset_right = 204.0
+offset_bottom = 167.0
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_88gi6")
+script = ExtResource("4_q87r1")
+
+[node name="DoneLabel" type="Label" parent="UI/MissionSelectWrapper/DonePanel"]
+layout_mode = 2
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="ShopkeeperSprite" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 41.0
+offset_right = 144.0
+offset_bottom = 169.0
+texture = ExtResource("5_os0rl")
+flip_h = true
+
+[node name="DialogPanel" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ola4j")
+
+[node name="DialogLabel" type="Label" parent="UI/DialogPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Howdy I'm some dialog lets get reaaaaaaaaaaaaaaaaaaaaaaaaaaaaal long so I can test the wrapping.
+Third line!"
+autowrap_mode = 3
+text_overrun_behavior = 3
+script = ExtResource("6_jomx8")

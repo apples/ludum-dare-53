@@ -1,5 +1,6 @@
 extends Node2D
 
+var mission_scene = "res://scenes/mission_menu/mission_menu.tscn"
 var item_scene = preload("res://scenes/shop_menu/shop_item.tscn")
 
 var _item_infos = [
@@ -11,6 +12,8 @@ var _items = []
 
 @onready var shop_list = %ShopList
 @onready var dialog_label = %DialogLabel
+@onready var money_label = %MoneyLabel
+@onready var shop_group = %ShopGroup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +32,8 @@ func _ready():
 	
 	_items[0].focus()
 	
+	money_label.text = "$%s" % SaveGame.current.money
+	
 	say_dialog(["Howdy!!"])
 
 
@@ -45,13 +50,17 @@ func _on_item_clicked(i: int):
 			"I CANNOT EAT EXPOSURE.",
 			"Can't afford that one, cowboy...",
 		])
+		return
 	
 	if info.key == null:
 		return
 	
 	SaveGame.current.money -= info.cost
+	money_label.text = "$%s" % SaveGame.current.money
+	
 	if info.key in SaveGame.current.inventory:
 		SaveGame.current.inventory[info.key] += 1
+		_items[i].owned = SaveGame.current.inventory[info.key]
 	else:
 		SaveGame.current.inventory[info.key] = 1
 	
@@ -63,7 +72,8 @@ func _on_item_focused(i: int):
 
 func _on_done_panel_clicked():
 	say_dialog("Goodbye!")
-
+	$ShoppingDoneTimer.start()
+	shop_group.visible = false
 
 func _on_done_panel_focus_entered():
 	say_dialog([
@@ -76,3 +86,6 @@ func say_dialog(options):
 		dialog_label.speak(options)
 		return
 	dialog_label.speak(options.pick_random())
+
+func _on_shopping_done_timer_timeout():
+	get_tree().change_scene_to_file(mission_scene)

@@ -39,6 +39,9 @@ bg_color = Color(0, 0.443137, 0.6, 1)
 [node name="ShopMenu" type="Node2D"]
 script = ExtResource("1_5eg3u")
 
+[node name="ShoppingDoneTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -55,6 +58,7 @@ offset_bottom = 224.0
 theme = ExtResource("2_wn6f2")
 
 [node name="ShopGroup" type="Control" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,6 +95,7 @@ offset_bottom = 17.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sy6gk")
 
 [node name="MoneyLabel" type="Label" parent="UI/ShopGroup/MoneyPanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "$9999"
 horizontal_alignment = 1
@@ -139,5 +144,6 @@ autowrap_mode = 3
 text_overrun_behavior = 3
 script = ExtResource("4_0vb5f")
 
+[connection signal="timeout" from="ShoppingDoneTimer" to="." method="_on_shopping_done_timer_timeout"]
 [connection signal="clicked" from="UI/ShopGroup/DonePanel" to="." method="_on_done_panel_clicked"]
 [connection signal="focus_entered" from="UI/ShopGroup/DonePanel" to="." method="_on_done_panel_focus_entered"]
