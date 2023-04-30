@@ -11,7 +11,6 @@ var relative_angle: float
 func _ready():
 	animated_sprite_2d.play("windup")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if connected_to:
@@ -23,6 +22,8 @@ func _physics_process(delta):
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite_2d.animation == "windup":
 		animated_sprite_2d.play("loop")
+	if animated_sprite_2d.animation == "detonate":
+		queue_free()
 
 
 func _on_body_entered(body):
@@ -43,3 +44,12 @@ func _on_body_entered(body):
 
 func _on_animated_sprite_2d_tree_entered():
 	pass # Replace with function body.
+
+
+func _on_burn_timer_timeout():
+	animated_sprite_2d.play("flameout")
+	thrust = 0
+
+
+func _on_detonation_timer_timeout():
+	animated_sprite_2d.play("detonate")
