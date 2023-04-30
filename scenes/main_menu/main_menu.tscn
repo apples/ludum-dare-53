@@ -1,9 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://df2vl01lewk1g"]
+[gd_scene load_steps=14 format=3 uid="uid://df2vl01lewk1g"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
 [ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
+[ext_resource type="Texture2D" uid="uid://bci8w72um5ako" path="res://assets/textures/spinner.png" id="5_3y0fk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30bss"]
+atlas = ExtResource("5_3y0fk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgv0q"]
+atlas = ExtResource("5_3y0fk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0mvs"]
+atlas = ExtResource("5_3y0fk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm8dw"]
+atlas = ExtResource("5_3y0fk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gayk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30bss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgv0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0mvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm8dw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk0xk"]
 bg_color = Color(0.776471, 0.156863, 0.156863, 1)
@@ -67,7 +104,7 @@ offset_left = 183.0
 offset_top = 131.0
 offset_right = 215.0
 offset_bottom = 147.0
-button_pressed = true
+disabled = true
 
 [node name="online_mode_label" type="Label" parent="."]
 layout_mode = 0
@@ -77,7 +114,12 @@ offset_right = 235.0
 offset_bottom = 133.0
 text = "Online Mode"
 
+[node name="spinner_wheel" type="AnimatedSprite2D" parent="."]
+position = Vector2(230, 139)
+sprite_frames = SubResource("SpriteFrames_4gayk")
+
 [node name="online_mode_details" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 61.0
 offset_top = 7.0

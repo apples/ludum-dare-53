@@ -27,7 +27,6 @@ func send_create_player(username):
 	else:
 		Configs.user_key = response.body.Key
 		return true
-#	print(response.body)
 
 func get_healthcheck():
 	const endpoint = "healthcheck"

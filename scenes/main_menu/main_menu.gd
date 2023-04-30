@@ -2,14 +2,23 @@ extends Control
 var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 
 func _ready():
+	$spinner_wheel.play("default")
 	$online_mode_details/username_input.text = "Player_%s" %[create_random_client_id()]
-	pass
+	check_api_sever()
+	
+func check_api_sever():
+	var server_up = await Api.get_api_status()
+	if server_up:
+		$online_mode_toggle.disabled = false
+		$online_mode_toggle.button_pressed = true
+		$spinner_wheel.visible = false
+	else:
+		$spinner_wheel.visible = false
 
 func _on_play_button_pressed():
 	if $online_mode_toggle.button_pressed:
 		$online_mode_details.visible = true
 #		Api.get_healthcheck()
-		print(await Api.get_api_status())
 	else:
 		switch_to_gameplay_scene()
 
@@ -35,7 +44,6 @@ func _on_online_mode_confirm_pressed():
 
 func _on_online_mode_cancel_pressed():
 	$online_mode_details.visible = false
-
 
 func _on_username_input_text_changed(new_text):
 	$online_mode_details/username_validation_label.visible = false
