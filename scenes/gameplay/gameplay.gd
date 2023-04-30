@@ -1,5 +1,7 @@
 extends Node
 
+var given_boxes: int = 5
+
 var start_impulse = 500
 
 # Called when the node enters the scene tree for the first time.

@@ -39,3 +39,7 @@ func _on_body_entered(body):
 	connected_to = body
 	relative_angle = self.rotation - body.rotation
 	
+
+
+func _on_animated_sprite_2d_tree_entered():
+	pass # Replace with function body.
