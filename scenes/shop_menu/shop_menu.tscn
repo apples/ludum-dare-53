@@ -94,6 +94,7 @@ offset_bottom = 17.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sy6gk")
 
 [node name="MoneyLabel" type="Label" parent="UI/ShopGroup/MoneyPanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "$9999"
 horizontal_alignment = 1

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://1bmsdy74p53d"]
+
+[ext_resource type="Script" path="res://scenes/mission_menu/mission_item.gd" id="1_xp57q"]
+[ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="2_es6dr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6pjf"]
+resource_local_to_scene = true
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.729412, 0, 0.305882, 1)
+border_color = Color(0.960784, 1, 0.909804, 1)
+
+[node name="MissionItem" type="MarginContainer"]
+offset_right = 200.0
+offset_bottom = 36.0
+script = ExtResource("1_xp57q")
+
+[node name="ItemDetails" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6pjf")
+script = ExtResource("2_es6dr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemDetails"]
+layout_mode = 2
+
+[node name="ItemNameLabel" type="Label" parent="ItemDetails/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Trhsuters"
+
+[node name="ItemDifficultyLabel" type="Label" parent="ItemDetails/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "$5"
+
+[connection signal="clicked" from="ItemDetails" to="." method="_on_item_details_clicked"]
+[connection signal="focus_entered" from="ItemDetails" to="." method="_on_item_details_focus_entered"]
+[connection signal="focus_exited" from="ItemDetails" to="." method="_on_item_details_focus_exited"]
