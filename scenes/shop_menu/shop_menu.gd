@@ -1,5 +1,6 @@
 extends Node2D
 
+var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 var item_scene = preload("res://scenes/shop_menu/shop_item.tscn")
 
 var _item_infos = [
@@ -63,7 +64,7 @@ func _on_item_focused(i: int):
 
 func _on_done_panel_clicked():
 	say_dialog("Goodbye!")
-
+	$ShoppingDoneTimer.start()
 
 func _on_done_panel_focus_entered():
 	say_dialog([
@@ -76,3 +77,6 @@ func say_dialog(options):
 		dialog_label.speak(options)
 		return
 	dialog_label.speak(options.pick_random())
+
+func _on_shopping_done_timer_timeout():
+	get_tree().change_scene_to_file(gameplay_scene)
