@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://di8imm3oewkup"]
+
+[ext_resource type="Texture2D" uid="uid://bjn1cv7tlbt43" path="res://objects/trash/large_trash/longstrutjunk.png" id="1_fwra7"]
+[ext_resource type="Script" path="res://objects/trash/large_trash/large_trash.gd" id="1_v7b4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ddtr"]
+size = Vector2(64, 16)
+
+[node name="large_trash" type="RigidBody2D"]
+script = ExtResource("1_v7b4p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fwra7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6ddtr")

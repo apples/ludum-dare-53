@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn1cv7tlbt43"
-path="res://.godot/imported/longstrutjunk.png-844e11f9c6fb127405c62e5d6f3a93f8.ctex"
+uid="uid://cgets73wyglhn"
+path="res://.godot/imported/8192clouds2.png-d8d21cca3b0fcf172754f44207f1e6c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/trash/medium_trash/longstrutjunk.png"
-dest_files=["res://.godot/imported/longstrutjunk.png-844e11f9c6fb127405c62e5d6f3a93f8.ctex"]
+source_file="res://assets/textures/8192clouds2.png"
+dest_files=["res://.godot/imported/8192clouds2.png-d8d21cca3b0fcf172754f44207f1e6c7.ctex"]
 
 [params]
 
