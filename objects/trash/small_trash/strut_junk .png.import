@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dydwo08wbn8ef"
-path="res://.godot/imported/Plantetoid_junk.png-4806c7fb2086967dfd0352628b688f08.ctex"
+uid="uid://b6s62v1rlft3b"
+path="res://.godot/imported/strut_junk .png-9abfbeeb280a6493c02cae07392b8ca6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Plantetoid_junk.png"
-dest_files=["res://.godot/imported/Plantetoid_junk.png-4806c7fb2086967dfd0352628b688f08.ctex"]
+source_file="res://objects/trash/small_trash/strut_junk .png"
+dest_files=["res://.godot/imported/strut_junk .png-9abfbeeb280a6493c02cae07392b8ca6.ctex"]
 
 [params]
 

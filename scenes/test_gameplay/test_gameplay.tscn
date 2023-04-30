@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d13j8467pe41e"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scenes/test_gameplay/test_gameplay.gd" id="1_2hpes"]
+[ext_resource type="Script" path="res://scenes/test_gameplay/material_test.gd" id="1_2hpes"]
 [ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="1_8lbc0"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_r08jo"]
-[ext_resource type="PackedScene" uid="uid://dpg8kd7nmr4h5" path="res://objects/trash/trash.tscn" id="3_cmauw"]
+[ext_resource type="PackedScene" uid="uid://fwf0ie0j21f5" path="res://objects/trash/small_trash/small_trash.tscn" id="3_cmauw"]
 
 [node name="test_gameplay" type="Node2D"]
 script = ExtResource("1_2hpes")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1a07bnhmi2h4"
-path="res://.godot/imported/Broken_ship_junk.png-5e7b267d5fe33a3a6f1cd550b86720b4.ctex"
+uid="uid://d1qcqgfpqwm40"
+path="res://.godot/imported/cone_junk .png-5130005b5544844a5dc6aae7e8925ad7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Broken_ship_junk.png"
-dest_files=["res://.godot/imported/Broken_ship_junk.png-5e7b267d5fe33a3a6f1cd550b86720b4.ctex"]
+source_file="res://objects/trash/small_trash/cone_junk .png"
+dest_files=["res://.godot/imported/cone_junk .png-5130005b5544844a5dc6aae7e8925ad7.ctex"]
 
 [params]
 

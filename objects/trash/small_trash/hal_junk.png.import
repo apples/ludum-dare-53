@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpurk4yc0dsn"
-path="res://.godot/imported/Strut2_junk.png-5447b438bb31b2c0bb7ce95df51e2465.ctex"
+uid="uid://1mho20cxc1rh"
+path="res://.godot/imported/hal_junk.png-56ff9e24c37bbaffcbe32cb23a0fef3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Strut2_junk.png"
-dest_files=["res://.godot/imported/Strut2_junk.png-5447b438bb31b2c0bb7ce95df51e2465.ctex"]
+source_file="res://objects/trash/small_trash/hal_junk.png"
+dest_files=["res://.godot/imported/hal_junk.png-56ff9e24c37bbaffcbe32cb23a0fef3e.ctex"]
 
 [params]
 
