@@ -27,6 +27,7 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
-	var index = self._influenced_objects.find(body)
-	if index != -1:
-		self._influenced_objects.pop_at(index)
+	if body is RigidBody2D:
+		var index = self._influenced_objects.find(body)
+		if index != -1:
+			self._influenced_objects.pop_at(index)
