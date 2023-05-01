@@ -11,10 +11,13 @@ var worth = 1
 
 var initial_health = 4
 
+@onready var animation_player = $AnimationPlayer
+
 var health = 4:
 	get:
 		return health
 	set(value):
+		_hit_effect(value - health)
 		health = value
 		_update_sprite()
 		if health <= 0:
@@ -58,3 +61,12 @@ func _update_sprite():
 		$Sprite2D.texture = fragile_texture
 	else:
 		$Sprite2D.texture = default_texture
+
+func _hit_effect(dh: int):
+	if not is_inside_tree():
+		return
+	
+	if dh < 0:
+		animation_player.play("hurt")
+	elif dh > 0:
+		animation_player.play("heal")

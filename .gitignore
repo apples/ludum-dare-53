@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 
+builds/
+
 # .Net/Visual Studio specific ignores
 .vs/
 [Oo]bj/
