@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cucd3lbdra5oc"]
+
+[ext_resource type="Script" path="res://objects/deployables/fence/fence.gd" id="1_pa1nr"]
+
+[node name="Fence" type="Node2D"]
+script = ExtResource("1_pa1nr")
+
+[node name="LeftRigidBody2D" parent="." instance_placeholder="res://objects/deployables/fence/left_rigid_body_2d.tscn"]
+collision_layer = 32
+
+[node name="RightRigidBody2D" parent="." instance_placeholder="res://objects/deployables/fence/right_rigid_body_2d.tscn"]
+collision_layer = 32
+
+[node name="StaticBody2D" parent="." instance_placeholder="res://objects/deployables/fence/static_body_2d.tscn"]

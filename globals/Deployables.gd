@@ -10,4 +10,9 @@ var infos = {
 		name = "Map Station",
 		scene = "res://objects/deployables/map_station/map_station.tscn",
 	},
+	"fence": {
+		name = "Fence",
+		scene = "res://objects/deployables/fence/fence.tscn",
+		directed = true,
+	},
 }

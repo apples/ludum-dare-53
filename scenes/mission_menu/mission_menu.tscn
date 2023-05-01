@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="2_faakx"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="3_5hdau"]
 [ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="4_q87r1"]
-[ext_resource type="Texture2D" uid="uid://bu8hsxgj3ti33" path="res://assets/textures/mission_giver.png" id="5_d74td"]
+[ext_resource type="Texture2D" uid="uid://c1ebcnsbu4rgv" path="res://assets/textures/mission_giver.png" id="5_d74td"]
 [ext_resource type="Script" path="res://scenes/shop_menu/dialog_label.gd" id="6_jomx8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ov0n"]
