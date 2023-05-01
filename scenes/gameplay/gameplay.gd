@@ -16,6 +16,8 @@ var _total_package_health = 1
 
 var _preloaded_scenes = []
 
+var _current_interactions = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameplaySingleton.current_mission:
@@ -29,6 +31,11 @@ func _ready():
 		_preloaded_scenes.append(load(Deployables.infos[k].scene))
 		
 	$DockingArrowAnim.play("default")
+	
+	for i in SaveGame.current.deployed_structures:
+		_spawn_deployable(i)
+	
+	# TODO: LOAD INTERACTIONS HERE
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,6 +85,8 @@ func _on_docking_completed_timer_timeout():
 	SaveGame.current.current_cycle += 1
 	SaveGame.save()
 	get_tree().change_scene_to_file(mission_menu_scene)
+	
+	# TODO: SEND INTERACTIONS HERE
 
 func load_mission(mission_info):
 	var num_packages
@@ -132,27 +141,32 @@ func _on_ui_deploy_item(key):
 	
 	print("Deploying item ", key)
 	
+	var interaction = {
+		type = "structure",
+		key = key,
+		position = player_ship.global_position,
+		rotation = 0,
+	}
+	
 	SaveGame.current.inventory[key] -= 1
+	SaveGame.deployed_structures.append(interaction)
+	SaveGame.deployed_structures = SaveGame.deployed_structures.slice(-5)
 	SaveGame.save()
+	
 	
 	var info = Deployables.infos[key]
 	
-	var node = load(info.scene).instantiate()
-	node.global_position = player_ship.global_position
-	node.gameplay_root = self
-	node.player_ship = player_ship
-	
 	if "directed" in info and info.directed:
-		node.global_position += Vector2.RIGHT.rotated(player_ship.rotation) * 16
-		node.rotation = player_ship.rotation
+		interaction.position += Vector2.RIGHT.rotated(player_ship.rotation) * 16
+		interaction.rotation = player_ship.rotation
 	
-	deployables.add_child(node)
+	_post_interaction(interaction)
+	_spawn_deployable(interaction)
 	
 	get_tree().paused = false
 	ui.deploy_menu_root.visible = false
 	
 	# TODO: server interaction
-	
 	
 
 
@@ -160,3 +174,18 @@ func _on_ui_exit_deploy():
 	get_tree().paused = false
 	ui.deploy_menu_root.visible = false
 
+
+func _spawn_deployable(interaction):
+	assert(interaction.type == "structure")
+	
+	var info = Deployables.infos[interaction.key]
+	var node = load(info.scene).instantiate()
+	node.global_position = interaction.position
+	node.rotation = interaction.rotation
+	node.gameplay_root = self
+	node.player_ship = player_ship
+	
+	deployables.add_child(node)
+
+func _post_interaction(interaction):
+	_current_interactions.append(interaction)
