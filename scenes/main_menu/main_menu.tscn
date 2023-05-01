@@ -2,10 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
-[ext_resource type="Texture2D" uid="uid://w3o2icbp7lb3" path="res://assets/textures/grav_garb_logo.png" id="2_6glrw"]
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu_trash_system.gd" id="3_7p820"]
 [ext_resource type="Texture2D" uid="uid://bci8w72um5ako" path="res://assets/textures/spinner.png" id="5_3y0fk"]
+[ext_resource type="Texture2D" uid="uid://cmts5r5bnj08i" path="res://assets/textures/grav_garb_logo2.png" id="5_jjoul"]
 [ext_resource type="Texture2D" uid="uid://bpfelndvo760m" path="res://assets/textures/shop_keeper2.png" id="6_moqjj"]
 [ext_resource type="Texture2D" uid="uid://c1ebcnsbu4rgv" path="res://assets/textures/mission_giver.png" id="7_cyg5g"]
 
@@ -103,13 +103,12 @@ unique_name_in_owner = true
 
 [node name="logo" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 132.0
-offset_top = -2.0
-offset_right = 305.0
-offset_bottom = 135.0
-texture = ExtResource("2_6glrw")
-expand_mode = 2
-stretch_mode = 4
+offset_left = 69.0
+offset_top = 4.0
+offset_right = 325.0
+offset_bottom = 132.0
+texture = ExtResource("5_jjoul")
+stretch_mode = 2
 
 [node name="shop_girl" type="TextureRect" parent="."]
 layout_mode = 0
@@ -129,19 +128,19 @@ texture = ExtResource("7_cyg5g")
 
 [node name="play_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 158.0
-offset_right = 246.0
-offset_bottom = 214.0
+offset_left = 160.0
+offset_top = 170.0
+offset_right = 232.0
+offset_bottom = 211.0
 action_mode = 0
 text = "Play"
 
 [node name="online_mode_toggle" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 183.0
-offset_top = 131.0
-offset_right = 215.0
-offset_bottom = 147.0
+offset_left = 180.0
+offset_top = 143.0
+offset_right = 212.0
+offset_bottom = 159.0
 disabled = true
 
 [node name="logged_in_as_label" type="Label" parent="."]
@@ -162,14 +161,14 @@ theme_override_colors/font_color = Color(0, 0.627451, 0, 1)
 
 [node name="online_mode_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 170.0
-offset_top = 110.0
-offset_right = 235.0
-offset_bottom = 133.0
+offset_left = 165.0
+offset_top = 125.0
+offset_right = 230.0
+offset_bottom = 148.0
 text = "Online Mode"
 
 [node name="spinner_wheel" type="AnimatedSprite2D" parent="."]
-position = Vector2(230, 139)
+position = Vector2(225, 151)
 sprite_frames = SubResource("SpriteFrames_4gayk")
 
 [node name="online_mode_details" type="Panel" parent="."]
