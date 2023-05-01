@@ -78,7 +78,12 @@ func _process(delta):
 		var objects = $Area2D.get_overlapping_bodies()
 		for obj in objects:
 			if obj.is_in_group("small_trash"):
-				tethered_objects.push_back(obj)
+#				tethered_objects.push_back(obj)
+				obj.global_transform.origin = global_position
+				obj.connect_to = packages[-1] if packages.size() > 0 else tail_anchor
+				#packages.add_child(obj)
+				get_parent().packages.add_child(obj)
+				packages.append(obj)
 				break
 
 func _physics_process(delta):

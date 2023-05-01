@@ -10,6 +10,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	self.size.x = max(1, int(player_ship.global_position.x / end_position * max_width))
 	
