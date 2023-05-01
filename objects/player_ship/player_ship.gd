@@ -24,7 +24,6 @@ var thruster_scene = preload("res://objects/thruster/thruster.tscn")
 var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
-var thruster_count: int = 5
 
 var initial_health = 15
 
@@ -58,7 +57,7 @@ func _process(delta):
 		_queue_thruster = false
 		return
 	
-	if thruster_count > 0 and Input.is_action_just_pressed("spawn_thruster"):
+	if SaveGame.current.inventory.thrusters > 0 and Input.is_action_just_pressed("spawn_thruster"):
 		_queue_thruster = true
 	
 	if Input.is_action_just_pressed("spawn_black_hole"):
@@ -96,7 +95,8 @@ func _physics_process(delta):
 		new_thruster.global_position = global_position + direction * thruster_spawn_distance
 		new_thruster.linear_velocity = direction * thruster_spawn_velocity
 		new_thruster.rotation = self.rotation
-		thruster_count -= 1
+		SaveGame.current.inventory.thrusters -= 1
+		SaveGame.save()
 		get_parent().add_child(new_thruster)
 	
 	apply_torque(_turn_direction * angular_acceleration)
