@@ -7,6 +7,7 @@
 radius = 32.0624
 
 [node name="cloud_hazard" type="Area2D"]
+collision_mask = 6
 script = ExtResource("1_pmp15")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,3 +15,6 @@ texture = ExtResource("1_5q1ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j88ge")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
