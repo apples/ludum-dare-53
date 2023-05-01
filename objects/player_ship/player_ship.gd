@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal player_ship_damaged()
+
 @export var angular_acceleration: float = 5000
 @export var black_hole_spawn_distance: float = 32
 @export var black_hole_strength: float = 100
@@ -98,6 +100,8 @@ func _on_body_entered(body):
 		if impact_vector.length() > impact_threshold:
 			health -= 1
 			$player_ship_animations.play("hurt")
+			player_ship_damaged.emit()
+#			%PlayerHealthBar.frame += 1
 			print("Damaging Impact! Health left: ", health)
 			if health == 0:
 				get_tree().change_scene_to_file(game_over_scene)
