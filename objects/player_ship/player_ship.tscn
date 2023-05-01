@@ -16,6 +16,7 @@ radius = 3.0
 height = 20.0
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
+collision_layer = 4
 max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 0.1
