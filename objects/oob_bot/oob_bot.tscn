@@ -82,12 +82,16 @@ rotation = -1.56943
 sprite_frames = SubResource("SpriteFrames_x7rnh")
 frame_progress = 0.302235
 
-[node name="ZapAttackTimer" type="Timer" parent="."]
+[node name="ZapAttackStartTimer" type="Timer" parent="."]
+one_shot = true
 autostart = true
+
+[node name="ZapAttackTimer" type="Timer" parent="."]
 
 [node name="ZapAttackVisibleTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
+[connection signal="timeout" from="ZapAttackStartTimer" to="." method="_on_zap_attack_start_timer_timeout"]
 [connection signal="timeout" from="ZapAttackTimer" to="." method="_on_zap_attack_timer_timeout"]
 [connection signal="timeout" from="ZapAttackVisibleTimer" to="." method="_on_zap_attack_visible_timer_timeout"]
