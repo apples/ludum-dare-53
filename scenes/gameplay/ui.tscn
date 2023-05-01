@@ -209,6 +209,7 @@ offset_bottom = 212.0
 text = "Progress"
 
 [node name="DeployInstructions" type="Label" parent="UIRoot"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 206.0
 offset_right = 156.0
