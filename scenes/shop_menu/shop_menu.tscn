@@ -39,9 +39,6 @@ bg_color = Color(0, 0.443137, 0.6, 1)
 [node name="ShopMenu" type="Node2D"]
 script = ExtResource("1_5eg3u")
 
-[node name="ShoppingDoneTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -144,6 +141,4 @@ autowrap_mode = 3
 text_overrun_behavior = 3
 script = ExtResource("4_0vb5f")
 
-[connection signal="timeout" from="ShoppingDoneTimer" to="." method="_on_shopping_done_timer_timeout"]
 [connection signal="clicked" from="UI/ShopGroup/DonePanel" to="." method="_on_done_panel_clicked"]
-[connection signal="focus_entered" from="UI/ShopGroup/DonePanel" to="." method="_on_done_panel_focus_entered"]

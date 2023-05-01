@@ -5,6 +5,9 @@ var connect_to
 var radius = 20
 var move_force = 100
 
+var worth = 1
+
+var initial_health = 4
 var health = 4:
 	get:
 		return health
