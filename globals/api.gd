@@ -20,17 +20,14 @@ func get_player():
 	else:
 		return null
 
-func get_api_status():
+func get_api_status() -> bool:
 	const endpoint = "healthcheck"
 	var response = await send_request(endpoint)
-	if response.response_code == 200:
-		return true
-	else:
-		return false
+	return response.response_code == 200
 		
-func send_create_player(username):
+func send_create_player(username: String) -> bool:
 	const endpoint = "player"
-	var response = await send_request(endpoint, HTTPClient.METHOD_POST, {"username": username})
+	var response = await send_request(endpoint, HTTPClient.METHOD_POST, JSON.stringify({"UserName": username}))
 	if response.response_code != 200:
 		print(response.body)
 		return false
@@ -40,17 +37,86 @@ func send_create_player(username):
 		Configs.save()
 		return true
 
-func get_healthcheck():
-	const endpoint = "healthcheck"
-	var response = await send_request(endpoint)
-	print(response.body.Status)
+# Example usage
+#var success = await Api.send_interactions("Main", 2, [
+#	{
+#		"InteractionType": "PlaceStructure",
+#		"Content": JSON.stringify({
+#			"StructureType": "RefuelStation",
+#			"X": 23.45,
+#			"Y": 67.89,
+#			"Uses": 5
+#		})
+#	},
+#	{
+#		"InteractionType": "UseStructure",
+#		"Content": JSON.stringify({
+#			"StructureType": "RefuelStation",
+#			"X": 23.45,
+#			"Y": 67.89,
+#			"Use": -1
+#		})
+#	}
+#])
+func send_interactions(level: String, cycle: int, interactions: Array[Dictionary]):
+	const endpoint = "interactions/{level}/{cycle}"
+	var response = await send_request(
+		endpoint.format({"level": level, "cycle": cycle}),
+		HTTPClient.METHOD_POST,
+		JSON.stringify({"Interactions": interactions}),
+		["Authorization: Basic %s" %[Configs.user_key], "Content-Type: application/json"])
+	
+	return response.response_code == 200
+
+# Example Usage
+#var interactions = await Api.get_interactions("Main", 2)
+# Example return value
+#[
+#    {
+#        "InteractionID": 1,
+#        "UserName": "xxAtrain223",
+#        "InteractionType": "PlaceStructure",
+#        "Content": {
+#            "Structure": "RefuelStation",
+#            "X": 12.34,
+#            "Y": 56.78
+#        }
+#    },
+#    {
+#        "InteractionID": 3,
+#        "UserName": "Test1",
+#        "InteractionType": "PlaceStructure",
+#        "Content": {
+#            "Structure": "RefuelStation",
+#            "X": 43.21,
+#            "Y": 87.65
+#        }
+#    }
+#]
+func get_interactions(level: String, cycle: int) -> Array:
+	const endpoint = "interactions/{level}/{cycle}"
+	var response = await send_request(
+		endpoint.format({"level": level, "cycle": cycle}),
+		HTTPClient.METHOD_GET,
+		"",
+		["Authorization: Basic %s" %[Configs.user_key]])
+	
+	if response.response_code == 200:
+		var interactions = response.body.Interactions
+		for interaction in interactions:
+			var content = JSON.parse_string(interaction.Content)
+			interaction.Content = content
+		return interactions
+	else:
+		return []
 
 func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_header = ["Content-Type: application/json"]):
 	var http_request = HTTPRequest.new()
 	http_request.timeout = 10
 	self.add_child(http_request)
-	http_request.request(api_url.path_join(endpoint), custom_header, method, JSON.stringify(body))
-#	response type = [result, response_code, headers, body]
+	http_request.request(api_url.path_join(endpoint), custom_header, method, body)
+
+	# response type = [result, response_code, headers, body]
 	var response = await http_request.request_completed
 	if response[0] == 0:
 		var responseBodyString = response[3].get_string_from_utf8()
