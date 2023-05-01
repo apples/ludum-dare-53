@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://wwlp86oq8yt8"]
+[gd_scene load_steps=16 format=3 uid="uid://wwlp86oq8yt8"]
 
 [ext_resource type="Script" path="res://objects/buoy/buoy.gd" id="1_46x73"]
 [ext_resource type="Texture2D" uid="uid://cwug1hb73xdk1" path="res://objects/buoy/buoy-sheet.png" id="2_4ewbg"]
 [ext_resource type="Texture2D" uid="uid://dmmmt7h5tm0io" path="res://objects/buoy/space_tape.png" id="4_wt7qh"]
 [ext_resource type="Texture2D" uid="uid://c48v1yk08x0qh" path="res://objects/buoy/blink.png" id="4_wthdd"]
-[ext_resource type="Script" path="res://scripts/anchor.gd" id="5_af0vx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usntf"]
 
@@ -73,12 +72,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omylu"]
-size = Vector2(12, 16)
+size = Vector2(28, 26)
 
 [node name="Buoy" type="RigidBody2D" groups=["thrustable"]]
 physics_material_override = SubResource("PhysicsMaterial_usntf")
-linear_damp = 10.0
-angular_damp = 5.0
 script = ExtResource("1_46x73")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -102,10 +99,5 @@ visible = false
 z_index = -1
 position = Vector2(0, -7)
 texture = ExtResource("4_wthdd")
-
-[node name="Anchor" type="Node2D" parent="."]
-script = ExtResource("5_af0vx")
-use_anchor_angle = true
-linear_spring_constant = 50
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

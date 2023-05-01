@@ -4,9 +4,18 @@ var given_boxes: int = 5
 
 var start_impulse = 500
 
+var package_scene = preload("res://objects/package/package.tscn")
+
+@onready var player_ship = %PlayerShip
+@onready var packages = $Packages
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if GameplaySingleton.current_mission:
+		load_mission(GameplaySingleton.current_mission)
+	else:
+		load_mission({ difficulty = 0 })
+	Bgmusic.PlayGameplayMusic()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,3 +38,26 @@ func _on_docking_completed_timer_timeout():
 	SaveGame.current.current_cycle += 1
 	SaveGame.save()
 	get_tree().change_scene_to_file(shop_menu_scene)
+
+func load_mission(mission_info):
+	var num_packages
+	var package_hp
+	
+	match mission_info.difficulty:
+		0:
+			num_packages = 3
+			package_hp = 4
+		1:
+			num_packages = 5
+			package_hp = 2
+		2:
+			num_packages = 1
+			package_hp = 1
+	
+	var prev_link = player_ship
+	for i in range(num_packages):
+		var package = package_scene.instantiate()
+		package.global_transform.origin = player_ship.global_position
+		package.connect_to = prev_link
+		packages.add_child(package)
+		prev_link = package

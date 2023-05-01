@@ -12,6 +12,8 @@ func _ready():
 		$logged_in_username_label.text = Configs.username
 	check_api_sever()
 	
+	Bgmusic.PlayMenuMusic()
+	
 func check_api_sever():
 	var server_up = await Api.get_api_status()
 	if server_up:

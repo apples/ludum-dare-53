@@ -15,11 +15,15 @@ extends RigidBody2D
 
 @export var tether_strength: float = 5
 
+@export var impact_threshold: float = 50 # m/s
+
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var thruster_scene = preload("res://objects/thruster/thruster.tscn")
+var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
 var thruster_count: int = 5
+var health: int = 10
 
 var _turn_direction: float
 var _thrust_direction: float
@@ -82,3 +86,13 @@ func anchor_to(anchor_point: Vector2, anchor_rotation: float):
 	anchor.anchor_angle = anchor_rotation
 	anchor.linear_spring_constant = dock_anchor_strength
 	add_child(anchor)
+
+
+func _on_body_entered(body):
+	var impact_vector = self.linear_velocity - body.linear_velocity
+	#print(impact_vector.length())
+	if impact_vector.length() > impact_threshold:
+		health -= 1
+		print("Damaging Impact! Health left: ", health)
+		if health == 0:
+			get_tree().change_scene_to_file(game_over_scene)

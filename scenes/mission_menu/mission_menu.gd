@@ -45,6 +45,8 @@ func _ready():
 	_items[0].focus()
 	
 	say_dialog(["Here's the jobs."])
+	
+	Bgmusic.PlayMenuMusic()
 
 func _add_item(info, difficulty):
 	var with_diff = info.duplicate(true)
