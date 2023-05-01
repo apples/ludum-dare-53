@@ -25,6 +25,8 @@ var current_timer: float = 0
 @onready var player_ship = get_node("/root/Gameplay/PlayerShip")
 
 func _ready():
+	return
+	
 	var rng = RandomNumberGenerator.new()
 	var new_trash
 	
@@ -79,6 +81,8 @@ func spawn_rand_trash(pos: Vector2):
 		add_child(new_trash)
 
 func _process(delta):
+	return
+	
 	current_timer -= delta * (player_ship.linear_velocity.x / 8)
 	if(current_timer <= 0):
 		current_timer = trash_spawn_timer
