@@ -1,11 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://dnbgjfm0ioyad"]
+[gd_scene load_steps=13 format=3 uid="uid://dnbgjfm0ioyad"]
 
 [ext_resource type="Texture2D" uid="uid://b6imq1foo3y7b" path="res://objects/player_ship/ship.png" id="1_iwfba"]
 [ext_resource type="Script" path="res://objects/player_ship/player_ship.gd" id="1_qnons"]
 [ext_resource type="Shader" path="res://materials/rotsprite/rotsprite.gdshader" id="2_5x1vc"]
 [ext_resource type="Material" path="res://materials/rotsprite/white.tres" id="4_l0yn7"]
 [ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="5_hby43"]
-[ext_resource type="Texture2D" uid="uid://clu41xdg1kple" path="res://objects/player_ship/ship_explosion.png" id="6_75jm8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ihev"]
 shader = ExtResource("2_5x1vc")
@@ -57,126 +56,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjlh1"]
 radius = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnegt"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hos3u"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_btx0a"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_maewq"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ibqh"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uchdy"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wkbuy"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ik3cp"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnexl"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(128, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4odv"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(144, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2qfmb"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(160, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7t25"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(176, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xck3a"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(192, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1oala"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(208, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dl6k8"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(224, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_migyg"]
-atlas = ExtResource("6_75jm8")
-region = Rect2(240, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qfsoo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jnegt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hos3u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_btx0a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_maewq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ibqh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uchdy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wkbuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ik3cp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pnexl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h4odv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2qfmb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i7t25")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xck3a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1oala")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dl6k8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_migyg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 35.0
-}]
-
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
 collision_layer = 4
 max_contacts_reported = 10
@@ -219,13 +98,15 @@ position = Vector2(-32, 0)
 node_a = NodePath("..")
 node_b = NodePath("../TailAnchor")
 
-[node name="DeathExplosion" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_qfsoo")
-frame_progress = 0.159675
+[node name="DeathExplosions" type="Node2D" parent="."]
 
 [node name="DeathInitiatedTimer" type="Timer" parent="."]
+wait_time = 2.5
 one_shot = true
+
+[node name="ExplosionAddedTimer" type="Timer" parent="."]
+wait_time = 0.25
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathInitiatedTimer" to="." method="_on_death_initiated_timer_timeout"]
+[connection signal="timeout" from="ExplosionAddedTimer" to="." method="_on_explosion_added_timer_timeout"]
