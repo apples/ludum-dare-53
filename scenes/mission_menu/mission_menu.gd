@@ -2,6 +2,7 @@ extends Node2D
 
 var item_scene = preload("res://scenes/mission_menu/mission_item.tscn")
 var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
+var shop_scene = "res://scenes/shop_menu/shop_menu.tscn"
 
 var _item_infos = [
 ]
@@ -72,3 +73,7 @@ func say_dialog(options):
 		dialog_label.speak(options)
 		return
 	dialog_label.speak(options.pick_random())
+
+
+func _on_done_panel_clicked():
+	get_tree().change_scene_to_file(shop_scene)

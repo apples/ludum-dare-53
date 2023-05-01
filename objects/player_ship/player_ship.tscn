@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnbgjfm0ioyad"]
+[gd_scene load_steps=8 format=3 uid="uid://dnbgjfm0ioyad"]
 
 [ext_resource type="Texture2D" uid="uid://b6imq1foo3y7b" path="res://objects/player_ship/ship.png" id="1_iwfba"]
 [ext_resource type="Script" path="res://objects/player_ship/player_ship.gd" id="1_qnons"]
@@ -14,6 +14,9 @@ radius = 13.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp25r"]
 radius = 3.0
 height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjlh1"]
+radius = 1.0
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
 collision_layer = 4
@@ -37,5 +40,14 @@ position = Vector2(-24, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vp25r")
+
+[node name="TailAnchor" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+mass = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailAnchor"]
+position = Vector2(-32, 0)
+shape = SubResource("CircleShape2D_sjlh1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

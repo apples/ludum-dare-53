@@ -23,13 +23,16 @@ var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
 var thruster_count: int = 5
-var health: int = 10
+var health: int = 1
+
 
 var _turn_direction: float
 var _thrust_direction: float
 var _queue_thruster: bool = false
 
 var tethered_objects: Array[RigidBody2D]
+
+@onready var tail_anchor = $TailAnchor
 
 func _process(delta):
 	if not enable_input:
