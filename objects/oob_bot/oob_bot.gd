@@ -27,3 +27,8 @@ func _on_zap_attack_timer_timeout():
 
 func _on_zap_attack_visible_timer_timeout():
 	$ZapAnim.visible = false
+
+
+func _on_zap_attack_start_timer_timeout():
+	$ZapAttackTimer.start()
+	pass # Replace with function body.

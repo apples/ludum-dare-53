@@ -52,4 +52,4 @@ func destroy_oob_bot():
 		oob_bot_active = null
 
 func on_out_of_bounds_bot_zapped():
-	%PlayerShip.health -= 1
+	%PlayerShip.health -= 2

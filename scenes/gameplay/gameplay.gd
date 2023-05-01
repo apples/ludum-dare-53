@@ -27,6 +27,8 @@ func _ready():
 	# preload
 	for k in Deployables.infos:
 		_preloaded_scenes.append(load(Deployables.infos[k].scene))
+		
+	$DockingArrowAnim.play("default")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
