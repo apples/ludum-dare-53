@@ -45,7 +45,7 @@ func load_mission(mission_info):
 	
 	match mission_info.difficulty:
 		0:
-			num_packages = 3
+			num_packages = 0
 			package_hp = 4
 		1:
 			num_packages = 5

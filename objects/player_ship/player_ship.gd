@@ -89,10 +89,11 @@ func anchor_to(anchor_point: Vector2, anchor_rotation: float):
 
 
 func _on_body_entered(body):
-	var impact_vector = self.linear_velocity - body.linear_velocity
-	#print(impact_vector.length())
-	if impact_vector.length() > impact_threshold:
-		health -= 1
-		print("Damaging Impact! Health left: ", health)
-		if health == 0:
-			get_tree().change_scene_to_file(game_over_scene)
+	if body.is_in_group("thrustable"):
+		var impact_vector = self.linear_velocity - body.linear_velocity
+		#print(impact_vector.length())
+		if impact_vector.length() > impact_threshold:
+			health -= 1
+			print("Damaging Impact! Health left: ", health)
+			if health == 0:
+				get_tree().change_scene_to_file(game_over_scene)
