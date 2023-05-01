@@ -4,6 +4,8 @@ var dialog_speed = 0.5
 
 var _tween: Tween = null
 
+signal done()
+
 func speak(new_text: String):
 	if _tween:
 		_tween.kill()
@@ -11,4 +13,6 @@ func speak(new_text: String):
 	visible_characters = 0
 	_tween = create_tween()
 	_tween.tween_property(self, "visible_characters", text.length(), dialog_speed)
-	_tween.finished.connect(func (): self._tween = null)
+	await _tween.finished
+	self._tween = null
+	done.emit()

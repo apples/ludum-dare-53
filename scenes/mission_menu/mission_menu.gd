@@ -19,10 +19,29 @@ var _boss_missions = [
 	{ name = "Human Heart", desc = "The people need their heart organs." },
 ]
 
+# Phrases said after each successful delivery.
+# Ordered from worst to best.
+var _score_phrases = [
+	"A moonrat could've done a better job.",
+	"Wow good job.",
+]
+
+# Neutral dialog phrases. Picked at random.
+var _neutral_phrases = [
+	"Here's the jobs.",
+	"Dont' forget to shop!",
+]
+
+# Goodbye phrases said when departing on mission.
+var _goodbye_phrases = [
+	"Sayonara."
+]
+
 var _items = []
 
 @onready var mission_select_list = %MissionSelect
 @onready var dialog_label = %DialogLabel
+@onready var mission_select_wrapper = %MissionSelectWrapper
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,9 +64,29 @@ func _ready():
 	
 	_items[0].focus()
 	
-	say_dialog(["Here's the jobs."])
-	
 	Bgmusic.PlayMenuMusic()
+	
+	if GameplaySingleton.delivery_score != -1:
+		_say_score()
+	else:
+		_say_neutral()
+
+func _say_neutral():
+	say_dialog(_neutral_phrases)
+
+func _say_score():
+
+	var i = _score_phrases.size() * GameplaySingleton.delivery_score / 101
+	
+	mission_select_wrapper.visible = false
+	
+	await say_dialog(_score_phrases[i])
+	
+	await get_tree().create_timer(2).timeout
+	
+	mission_select_wrapper.visible = true
+	
+	_say_neutral()
 
 func _add_item(info, difficulty):
 	var with_diff = info.duplicate(true)
@@ -61,6 +100,13 @@ func _process(delta):
 func _on_item_clicked(i: int):
 	var info = _item_infos[i]
 	print("Staring mission %s" % info.name)
+	
+	mission_select_wrapper.visible = false
+	
+	await say_dialog(_goodbye_phrases)
+	
+	await get_tree().create_timer(2).timeout
+	
 	GameplaySingleton.current_mission = info
 	get_tree().change_scene_to_file(gameplay_scene)
 
@@ -73,7 +119,9 @@ func say_dialog(options):
 		dialog_label.speak(options)
 		return
 	dialog_label.speak(options.pick_random())
+	return dialog_label.done
 
 
-func _on_done_panel_clicked():
+func _on_shop_panel_clicked():
 	get_tree().change_scene_to_file(shop_scene)
+

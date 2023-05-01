@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal player_ship_damaged()
+
 @export var angular_acceleration: float = 5000
 @export var black_hole_spawn_distance: float = 32
 @export var black_hole_strength: float = 100
@@ -28,6 +30,7 @@ var health = 15:
 		return health
 	set(value):
 		health = value
+		player_ship_damaged.emit()
 		$player_ship_animations.play("hurt")
 		print("Damage! Health left: ", health)
 		if health <= 0:

@@ -1,11 +1,134 @@
-[gd_scene load_steps=5 format=3 uid="uid://i41tlcy3s2r"]
+[gd_scene load_steps=24 format=3 uid="uid://b5bp2hr1ho58r"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_3cknp"]
 [ext_resource type="Texture2D" uid="uid://b2uxix3y67o3h" path="res://assets/ui/box.png" id="1_oym84"]
+[ext_resource type="Texture2D" uid="uid://b7bb6wovto8y3" path="res://assets/textures/healthbar.png" id="2_5xf3s"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="2_dapv5"]
 [ext_resource type="Script" path="res://scenes/gameplay/ColorRect.gd" id="3_7df5t"]
 [ext_resource type="Script" path="res://scripts/label_sync.gd" id="3_ef8qv"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pih7k"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3ny4"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tmc1"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2kjw"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtags"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(384, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ngc"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(480, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17qh"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(576, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3c74"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(672, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m810"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(768, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22lqy"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(864, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btga1"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(960, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehs33"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1056, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfrxd"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1152, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86xek"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1248, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtbmm"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1344, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljjwf"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1440, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3i0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pih7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3ny4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tmc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2kjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtags")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8ngc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3c74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m810")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22lqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btga1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehs33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfrxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86xek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtbmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljjwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("2_dapv5")
 
 [node name="UIRoot" type="Control" parent="."]
 layout_mode = 3
@@ -16,10 +139,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3cknp")
 
+[node name="PlayerHealthBar" type="AnimatedSprite2D" parent="UIRoot"]
+unique_name_in_owner = true
+position = Vector2(45, 13)
+sprite_frames = SubResource("SpriteFrames_u3i0p")
+
 [node name="BoxIcon" type="TextureRect" parent="UIRoot"]
 layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 40.0
 texture = ExtResource("1_oym84")
 stretch_mode = 2
 

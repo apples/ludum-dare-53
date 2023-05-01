@@ -52,6 +52,7 @@ offset_bottom = 224.0
 theme = ExtResource("3_5hdau")
 
 [node name="MissionSelectWrapper" type="Control" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,7 +81,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DonePanel" type="PanelContainer" parent="UI/MissionSelectWrapper"]
+[node name="ShopPanel" type="PanelContainer" parent="UI/MissionSelectWrapper"]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 145.0
@@ -90,7 +91,7 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_88gi6")
 script = ExtResource("4_q87r1")
 
-[node name="DoneLabel" type="Label" parent="UI/MissionSelectWrapper/DonePanel"]
+[node name="ShopLabel" type="Label" parent="UI/MissionSelectWrapper/ShopPanel"]
 layout_mode = 2
 text = "Shop"
 horizontal_alignment = 1
@@ -124,4 +125,4 @@ autowrap_mode = 3
 text_overrun_behavior = 3
 script = ExtResource("6_jomx8")
 
-[connection signal="clicked" from="UI/MissionSelectWrapper/DonePanel" to="." method="_on_done_panel_clicked"]
+[connection signal="clicked" from="UI/MissionSelectWrapper/ShopPanel" to="." method="_on_shop_panel_clicked"]

@@ -6,6 +6,11 @@ var radius = 20
 var move_force = 100
 
 var gas_accumulation: float = 0
+
+var worth = 1
+
+var initial_health = 4
+
 var health = 4:
 	get:
 		return health
