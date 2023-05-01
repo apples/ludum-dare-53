@@ -97,6 +97,7 @@ func _on_body_entered(body):
 		#print(impact_vector.length())
 		if impact_vector.length() > impact_threshold:
 			health -= 1
+			$player_ship_animations.play("hurt")
 			print("Damaging Impact! Health left: ", health)
 			if health == 0:
 				get_tree().change_scene_to_file(game_over_scene)
