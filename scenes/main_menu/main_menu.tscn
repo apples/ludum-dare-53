@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://xwyjyl3nvweh"]
+[gd_scene load_steps=23 format=3 uid="uid://xwyjyl3nvweh"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
@@ -8,9 +8,33 @@
 [ext_resource type="Texture2D" uid="uid://cmts5r5bnj08i" path="res://assets/textures/grav_garb_logo2.png" id="5_jjoul"]
 [ext_resource type="Texture2D" uid="uid://bpfelndvo760m" path="res://assets/textures/shop_keeper2.png" id="6_moqjj"]
 [ext_resource type="Texture2D" uid="uid://c1ebcnsbu4rgv" path="res://assets/textures/mission_giver.png" id="7_cyg5g"]
+[ext_resource type="Texture2D" uid="uid://cv21nta8n6sne" path="res://assets/textures/volume.png" id="8_ltygh"]
+[ext_resource type="Script" path="res://scenes/main_menu/sound_control.gd" id="9_8p5dj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5kpp"]
 size = Vector2(20, 1998.63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn0or"]
+atlas = ExtResource("8_ltygh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12qm7"]
+atlas = ExtResource("8_ltygh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epeln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn0or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12qm7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30bss"]
 atlas = ExtResource("5_3y0fk")
@@ -166,6 +190,18 @@ offset_top = 125.0
 offset_right = 233.0
 offset_bottom = 148.0
 text = "Online Mode"
+
+[node name="SoundControl" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 359.0
+offset_top = 1.0
+offset_right = 392.0
+offset_bottom = 35.0
+script = ExtResource("9_8p5dj")
+
+[node name="SoundControlAnim" type="AnimatedSprite2D" parent="SoundControl"]
+position = Vector2(18, 16)
+sprite_frames = SubResource("SpriteFrames_epeln")
 
 [node name="spinner_wheel" type="AnimatedSprite2D" parent="."]
 position = Vector2(225, 151)
