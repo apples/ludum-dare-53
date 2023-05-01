@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var connect_to
 
-var radius = 10
+var radius = 20
 var move_force = 100
 
 func _physics_process(delta):

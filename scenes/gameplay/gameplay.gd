@@ -54,7 +54,7 @@ func load_mission(mission_info):
 			num_packages = 1
 			package_hp = 1
 	
-	var prev_link = player_ship
+	var prev_link = player_ship.tail_anchor
 	for i in range(num_packages):
 		var package = package_scene.instantiate()
 		package.global_transform.origin = player_ship.global_position
