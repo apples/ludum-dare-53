@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=13 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" path="res://scenes/gameplay/trash_system.gd" id="5_kyuvg"]
 [ext_resource type="PackedScene" uid="uid://coyy7bdw7mjku" path="res://objects/docking_station/docking_station.tscn" id="6_p8cvc"]
 [ext_resource type="PackedScene" uid="uid://b5bp2hr1ho58r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tseiv"]
+radius = 16.0
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
@@ -77,6 +80,10 @@ count = 19
 
 [node name="TrashSystem" type="Node" parent="."]
 script = ExtResource("5_kyuvg")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="TrashSystem"]
+shape = SubResource("CircleShape2D_tseiv")
+target_position = Vector2(0, 0)
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.5
