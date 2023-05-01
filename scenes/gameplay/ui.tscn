@@ -185,10 +185,10 @@ state_prop_name = &"box_count"
 
 [node name="ProgressBackground" type="ColorRect" parent="UIRoot"]
 layout_mode = 0
-offset_left = 358.0
-offset_top = 214.0
-offset_right = 400.0
-offset_bottom = 224.0
+offset_left = 318.0
+offset_top = 212.0
+offset_right = 398.0
+offset_bottom = 222.0
 color = Color(0.0588235, 0.113725, 0.439216, 0.34902)
 
 [node name="ProgressBar" type="ColorRect" parent="UIRoot/ProgressBackground"]
@@ -197,8 +197,16 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 2.0
 offset_bottom = 9.0
-color = Color(1, 0.0901961, 0.360784, 0.764706)
+color = Color(0.8, 0.447059, 0.133333, 0.764706)
 script = ExtResource("3_7df5t")
+
+[node name="ProgressLabel" type="Label" parent="UIRoot"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 197.0
+offset_right = 367.0
+offset_bottom = 212.0
+text = "Progress"
 
 [node name="DeployInstructions" type="Label" parent="UIRoot"]
 offset_left = 4.0

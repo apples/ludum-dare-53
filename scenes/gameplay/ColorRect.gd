@@ -1,7 +1,7 @@
 extends ColorRect
 
 var end_position: float = 4000 - 240
-var max_width: int = 40
+var max_width: int = 78
 @onready var player_ship = get_node("/root/Gameplay/PlayerShip")
 
 # Called when the node enters the scene tree for the first time.
