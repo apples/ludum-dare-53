@@ -18,6 +18,11 @@ func _ready():
 			item.clicked.connect(func (): _deploy_item(k))
 			deployment_list.add_child(item)
 	
+	if deployment_list.get_child_count() == 0:
+		%NoDeployablesLabel.visible = true
+	else:
+		%NoDeployablesLabel.visible = false
+	
 	deploy_menu_root.visible = false
 
 
