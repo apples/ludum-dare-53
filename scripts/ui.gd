@@ -10,5 +10,5 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_player_ship_player_ship_damaged():
-	%PlayerHealthBar.frame += 1
+func _on_player_ship_player_ship_damaged(amount):
+	%PlayerHealthBar.frame = 15 - amount
