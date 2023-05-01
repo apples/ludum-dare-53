@@ -80,28 +80,28 @@ func spawn_rand_trash(pos: Vector2):
 
 func _process(delta):
 	current_timer -= delta * (player_ship.linear_velocity.x / 8)
-#	if(current_timer <= 0):
-#		current_timer = trash_spawn_timer
-#
-#		var rng = RandomNumberGenerator.new()
-#		var new_trash = large_trash_scene.instantiate()
-#		new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(-50, -75))
-#		new_trash.position = Vector2(player_ship.position.x + 50, 350)
-#		add_child(new_trash)
-#
-#		new_trash = large_trash_scene.instantiate()
-#		new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(50, 75))
-#		new_trash.position = Vector2(player_ship.position.x + 50, -350)
-#		add_child(new_trash)
-#
-#		if rng.randf() < cloud_chance / 2:
-#			new_trash = cloud_hazard.instantiate()
-#			new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(-25, -50))
-#			new_trash.position = Vector2(player_ship.position.x + 50, 350)
-#			add_child(new_trash)
-#		elif rng.randf() < cloud_chance / 2:
-#			new_trash = cloud_hazard.instantiate()
-#			new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(25, 50))
-#			new_trash.position = Vector2(player_ship.position.x + 50, -350)
-#			add_child(new_trash)
+	if(current_timer <= 0):
+		current_timer = trash_spawn_timer
+
+		var rng = RandomNumberGenerator.new()
+		var new_trash = large_trash_scene.instantiate()
+		new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(-50, -75))
+		new_trash.position = Vector2(player_ship.position.x + 50, 350)
+		add_child(new_trash)
+
+		new_trash = large_trash_scene.instantiate()
+		new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(50, 75))
+		new_trash.position = Vector2(player_ship.position.x + 50, -350)
+		add_child(new_trash)
+
+		if rng.randf() < cloud_chance / 2:
+			new_trash = cloud_hazard.instantiate()
+			new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(-25, -50))
+			new_trash.position = Vector2(player_ship.position.x + 50, 350)
+			add_child(new_trash)
+		elif rng.randf() < cloud_chance / 2:
+			new_trash = cloud_hazard.instantiate()
+			new_trash.linear_velocity = Vector2(rng.randf_range(-75, 75), rng.randf_range(25, 50))
+			new_trash.position = Vector2(player_ship.position.x + 50, -350)
+			add_child(new_trash)
 
