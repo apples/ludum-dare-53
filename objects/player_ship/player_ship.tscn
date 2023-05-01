@@ -16,6 +16,8 @@ radius = 3.0
 height = 20.0
 
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
+max_contacts_reported = 10
+contact_monitor = true
 linear_damp = 0.1
 angular_damp = 10.0
 script = ExtResource("1_qnons")
@@ -34,3 +36,5 @@ position = Vector2(-24, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vp25r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
