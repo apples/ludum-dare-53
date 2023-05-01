@@ -46,7 +46,7 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body is RigidBody2D:
+	if body is RigidBody2D && (!body.is_in_group("small_trash") || !body.connect_to):
 		var vd = (linear_velocity - body.linear_velocity).length()
 		print(vd)
 		if vd > damage_velocity_threshold:
