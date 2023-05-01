@@ -35,6 +35,8 @@ func _ready():
 	money_label.text = "$%s" % SaveGame.current.money
 	
 	say_dialog(["Howdy!!"])
+	
+	Bgmusic.PlayMenuMusic()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

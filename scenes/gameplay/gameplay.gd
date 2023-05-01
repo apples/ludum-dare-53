@@ -15,6 +15,7 @@ func _ready():
 		load_mission(GameplaySingleton.current_mission)
 	else:
 		load_mission({ difficulty = 0 })
+	Bgmusic.PlayGameplayMusic()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
