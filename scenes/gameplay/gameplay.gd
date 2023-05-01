@@ -2,7 +2,7 @@ extends Node
 var mission_menu_scene = "res://scenes/mission_menu/mission_menu.tscn"
 var given_boxes: int = 5
 
-var start_impulse = 500
+var start_impulse = 350
 
 var package_scene = preload("res://objects/package/package.tscn")
 
@@ -12,6 +12,7 @@ var _total_package_health = 1
 @onready var packages = $Packages
 @onready var deployables = $Deployables
 @onready var ui = %UI
+@onready var follow_camera = $FollowCamera
 
 var _preloaded_scenes = []
 
@@ -55,8 +56,8 @@ func _on_docking_station_ship_docked(ship_body, anchor_point, anchor_rotation):
 
 
 func _on_start_timer_timeout():
-	$PlayerShip.enable_input = true
-	$PlayerShip.apply_impulse(Vector2.RIGHT * start_impulse)
+	player_ship.enable_input = true
+	player_ship.apply_impulse(Vector2.RIGHT * start_impulse)
 	$StartTimer.queue_free()
 
 func _on_docking_completed_timer_timeout():
@@ -136,6 +137,7 @@ func _on_ui_deploy_item(key):
 	
 	var node = load(info.scene).instantiate()
 	node.global_position = player_ship.global_position
+	node.gameplay_root = self
 	node.player_ship = player_ship
 	deployables.add_child(node)
 	

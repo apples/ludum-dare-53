@@ -21,6 +21,9 @@ func _ready():
 	target_prev_position = follow_target.global_position
 
 
+func map_zoom(z: float):
+	zoom = Vector2(z,z)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if not follow_target:

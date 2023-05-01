@@ -1,8 +1,6 @@
 extends "res://objects/deployables/station.gd"
 
 
-var player_ship
-
 func _on_body_entered(body):
 	if body != player_ship:
 		return

@@ -65,6 +65,7 @@ allow_docking = true
 
 [node name="PlayerShip" parent="." instance=ExtResource("2_evmdc")]
 unique_name_in_owner = true
+enable_input = false
 
 [node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
 position_smoothing_enabled = true
@@ -83,6 +84,7 @@ script = ExtResource("5_kyuvg")
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+autostart = true
 
 [node name="UI" parent="." instance=ExtResource("8_3q44v")]
 unique_name_in_owner = true
