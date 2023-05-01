@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bt2af6wh0f653"
+path="res://.godot/imported/Gravity Shoppe.ogg-925581b8f59e42d7be326429dd3cdeaf.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Gravity Shoppe.ogg"
+dest_files=["res://.godot/imported/Gravity Shoppe.ogg-925581b8f59e42d7be326429dd3cdeaf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

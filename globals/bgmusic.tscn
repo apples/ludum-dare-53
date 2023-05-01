@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs5nv3lm22exp"]
+[gd_scene load_steps=4 format=3 uid="uid://cs5nv3lm22exp"]
 
+[ext_resource type="Script" path="res://globals/bgmusic.gd" id="1_7g42x"]
 [ext_resource type="AudioStream" uid="uid://cnmxmndxvri1r" path="res://assets/audio/Gravity Way.ogg" id="1_vegvn"]
+[ext_resource type="AudioStream" uid="uid://bt2af6wh0f653" path="res://assets/audio/Gravity Shoppe.ogg" id="3_dm08j"]
 
 [node name="bgmusic" type="Node2D"]
+script = ExtResource("1_7g42x")
 
 [node name="Gravity_Way" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_vegvn")
-autoplay = true
+bus = &"BGM_1"
+
+[node name="Gravity_Shoppe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dm08j")
 bus = &"BGM_1"
