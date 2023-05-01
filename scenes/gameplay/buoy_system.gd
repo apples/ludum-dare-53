@@ -42,6 +42,7 @@ func _process(delta):
 func generate_oob_bot():
 	var oob_bot = oob_bot_scene.instantiate()
 	oob_bot.player_ship = %PlayerShip
+	oob_bot.out_of_bounds_bot_zapped.connect(on_out_of_bounds_bot_zapped)
 	self.call_deferred("add_child", oob_bot)
 	return oob_bot
 
@@ -49,3 +50,6 @@ func destroy_oob_bot():
 	if oob_bot_active != null:
 		oob_bot_active.queue_free()
 		oob_bot_active = null
+
+func on_out_of_bounds_bot_zapped():
+	%PlayerShip.health -= 1

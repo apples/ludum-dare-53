@@ -80,7 +80,7 @@ sprite_frames = SubResource("SpriteFrames_7srvu")
 position = Vector2(31, 1)
 rotation = -1.56943
 sprite_frames = SubResource("SpriteFrames_x7rnh")
-frame_progress = 0.429518
+frame_progress = 0.302235
 
 [node name="ZapAttackTimer" type="Timer" parent="."]
 autostart = true

@@ -1,4 +1,7 @@
 extends Node2D
+
+signal out_of_bounds_bot_zapped()
+
 var player_ship: RigidBody2D = null
 var follow_distance = 50
 var angle = 0
@@ -18,6 +21,7 @@ func _process(delta):
 
 
 func _on_zap_attack_timer_timeout():
+	out_of_bounds_bot_zapped.emit()
 	$ZapAnim.visible = true
 	$ZapAttackVisibleTimer.start()
 
