@@ -17,9 +17,6 @@ radius = 13.0
 radius = 3.0
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sjlh1"]
-radius = 1.0
-
 [sub_resource type="Animation" id="Animation_yfk2l"]
 length = 0.001
 tracks/0/type = "value"
@@ -56,6 +53,9 @@ _data = {
 "hurt": SubResource("Animation_2e28i")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjlh1"]
+radius = 1.0
+
 [node name="PlayerShip" type="RigidBody2D" groups=["player_ship"]]
 collision_layer = 4
 max_contacts_reported = 10
@@ -79,18 +79,23 @@ position = Vector2(-24, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vp25r")
 
+[node name="player_ship_animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_63mds")
+}
+
 [node name="TailAnchor" type="RigidBody2D" parent="."]
+position = Vector2(-32, 0)
 collision_layer = 0
 collision_mask = 0
 mass = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TailAnchor"]
-position = Vector2(-32, 0)
 shape = SubResource("CircleShape2D_sjlh1")
 
-[node name="player_ship_animations" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_63mds")
-}
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-32, 0)
+node_a = NodePath("..")
+node_b = NodePath("../TailAnchor")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -54,10 +54,21 @@ func load_mission(mission_info):
 			num_packages = 1
 			package_hp = 1
 	
-	var prev_link = player_ship
+	var prev_link = player_ship.tail_anchor
+	for c in packages.get_children():
+		c.queue_free()
 	for i in range(num_packages):
 		var package = package_scene.instantiate()
 		package.global_transform.origin = player_ship.global_position
 		package.connect_to = prev_link
+		package.health = package_hp
+		package.destroyed.connect(func (): call_deferred("_on_package_destroyed", package))
 		packages.add_child(package)
 		prev_link = package
+
+func _on_package_destroyed(package):
+	var i = package.get_index()
+	packages.remove_child(package)
+	if i < packages.get_child_count():
+		packages.get_child(i).connect_to = package.connect_to
+	package.queue_free()

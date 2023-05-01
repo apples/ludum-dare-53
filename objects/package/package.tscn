@@ -6,9 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn7oh"]
 size = Vector2(10.6066, 13.435)
 
-[node name="Package" type="RigidBody2D"]
+[node name="Package" type="RigidBody2D" groups=["package"]]
 collision_layer = 2
 mass = 0.1
+max_contacts_reported = 5
+contact_monitor = true
 linear_damp = 5.0
 angular_damp = 0.1
 script = ExtResource("1_nnnqh")
@@ -20,3 +22,5 @@ shape = SubResource("RectangleShape2D_nn7oh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_s6u2m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
