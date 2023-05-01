@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgets73wyglhn"
-path="res://.godot/imported/8192clouds2.png-d8d21cca3b0fcf172754f44207f1e6c7.ctex"
+uid="uid://b5pn8bv4guyoq"
+path="res://.godot/imported/death_explosion.png-8d15b36e3a103b64beb58d763250daa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/8192clouds2.png"
-dest_files=["res://.godot/imported/8192clouds2.png-d8d21cca3b0fcf172754f44207f1e6c7.ctex"]
+source_file="res://objects/death_explosion/death_explosion.png"
+dest_files=["res://.godot/imported/death_explosion.png-8d15b36e3a103b64beb58d763250daa4.ctex"]
 
 [params]
 

@@ -98,4 +98,15 @@ position = Vector2(-32, 0)
 node_a = NodePath("..")
 node_b = NodePath("../TailAnchor")
 
+[node name="DeathExplosions" type="Node2D" parent="."]
+
+[node name="DeathInitiatedTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="ExplosionAddedTimer" type="Timer" parent="."]
+wait_time = 0.25
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DeathInitiatedTimer" to="." method="_on_death_initiated_timer_timeout"]
+[connection signal="timeout" from="ExplosionAddedTimer" to="." method="_on_explosion_added_timer_timeout"]

@@ -19,11 +19,12 @@ signal player_ship_damaged(amount)
 
 @export var impact_threshold: float = 50 # m/s
 
+var death_explosion_scene = preload("res://objects/death_explosion/death_explosion.tscn")
 var black_hole_scene = preload("res://objects/black_hole/black_hole.tscn")
 var thruster_scene = preload("res://objects/thruster/thruster.tscn")
 var game_over_scene = "res://scenes/game_over/game_over.tscn"
-
 var current_black_hole
+var death_initiated = false
 
 var initial_health = 15
 
@@ -35,8 +36,8 @@ var health = 15:
 		player_ship_damaged.emit(value)
 		$player_ship_animations.play("hurt")
 		print("Damage! Health left: ", health)
-		if health <= 0:
-			get_tree().change_scene_to_file(game_over_scene)
+		if health <= 0 and not death_initiated:
+			initiate_death_sequence()
 
 var gas_accumulation: float = 0
 
@@ -120,3 +121,19 @@ func _on_body_entered(body):
 		#print(impact_vector.length())
 		if impact_vector.length() > impact_threshold:
 			health -= 1
+			
+func initiate_death_sequence():
+	death_initiated = true
+	$DeathInitiatedTimer.start()
+	$ExplosionAddedTimer.start()
+	enable_input = false
+
+func _on_death_initiated_timer_timeout():
+	get_tree().change_scene_to_file(game_over_scene)
+
+func _on_explosion_added_timer_timeout():
+	var death_explosion: Node2D = death_explosion_scene.instantiate()
+	death_explosion.position.x += randf_range(-20, 20)
+	death_explosion.position.y += randf_range(-20, 20)
+	death_explosion.play("default")
+	$DeathExplosions.add_child(death_explosion)
