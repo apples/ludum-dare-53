@@ -63,7 +63,6 @@ allow_docking = true
 
 [node name="PlayerShip" parent="." instance=ExtResource("2_evmdc")]
 unique_name_in_owner = true
-collision_layer = 4
 
 [node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
 position_smoothing_enabled = true
