@@ -25,6 +25,7 @@ var current_black_hole
 var thruster_count: int = 5
 var health: int = 26
 
+var gas_accumulation: float = 0
 
 var _turn_direction: float
 var _thrust_direction: float
