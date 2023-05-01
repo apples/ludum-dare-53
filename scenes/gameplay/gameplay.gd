@@ -10,6 +10,10 @@ var _total_package_health = 1
 
 @onready var player_ship = %PlayerShip
 @onready var packages = $Packages
+@onready var deployables = $Deployables
+@onready var ui = %UI
+
+var _preloaded_scenes = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,11 +22,20 @@ func _ready():
 	else:
 		load_mission({ difficulty = 0 })
 	Bgmusic.PlayGameplayMusic()
+	
+	# preload
+	for k in Deployables.infos:
+		_preloaded_scenes.append(load(Deployables.infos[k].scene))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("deploy"):
+		if not get_tree().paused:
+			var f = func ():
+				get_tree().paused = true
+				ui.deploy_menu_root.visible = true
+			f.call_deferred()
 
 
 var _cheat_code = []
@@ -33,6 +46,7 @@ func _unhandled_input(event):
 		match _cheat_code:
 			[8, 6, 7, 5, 3, 0, 9]:
 				_on_docking_completed_timer_timeout()
+	
 
 
 func _on_docking_station_ship_docked(ship_body, anchor_point, anchor_rotation):
@@ -96,6 +110,7 @@ func load_mission(mission_info):
 		package.destroyed.connect(func (): call_deferred("_on_package_destroyed", package))
 		packages.add_child(package)
 		prev_link = package
+	player_ship.packages = packages.get_children()
 
 func _on_package_destroyed(package):
 	var i = package.get_index()
@@ -103,3 +118,36 @@ func _on_package_destroyed(package):
 	if i < packages.get_child_count():
 		packages.get_child(i).connect_to = package.connect_to
 	package.queue_free()
+	player_ship.packages = packages.get_children()
+
+
+func _on_ui_deploy_item(key):
+	if not key in SaveGame.current.inventory:
+		return
+	if SaveGame.current.inventory[key] <= 0:
+		return
+	
+	print("Deploying item ", key)
+	
+	SaveGame.current.inventory[key] -= 1
+	SaveGame.save()
+	
+	var info = Deployables.infos[key]
+	
+	var node = load(info.scene).instantiate()
+	node.global_position = player_ship.global_position
+	node.player_ship = player_ship
+	deployables.add_child(node)
+	
+	get_tree().paused = false
+	ui.deploy_menu_root.visible = false
+	
+	# TODO: server interaction
+	
+	
+
+
+func _on_ui_exit_deploy():
+	get_tree().paused = false
+	ui.deploy_menu_root.visible = false
+

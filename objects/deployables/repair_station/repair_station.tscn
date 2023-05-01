@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6ldiaa8w8wya"]
+
+[ext_resource type="PackedScene" uid="uid://cor0us7drjjej" path="res://objects/deployables/station.tscn" id="1_ys08u"]
+[ext_resource type="Texture2D" uid="uid://blrpl5ha16a36" path="res://assets/Repair_station.png" id="2_nds23"]
+[ext_resource type="Script" path="res://objects/deployables/repair_station/repair_station.gd" id="2_wd2ie"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6b1wj"]
+radius = 96.0
+
+[node name="Station" instance=ExtResource("1_ys08u")]
+collision_mask = 4
+script = ExtResource("2_wd2ie")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_6b1wj")
+
+[node name="StationSprite" parent="." index="1"]
+texture = ExtResource("2_nds23")
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
