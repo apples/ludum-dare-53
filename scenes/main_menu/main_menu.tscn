@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xwyjyl3nvweh"]
+[gd_scene load_steps=18 format=3 uid="uid://xwyjyl3nvweh"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_nftfj"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_ue0hb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="2_df8q7"]
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu_trash_system.gd" id="3_7p820"]
 [ext_resource type="Texture2D" uid="uid://bci8w72um5ako" path="res://assets/textures/spinner.png" id="5_3y0fk"]
+[ext_resource type="Texture2D" uid="uid://bpfelndvo760m" path="res://assets/textures/shop_keeper2.png" id="6_moqjj"]
+[ext_resource type="Texture2D" uid="uid://c1ebcnsbu4rgv" path="res://assets/textures/mission_giver.png" id="7_cyg5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5kpp"]
 size = Vector2(20, 1998.63)
@@ -109,6 +111,22 @@ texture = ExtResource("2_6glrw")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="shop_girl" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 95.0
+offset_right = 386.0
+offset_bottom = 223.0
+texture = ExtResource("6_moqjj")
+
+[node name="mission_girl" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 96.0
+offset_right = 133.0
+offset_bottom = 224.0
+texture = ExtResource("7_cyg5g")
+
 [node name="play_button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 150.0
@@ -127,21 +145,19 @@ offset_bottom = 147.0
 disabled = true
 
 [node name="logged_in_as_label" type="Label" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 8.0
-offset_top = 187.0
-offset_right = 85.0
-offset_bottom = 202.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 82.0
+offset_bottom = 17.0
 text = "Logged in as: "
 
 [node name="logged_in_username_label" type="Label" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 8.0
-offset_top = 203.0
-offset_right = 48.0
-offset_bottom = 218.0
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 45.0
+offset_bottom = 33.0
 theme_override_colors/font_color = Color(0, 0.627451, 0, 1)
 
 [node name="online_mode_label" type="Label" parent="."]
