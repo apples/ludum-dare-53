@@ -7,6 +7,7 @@
 size = Vector2(64, 16)
 
 [node name="large_trash" type="RigidBody2D"]
+collision_mask = 3
 script = ExtResource("1_v7b4p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

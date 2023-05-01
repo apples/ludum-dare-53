@@ -78,6 +78,7 @@ animations = [{
 }]
 
 [node name="BlackHole" type="Area2D"]
+collision_mask = 5
 script = ExtResource("1_htcia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

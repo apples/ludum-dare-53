@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6rb1gvr6t0l"]
+
+[ext_resource type="Script" path="res://objects/package/package.gd" id="1_nnnqh"]
+[ext_resource type="Texture2D" uid="uid://bvm3hgaprah8o" path="res://assets/pckge_amzn_1.png" id="2_s6u2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn7oh"]
+size = Vector2(10.6066, 13.435)
+
+[node name="Package" type="RigidBody2D"]
+collision_layer = 2
+mass = 0.1
+script = ExtResource("1_nnnqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.51343e-07, -0.499995)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_nn7oh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s6u2m")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("..")
+bias = 0.425
+length = 1.0
+rest_length = 10.0
+damping = 0.5
