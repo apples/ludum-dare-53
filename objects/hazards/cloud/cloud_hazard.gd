@@ -1,7 +1,8 @@
 extends Area2D
 
 @export var damage_time: float = .5
-@export var rotation_speed:float = 50
+@export var rotation_speed: float = 50
+@export var is_grey: bool = false
 
 var linear_velocity: Vector2
 var _influenced_objects: Array[RigidBody2D]
@@ -24,11 +25,11 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.is_in_group("player_ship") || body.is_in_group("package"):
+	if body.is_in_group("player_ship") || (is_grey and body.is_in_group("package")):
 		_influenced_objects.push_back(body)
 
 func _on_body_exited(body):
-	if body.is_in_group("player_ship") || body.is_in_group("package"):
+	if body.is_in_group("player_ship") || (is_grey and body.is_in_group("package")):
 		var index = self._influenced_objects.find(body)
 		if index != -1:
 			self._influenced_objects.pop_at(index)
