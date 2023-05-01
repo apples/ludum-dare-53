@@ -1,12 +1,12 @@
 extends Node2D
 var player_ship: RigidBody2D = null
+var follow_distance = 50
+var angle = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$OutOfBoundsBotAnim.play("default")
 
-var follow_distance = 50
-var angle = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if player_ship:
