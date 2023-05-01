@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=19 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -25,6 +25,9 @@ radius = 95.8175
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajg2v"]
 size = Vector2(121.5, 542)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3had1"]
+radius = 251.676
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
@@ -173,6 +176,13 @@ chance = 0.714
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(935.25, 0)
 shape = SubResource("RectangleShape2D_ajg2v")
+script = ExtResource("12_aoifr")
+kind = 2
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(802, 3)
+scale = Vector2(0.364, 1)
+shape = SubResource("CircleShape2D_3had1")
 script = ExtResource("12_aoifr")
 kind = 2
 

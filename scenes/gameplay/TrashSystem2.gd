@@ -41,9 +41,8 @@ func _spawn(spawn_shape):
 		Kind.GAS:
 			_spawn_gas(spawn_shape, cloud_hazard)
 
-func _spawn_typical(spawn_shape, obj_scene):
+func _spawn_typical(spawn_shape: CollisionShape2D, obj_scene):
 	
-	var origin = spawn_shape.position
 	var radius = (spawn_shape.shape as CircleShape2D).radius
 	var arc_stride = spawn_shape.arc_stride
 	var radius_stride: float = spawn_shape.radius_stride
@@ -54,12 +53,12 @@ func _spawn_typical(spawn_shape, obj_scene):
 	var s = 0
 	
 	while pos.length() < radius:
-		shape_cast_2d.position = origin + pos
+		shape_cast_2d.global_position = spawn_shape.to_global(pos)
 		shape_cast_2d.force_shapecast_update()
 		
 		if not shape_cast_2d.is_colliding():
 			var obj = obj_scene.instantiate()
-			obj.position = origin + pos
+			obj.global_position = spawn_shape.to_global(pos)
 			add_child(obj)
 			s += 1
 		else:
@@ -70,30 +69,33 @@ func _spawn_typical(spawn_shape, obj_scene):
 		pos += pos.normalized() * max(0.5, (radius_stride * (1 - sqrt(pos.length() / radius))))
 	
 
-func _spawn_gas(spawn_shape, obj_scene):
-	var origin = spawn_shape.position
+func _spawn_gas(spawn_shape: CollisionShape2D, obj_scene):
 	var shape = spawn_shape.shape
+	
+	var step = Vector2(32, 32) / spawn_shape.scale
 	
 	if shape is CircleShape2D:
 		var radius = shape.radius
 		var radius2 = radius * radius
 		
-		for y in range(-radius, radius, 32):
-			for x in range(-radius, radius, 32):
+		for y in range(-radius, radius, step.y):
+			for x in range(-radius, radius, step.x):
 				var pos = Vector2(x, y)
 				if pos.length_squared() > radius2:
 					continue
 				var obj = obj_scene.instantiate()
-				obj.position = origin + pos
+				obj.global_position = spawn_shape.to_global(pos)
+				obj.rotation = randf_range(0, TAU)
 				add_child(obj)
 	elif shape is RectangleShape2D:
 		var rx = shape.size.x / 2
 		var ry = shape.size.y / 2
-		for y in range(-ry, ry, 32):
-			for x in range(-rx, rx, 32):
+		for y in range(-ry, ry, step.y):
+			for x in range(-rx, rx, step.x):
 				var pos = Vector2(x, y)
 				var obj = obj_scene.instantiate()
-				obj.position = origin + pos
+				obj.global_position = spawn_shape.to_global(pos)
+				obj.rotation = randf_range(0, TAU)
 				add_child(obj)
 
 enum Kind {
