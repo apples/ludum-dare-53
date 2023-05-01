@@ -11,4 +11,5 @@ enum Kind {
 	SMALL_TRASH,
 	ROCKS,
 	GAS,
+	MINES,
 }

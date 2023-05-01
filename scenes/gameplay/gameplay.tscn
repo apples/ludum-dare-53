@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=20 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -28,6 +28,9 @@ radius = 421.142
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajg2v"]
 size = Vector2(42.5, 542)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxgge"]
+radius = 16.0
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
@@ -110,7 +113,7 @@ shape = SubResource("CircleShape2D_ntl86")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(103, -166)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
@@ -118,107 +121,797 @@ kind = 1
 arc_stride = 64.0
 radius_stride = 16.0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash2" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(103, 167)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 kind = 1
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash3" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(261, 3)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.143
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash4" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(331, -209)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.714
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash5" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(480, -23)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.714
 kind = 1
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="TrashSystem2"]
-position = Vector2(1440, 9)
+[node name="Trash15" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1359, 9)
 shape = SubResource("CircleShape2D_fqa1o")
 script = ExtResource("12_aoifr")
 kind = 1
 arc_stride = 128.0
 radius_stride = 16.0
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="TrashSystem2"]
-position = Vector2(1440, 9)
-shape = SubResource("CircleShape2D_fqa1o")
-script = ExtResource("12_aoifr")
-kind = 2
-min_difficulty = 1
-gas_rate = 0.2
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash6" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(392, 183)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.714
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash7" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(232, 324)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 kind = 1
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash8" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(644, 166)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.714
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash9" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(555, -244)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.714
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Trash10" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(726, -82)
 shape = SubResource("CircleShape2D_wsuce")
 script = ExtResource("12_aoifr")
 chance = 0.714
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Gas1" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1359, 9)
+shape = SubResource("CircleShape2D_fqa1o")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+kind = 2
+gas_rate = 0.05
+
+[node name="HardGas1" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1359, 9)
+shape = SubResource("CircleShape2D_fqa1o")
+debug_color = Color(1, 0.517647, 0, 0.419608)
+script = ExtResource("12_aoifr")
+kind = 2
+min_difficulty = 1
+gas_rate = 0.05
+
+[node name="Gas2" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(895.75, 0)
 shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
 script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Gas3" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(2151, 0)
 rotation = 0.78287
 shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
 script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Gas4" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(2947, 0)
 rotation = 0.78287
 shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
 script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="TrashSystem2"]
+[node name="Gas5" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(2542, 0)
 rotation = -0.776165
 shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
 script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
+
+[node name="Mines1" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(622, 19)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines2" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(514, 104)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines3" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(598, -69)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines4" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(453, -151)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines5" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(361, -84)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines6" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(230, -121)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines7" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(215, -221)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines8" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(458, -57)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines9" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(239, -41)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines10" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(320, 20)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines11" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(230, 47)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines12" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(368, 131)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines13" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(318, 203)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines14" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(241, 167)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines15" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(180, 279)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines16" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(292, 274)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines17" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(195, 360)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines18" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(283, 359)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines19" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(373, 321)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines20" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(524, 186)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines21" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(435, 55)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines22" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(618, -139)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines23" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(534, -202)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines24" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(714, -233)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines25" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(698, -131)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines26" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(711, -9)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines27" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(684, 104)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines28" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(620, 179)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines29" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(720, 218)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines30" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(743, 150)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines31" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(828, 221)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines32" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(837, 106)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines33" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(758, 63)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines34" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(831, 6)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines35" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(801, -77)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines36" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(806, -179)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines4" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2258, -24)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines6" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2150, 61)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines9" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2234, -112)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines5" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2089, -194)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines11" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1997, -127)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines7" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1866, -164)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines13" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1851, -264)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines15" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2094, -100)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines10" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1875, -84)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines17" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1956, -23)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines12" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1866, 4)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines20" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2004, 88)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines14" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1954, 160)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines21" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1877, 124)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines16" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1816, 236)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines22" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1928, 231)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines18" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1831, 317)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines24" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1919, 316)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines25" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2009, 278)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines23" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2160, 143)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines26" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2071, 12)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines27" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2254, -182)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines28" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2170, -245)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines29" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2350, -276)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines31" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2334, -174)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines30" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2347, -52)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines32" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2320, 61)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines34" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2256, 136)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines33" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2356, 175)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines37" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2379, 107)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines35" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2464, 178)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines38" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2473, 63)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines39" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2394, 20)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines36" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2467, -37)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="HardMines40" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2437, -120)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines41" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2442, -222)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="HardMines1" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(891, -218)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+min_difficulty = 1
+
+[node name="Mines37" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1119, -118)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines38" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1119, 105)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines39" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1374, 179)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines40" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1368, 42)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines41" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1355, -155)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines42" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1610, -90)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
+
+[node name="Mines43" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1626, 94)
+shape = SubResource("CircleShape2D_bxgge")
+debug_color = Color(0.843137, 0, 0.917647, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 3
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -237,4 +930,6 @@ one_shot = true
 [connection signal="ship_docked" from="DestinationDockingStation" to="." method="_on_docking_station_ship_docked"]
 [connection signal="player_ship_damaged" from="PlayerShip" to="UI" method="_on_player_ship_player_ship_damaged"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="deploy_item" from="UI" to="." method="_on_ui_deploy_item"]
+[connection signal="exit_deploy" from="UI" to="." method="_on_ui_exit_deploy"]
 [connection signal="timeout" from="DockingCompletedTimer" to="." method="_on_docking_completed_timer_timeout"]

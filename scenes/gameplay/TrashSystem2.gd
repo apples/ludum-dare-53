@@ -42,6 +42,8 @@ func _spawn(spawn_shape):
 			_spawn_typical(spawn_shape, medium_trash_scene)
 		Kind.GAS:
 			_spawn_gas(spawn_shape, cloud_hazard)
+		Kind.MINES:
+			_spawn_gas(spawn_shape, mine_hazard)
 
 func _spawn_typical(spawn_shape: CollisionShape2D, obj_scene):
 	
@@ -74,6 +76,7 @@ func _spawn_typical(spawn_shape: CollisionShape2D, obj_scene):
 func _spawn_gas(spawn_shape: CollisionShape2D, obj_scene):
 	var shape = spawn_shape.shape
 	
+	var rate = spawn_shape.gas_rate
 	var step = Vector2(32, 32) / spawn_shape.scale
 	
 	if shape is CircleShape2D:
@@ -82,6 +85,8 @@ func _spawn_gas(spawn_shape: CollisionShape2D, obj_scene):
 		
 		for y in range(-radius, radius, step.y):
 			for x in range(-radius, radius, step.x):
+				if rate != 1 and randf() > rate:
+					continue
 				var pos = Vector2(x, y)
 				if pos.length_squared() > radius2:
 					continue
@@ -94,6 +99,8 @@ func _spawn_gas(spawn_shape: CollisionShape2D, obj_scene):
 		var ry = shape.size.y / 2
 		for y in range(-ry, ry, step.y):
 			for x in range(-rx, rx, step.x):
+				if rate != 1 and randf() > rate:
+					continue
 				var pos = Vector2(x, y)
 				var obj = obj_scene.instantiate()
 				obj.global_position = spawn_shape.to_global(pos)
@@ -104,4 +111,5 @@ enum Kind {
 	SMALL_TRASH,
 	ROCKS,
 	GAS,
+	MINES,
 }
