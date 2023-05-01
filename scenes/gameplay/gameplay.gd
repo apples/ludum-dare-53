@@ -149,8 +149,8 @@ func _on_ui_deploy_item(key):
 	}
 	
 	SaveGame.current.inventory[key] -= 1
-	SaveGame.deployed_structures.append(interaction)
-	SaveGame.deployed_structures = SaveGame.deployed_structures.slice(-5)
+	SaveGame.current.deployed_structures.append(interaction)
+	SaveGame.current.deployed_structures = SaveGame.current.deployed_structures.slice(-5)
 	SaveGame.save()
 	
 	
