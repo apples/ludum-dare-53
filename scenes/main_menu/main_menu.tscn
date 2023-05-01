@@ -113,9 +113,9 @@ stretch_mode = 2
 [node name="shop_girl" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 258.0
-offset_top = 95.0
+offset_top = 96.0
 offset_right = 386.0
-offset_bottom = 223.0
+offset_bottom = 224.0
 texture = ExtResource("6_moqjj")
 
 [node name="mission_girl" type="TextureRect" parent="."]
