@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu7pskfmdejfx"]
+
+[ext_resource type="Texture2D" uid="uid://b4prdib3wg2ca" path="res://objects/hazards/mine/mine_small_double.png" id="1_7g7kp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcj8m"]
+atlas = ExtResource("1_7g7kp")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1avj"]
+atlas = ExtResource("1_7g7kp")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ipmg"]
+atlas = ExtResource("1_7g7kp")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o17ou"]
+atlas = ExtResource("1_7g7kp")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxgut"]
+atlas = ExtResource("1_7g7kp")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm7jn"]
+atlas = ExtResource("1_7g7kp")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tywt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcj8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1avj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ipmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o17ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxgut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm7jn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stye3"]
+radius = 4.12311
+
+[node name="mine" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tywt4")
+autoplay = "default"
+frame = 1
+frame_progress = 0.572188
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_stye3")
