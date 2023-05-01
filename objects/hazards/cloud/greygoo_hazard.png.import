@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhemo7xr0573q"
-path="res://.godot/imported/mine_small.png-f1e2aa70f3f901a4f4f4877f18e84707.ctex"
+uid="uid://dge8poxgilmt3"
+path="res://.godot/imported/greygoo_hazard.png-df1cca4625a832f6beea21569f38f7b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mine_small.png"
-dest_files=["res://.godot/imported/mine_small.png-f1e2aa70f3f901a4f4f4877f18e84707.ctex"]
+source_file="res://objects/hazards/cloud/greygoo_hazard.png"
+dest_files=["res://.godot/imported/greygoo_hazard.png-df1cca4625a832f6beea21569f38f7b3.ctex"]
 
 [params]
 
