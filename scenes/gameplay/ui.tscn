@@ -200,9 +200,16 @@ offset_bottom = 9.0
 color = Color(1, 0.0901961, 0.360784, 0.764706)
 script = ExtResource("3_7df5t")
 
+[node name="DeployInstructions" type="Label" parent="UIRoot"]
+offset_left = 4.0
+offset_top = 206.0
+offset_right = 156.0
+offset_bottom = 229.0
+text = "[H to Deploy]"
+
 [node name="DeployMenuRoot" type="Control" parent="."]
 unique_name_in_owner = true
-process_mode = 2
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,6 +226,18 @@ anchor_bottom = 1.0
 offset_right = 162.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_msce0")
+
+[node name="NoDeployablesLabel" type="Label" parent="DeployMenuRoot"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 66.0
+offset_right = 132.0
+offset_bottom = 154.0
+text = "Looks like you need 
+to buy some 
+deployables 
+from the shop!"
 
 [node name="ShopListMargin" type="MarginContainer" parent="DeployMenuRoot"]
 layout_mode = 2
@@ -240,3 +259,4 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [connection signal="exit" from="DeployMenuRoot" to="." method="_on_deploy_menu_root_exit"]
+[connection signal="visibility_changed" from="DeployMenuRoot" to="." method="_on_deploy_menu_root_visibility_changed"]
