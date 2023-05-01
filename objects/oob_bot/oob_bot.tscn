@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2prun282q87w"]
+
+[ext_resource type="Texture2D" uid="uid://dhbrh67e5vfgu" path="res://objects/oob_bot/oob_bot.png" id="1_6w460"]
+[ext_resource type="Script" path="res://objects/oob_bot/oob_bot.gd" id="1_51hab"]
+[ext_resource type="Texture2D" uid="uid://nhtsaiqd7ucg" path="res://objects/oob_bot/zap.png" id="3_cymec"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjxff"]
+atlas = ExtResource("1_6w460")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1nku"]
+atlas = ExtResource("1_6w460")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edhsk"]
+atlas = ExtResource("1_6w460")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j0u0"]
+atlas = ExtResource("1_6w460")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbhrd"]
+atlas = ExtResource("1_6w460")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7srvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjxff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1nku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edhsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j0u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbhrd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6lrs"]
+atlas = ExtResource("3_cymec")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw4w4"]
+atlas = ExtResource("3_cymec")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7rnh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6lrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw4w4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="OutOfBoundsBot" type="Node2D"]
+script = ExtResource("1_51hab")
+
+[node name="OutOfBoundsBotAnim" type="AnimatedSprite2D" parent="."]
+rotation = 1.57468
+sprite_frames = SubResource("SpriteFrames_7srvu")
+
+[node name="ZapAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(31, 1)
+rotation = -1.56943
+sprite_frames = SubResource("SpriteFrames_x7rnh")
+frame_progress = 0.302235
+
+[node name="ZapAttackTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ZapAttackVisibleTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="ZapAttackTimer" to="." method="_on_zap_attack_timer_timeout"]
+[connection signal="timeout" from="ZapAttackVisibleTimer" to="." method="_on_zap_attack_visible_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqwbxfsprx5b2"]
+
+[ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="1_ags50"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppnmo"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.505882, 0.52549, 1)
+
+[node name="InventoryItem" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppnmo")
+script = ExtResource("1_ags50")
+
+[node name="Labels" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "adsf"
+
+[node name="CountLabel" type="Label" parent="Labels"]
+layout_mode = 2

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b675r7hrdxeou"]
+
+[ext_resource type="Texture2D" uid="uid://5xc1187g6bdk" path="res://objects/hazards/cloud/acid_mist.png" id="1_5q1ih"]
+[ext_resource type="Script" path="res://objects/hazards/cloud/cloud_hazard.gd" id="1_pmp15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j88ge"]
+radius = 32.0624
+
+[node name="cloud_hazard" type="Area2D"]
+collision_mask = 6
+script = ExtResource("1_pmp15")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5q1ih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j88ge")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

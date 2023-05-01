@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal player_ship_damaged(amount)
+
 @export var angular_acceleration: float = 5000
 @export var black_hole_spawn_distance: float = 32
 @export var black_hole_strength: float = 100
@@ -23,13 +25,31 @@ var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
 var thruster_count: int = 5
-var health: int = 10
+
+var initial_health = 15
+
+var health = 15:
+	get:
+		return health
+	set(value):
+		health = value
+		player_ship_damaged.emit(value)
+		$player_ship_animations.play("hurt")
+		print("Damage! Health left: ", health)
+		if health <= 0:
+			get_tree().change_scene_to_file(game_over_scene)
+
+var gas_accumulation: float = 0
 
 var _turn_direction: float
 var _thrust_direction: float
 var _queue_thruster: bool = false
 
 var tethered_objects: Array[RigidBody2D]
+
+var packages = []
+
+@onready var tail_anchor = $TailAnchor
 
 func _process(delta):
 	if not enable_input:
@@ -58,7 +78,13 @@ func _process(delta):
 		var objects = $Area2D.get_overlapping_bodies()
 		for obj in objects:
 			if obj.is_in_group("small_trash"):
-				tethered_objects.push_back(obj)
+				obj.mass = .1
+#				tethered_objects.push_back(obj)
+				obj.global_transform.origin = global_position
+				obj.connect_to = packages[-1] if packages.size() > 0 else tail_anchor
+				#packages.add_child(obj)
+				get_parent().packages.add_child(obj)
+				packages.append(obj)
 				break
 
 func _physics_process(delta):
@@ -94,6 +120,3 @@ func _on_body_entered(body):
 		#print(impact_vector.length())
 		if impact_vector.length() > impact_threshold:
 			health -= 1
-			print("Damaging Impact! Health left: ", health)
-			if health == 0:
-				get_tree().change_scene_to_file(game_over_scene)

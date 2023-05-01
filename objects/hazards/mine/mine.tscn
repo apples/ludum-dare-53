@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu7pskfmdejfx"]
+
+[ext_resource type="Script" path="res://objects/hazards/mine/mine.gd" id="1_q2bwd"]
+[ext_resource type="SpriteFrames" uid="uid://btc7sy0e3qv0o" path="res://objects/hazards/mine/flashing.tres" id="2_746ve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stye3"]
+radius = 4.12311
+
+[node name="mine" type="RigidBody2D"]
+collision_mask = 7
+max_contacts_reported = 2
+contact_monitor = true
+script = ExtResource("1_q2bwd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_746ve")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_stye3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

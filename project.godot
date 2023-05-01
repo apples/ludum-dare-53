@@ -26,6 +26,7 @@ Api="*res://globals/api.gd"
 Bgmusic="*res://globals/bgmusic.tscn"
 GameplaySingleton="*res://globals/gameplay_singleton.gd"
 SaveGame="*res://globals/save_game.gd"
+Deployables="*res://globals/Deployables.gd"
 
 [display]
 
@@ -87,6 +88,7 @@ deploy={
 2d_physics/layer_1="general"
 2d_physics/layer_2="packages"
 2d_physics/layer_3="ships"
+2d_physics/layer_5="spawn_raycast"
 
 [physics]
 

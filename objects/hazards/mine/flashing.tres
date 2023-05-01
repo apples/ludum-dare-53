@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://soskyscxueqb"]
+
+[ext_resource type="Texture2D" uid="uid://b4prdib3wg2ca" path="res://objects/hazards/mine/mine_small_double.png" id="1_r8jc2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otdjl"]
+atlas = ExtResource("1_r8jc2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07ak0"]
+atlas = ExtResource("1_r8jc2")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n25rj"]
+atlas = ExtResource("1_r8jc2")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t54a"]
+atlas = ExtResource("1_r8jc2")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00obh"]
+atlas = ExtResource("1_r8jc2")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myakv"]
+atlas = ExtResource("1_r8jc2")
+region = Rect2(40, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otdjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07ak0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n25rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t54a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00obh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myakv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

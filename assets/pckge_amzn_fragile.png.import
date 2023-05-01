@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dge8poxgilmt3"
-path="res://.godot/imported/greygoo_hazard.png-4c19b2d2593488d3be9e4f31448cdbed.ctex"
+uid="uid://7baec07x6ig3"
+path="res://.godot/imported/pckge_amzn_fragile.png-a7fe0a35771ad6c842d4f99bd4f48815.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/greygoo_hazard.png"
-dest_files=["res://.godot/imported/greygoo_hazard.png-4c19b2d2593488d3be9e4f31448cdbed.ctex"]
+source_file="res://assets/pckge_amzn_fragile.png"
+dest_files=["res://.godot/imported/pckge_amzn_fragile.png-a7fe0a35771ad6c842d4f99bd4f48815.ctex"]
 
 [params]
 

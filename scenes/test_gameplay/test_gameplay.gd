@@ -1,13 +1,19 @@
 extends Node2D
 const buoy_scene = preload("res://objects/buoy/buoy.tscn")
 const trash_scene = preload("res://objects/trash/small_trash/small_trash.tscn")
+const oob_bot_scene = preload("res://objects/oob_bot/oob_bot.tscn")
 var buoys: Array[RigidBody2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_buoys()
 	generate_trash()
+	generate_bot()
 
+func generate_bot():
+	var oob_bot = oob_bot_scene.instantiate()
+	oob_bot.player_ship = $player_ship
+	self.call_deferred("add_child", oob_bot)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

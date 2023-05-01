@@ -43,12 +43,14 @@ position = Vector2(239.5, 143)
 shape = SubResource("RectangleShape2D_73224")
 
 [node name="DockArea" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DockArea"]
 position = Vector2(240, 0)
 shape = SubResource("RectangleShape2D_tmbea")
 
 [node name="DampingZone" type="Area2D" parent="."]
+collision_mask = 6
 linear_damp_space_override = 1
 linear_damp = 2.5
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5xc1187g6bdk"
-path="res://.godot/imported/acid_mist.png-28f06366588ba0a2d17153f03e843078.ctex"
+uid="uid://iyvwal50ng2e"
+path="res://.godot/imported/map_station.png-a65395e1c32871fe916e838464d6729e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/acid_mist.png"
-dest_files=["res://.godot/imported/acid_mist.png-28f06366588ba0a2d17153f03e843078.ctex"]
+source_file="res://assets/map_station.png"
+dest_files=["res://.godot/imported/map_station.png-a65395e1c32871fe916e838464d6729e.ctex"]
 
 [params]
 

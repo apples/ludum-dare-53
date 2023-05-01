@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6s62v1rlft3b"
-path="res://.godot/imported/strut_junk.png-2a155f47bd34efaded9553c3b091b3f8.ctex"
+uid="uid://b4prdib3wg2ca"
+path="res://.godot/imported/mine_small_double.png-1a673cc322eda6693e3383c95fe61992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/trash/small_trash/strut_junk.png"
-dest_files=["res://.godot/imported/strut_junk.png-2a155f47bd34efaded9553c3b091b3f8.ctex"]
+source_file="res://objects/hazards/mine/mine_small_double.png"
+dest_files=["res://.godot/imported/mine_small_double.png-1a673cc322eda6693e3383c95fe61992.ctex"]
 
 [params]
 

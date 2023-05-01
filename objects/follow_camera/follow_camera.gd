@@ -12,6 +12,8 @@ enum {
 var current_facing = FACING_LEFT
 var target_prev_position: Vector2
 
+var _zoom_tween: Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not follow_target:
@@ -20,6 +22,12 @@ func _ready():
 	
 	target_prev_position = follow_target.global_position
 
+
+func map_zoom(z: float):
+	if _zoom_tween:
+		_zoom_tween.kill
+	_zoom_tween = create_tween()
+	_zoom_tween.tween_property(self, "zoom", Vector2(z,z), 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

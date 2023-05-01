@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhemo7xr0573q"
-path="res://.godot/imported/mine_small.png-f1e2aa70f3f901a4f4f4877f18e84707.ctex"
+uid="uid://0bou3e2hjclc"
+path="res://.godot/imported/small_explosion.png-0fd7470d7853ab5d74a1acadef92525d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mine_small.png"
-dest_files=["res://.godot/imported/mine_small.png-f1e2aa70f3f901a4f4f4877f18e84707.ctex"]
+source_file="res://objects/hazards/mine/small_explosion.png"
+dest_files=["res://.godot/imported/small_explosion.png-0fd7470d7853ab5d74a1acadef92525d.ctex"]
 
 [params]
 

@@ -5,10 +5,21 @@ var item_scene = preload("res://scenes/shop_menu/shop_item.tscn")
 
 var _item_infos = [
 	{ key = "thrusters", name = "Thrusters", cost = 4, desc = "Woah these bad boys sure do thrust! Out of sight, out of mind." },
-	{ key = null, name = "Boosters", cost = 4, desc = "Boy howdy these'll sure boost ya! Go fast and stuff!" },
+	{ key = "repair_station", name = "Repair Station", cost = 8, desc = "These repair stations sure come in handy. Maybe someone else'll get some use outaa it too!" },
+	{ key = "map_station", name = "Map Station", cost = 8, desc = "Keep an eye out for your fellow delivery bots!" },
 ]
 
 var _items = []
+
+var _empty_wallet_phrases = [
+	"I CANNOT EAT EXPOSURE.",
+	"Can't afford that one, cowboy...",
+]
+
+var _goodbye_phrases = [
+	"Done already?",
+	"W-wait! I need the money for college!",
+]
 
 @onready var shop_list = %ShopList
 @onready var dialog_label = %DialogLabel
@@ -48,10 +59,7 @@ func _on_item_clicked(i: int):
 	print("Buying %s" % info.name)
 	
 	if SaveGame.current.money < info.cost:
-		say_dialog([
-			"I CANNOT EAT EXPOSURE.",
-			"Can't afford that one, cowboy...",
-		])
+		say_dialog(_empty_wallet_phrases)
 		return
 	
 	if info.key == null:
@@ -73,21 +81,17 @@ func _on_item_focused(i: int):
 	say_dialog(info.desc)
 
 func _on_done_panel_clicked():
-	say_dialog("Goodbye!")
-	$ShoppingDoneTimer.start()
 	shop_group.visible = false
-
-func _on_done_panel_focus_entered():
-	say_dialog([
-		"Done already?",
-		"W-wait! I need the money for college!",
-	])
+	
+	await say_dialog(_goodbye_phrases)
+	
+	await get_tree().create_timer(2).timeout
+	
+	get_tree().change_scene_to_file(mission_scene)
 
 func say_dialog(options):
 	if options is String:
 		dialog_label.speak(options)
-		return
+		return dialog_label.done
 	dialog_label.speak(options.pick_random())
-
-func _on_shopping_done_timer_timeout():
-	get_tree().change_scene_to_file(mission_scene)
+	return dialog_label.done

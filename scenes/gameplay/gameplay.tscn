@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=19 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -10,7 +10,24 @@
 [ext_resource type="Texture2D" uid="uid://bdy8ssnjdesdn" path="res://assets/textures/noise512.png" id="4_jokwl"]
 [ext_resource type="Script" path="res://scenes/gameplay/trash_system.gd" id="5_kyuvg"]
 [ext_resource type="PackedScene" uid="uid://coyy7bdw7mjku" path="res://objects/docking_station/docking_station.tscn" id="6_p8cvc"]
-[ext_resource type="PackedScene" uid="uid://i41tlcy3s2r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
+[ext_resource type="PackedScene" uid="uid://b5bp2hr1ho58r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
+[ext_resource type="Script" path="res://scenes/gameplay/TrashSystem2.gd" id="11_t62iw"]
+[ext_resource type="Script" path="res://scenes/gameplay/trash_system_spawn_point.gd" id="12_aoifr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tseiv"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ntl86"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wsuce"]
+radius = 95.8175
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajg2v"]
+size = Vector2(121.5, 542)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3had1"]
+radius = 251.676
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
@@ -61,8 +78,11 @@ rotation = -3.14159
 scale = Vector2(1, -1)
 allow_docking = true
 
+[node name="Deployables" type="Node" parent="."]
+
 [node name="PlayerShip" parent="." instance=ExtResource("2_evmdc")]
 unique_name_in_owner = true
+enable_input = false
 
 [node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
 position_smoothing_enabled = true
@@ -78,11 +98,101 @@ count = 19
 [node name="TrashSystem" type="Node" parent="."]
 script = ExtResource("5_kyuvg")
 
+[node name="ShapeCast2D" type="ShapeCast2D" parent="TrashSystem"]
+shape = SubResource("CircleShape2D_tseiv")
+target_position = Vector2(0, 0)
+
+[node name="TrashSystem2" type="Node" parent="."]
+script = ExtResource("11_t62iw")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="TrashSystem2"]
+shape = SubResource("CircleShape2D_ntl86")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(103, -166)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+kind = 1
+arc_stride = 64.0
+radius_stride = 16.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(103, 167)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+kind = 1
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(261, 3)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.143
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(331, -209)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.714
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(480, -23)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.714
+kind = 1
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(392, 183)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.714
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(232, 324)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+kind = 1
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(644, 166)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.714
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(555, -244)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.714
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(726, -82)
+shape = SubResource("CircleShape2D_wsuce")
+script = ExtResource("12_aoifr")
+chance = 0.714
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(935.25, 0)
+shape = SubResource("RectangleShape2D_ajg2v")
+script = ExtResource("12_aoifr")
+kind = 2
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(802, 3)
+scale = Vector2(0.364, 1)
+shape = SubResource("CircleShape2D_3had1")
+script = ExtResource("12_aoifr")
+kind = 2
+
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+autostart = true
 
 [node name="UI" parent="." instance=ExtResource("8_3q44v")]
+unique_name_in_owner = true
 
 [node name="DockingCompletedTimer" type="Timer" parent="."]
 wait_time = 2.5
@@ -91,5 +201,8 @@ one_shot = true
 [node name="Packages" type="Node" parent="."]
 
 [connection signal="ship_docked" from="DestinationDockingStation" to="." method="_on_docking_station_ship_docked"]
+[connection signal="player_ship_damaged" from="PlayerShip" to="UI" method="_on_player_ship_player_ship_damaged"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="deploy_item" from="UI" to="." method="_on_ui_deploy_item"]
+[connection signal="exit_deploy" from="UI" to="." method="_on_ui_exit_deploy"]
 [connection signal="timeout" from="DockingCompletedTimer" to="." method="_on_docking_completed_timer_timeout"]

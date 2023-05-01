@@ -1,11 +1,153 @@
-[gd_scene load_steps=5 format=3 uid="uid://i41tlcy3s2r"]
+[gd_scene load_steps=27 format=3 uid="uid://b5bp2hr1ho58r"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_3cknp"]
 [ext_resource type="Texture2D" uid="uid://b2uxix3y67o3h" path="res://assets/ui/box.png" id="1_oym84"]
+[ext_resource type="Texture2D" uid="uid://b7bb6wovto8y3" path="res://assets/textures/healthbar.png" id="2_5xf3s"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="2_dapv5"]
 [ext_resource type="Script" path="res://scenes/gameplay/ColorRect.gd" id="3_7df5t"]
 [ext_resource type="Script" path="res://scripts/label_sync.gd" id="3_ef8qv"]
+[ext_resource type="Script" path="res://scenes/gameplay/DeployMenuRoot.gd" id="7_wjo20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pih7k"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3ny4"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tmc1"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2kjw"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtags"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(384, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ngc"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(480, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17qh"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(576, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3c74"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(672, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m810"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(768, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22lqy"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(864, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btga1"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(960, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehs33"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1056, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfrxd"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1152, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86xek"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1248, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtbmm"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1344, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljjwf"]
+atlas = ExtResource("2_5xf3s")
+region = Rect2(1440, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3i0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pih7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3ny4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tmc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2kjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtags")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8ngc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3c74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m810")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22lqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btga1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehs33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfrxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86xek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtbmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljjwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msce0"]
+bg_color = Color(0, 0, 0, 0.486275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp44w"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("2_dapv5")
 
 [node name="UIRoot" type="Control" parent="."]
 layout_mode = 3
@@ -16,10 +158,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3cknp")
 
+[node name="PlayerHealthBar" type="AnimatedSprite2D" parent="UIRoot"]
+unique_name_in_owner = true
+position = Vector2(45, 13)
+sprite_frames = SubResource("SpriteFrames_u3i0p")
+
 [node name="BoxIcon" type="TextureRect" parent="UIRoot"]
 layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 40.0
 texture = ExtResource("1_oym84")
 stretch_mode = 2
 
@@ -51,3 +200,44 @@ offset_right = 2.0
 offset_bottom = 9.0
 color = Color(1, 0.0901961, 0.360784, 0.764706)
 script = ExtResource("3_7df5t")
+
+[node name="DeployMenuRoot" type="Control" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3cknp")
+script = ExtResource("7_wjo20")
+
+[node name="Panel" type="Panel" parent="DeployMenuRoot"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 162.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_msce0")
+
+[node name="ShopListMargin" type="MarginContainer" parent="DeployMenuRoot"]
+layout_mode = 2
+offset_left = 11.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 195.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ShopListPanel" type="PanelContainer" parent="DeployMenuRoot/ShopListMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tp44w")
+
+[node name="DeploymentList" type="VBoxContainer" parent="DeployMenuRoot/ShopListMargin/ShopListPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="exit" from="DeployMenuRoot" to="." method="_on_deploy_menu_root_exit"]
