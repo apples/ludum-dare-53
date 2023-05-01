@@ -25,6 +25,9 @@ var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
 var thruster_count: int = 5
+
+var initial_health = 15
+
 var health = 15:
 	get:
 		return health
@@ -43,6 +46,8 @@ var _thrust_direction: float
 var _queue_thruster: bool = false
 
 var tethered_objects: Array[RigidBody2D]
+
+var packages = []
 
 @onready var tail_anchor = $TailAnchor
 

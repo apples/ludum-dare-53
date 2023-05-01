@@ -5,7 +5,7 @@ var item_scene = preload("res://scenes/shop_menu/shop_item.tscn")
 
 var _item_infos = [
 	{ key = "thrusters", name = "Thrusters", cost = 4, desc = "Woah these bad boys sure do thrust! Out of sight, out of mind." },
-	{ key = null, name = "Boosters", cost = 4, desc = "Boy howdy these'll sure boost ya! Go fast and stuff!" },
+	{ key = "repair_station", name = "Repair Station", cost = 8, desc = "These repair stations sure come in handy. Maybe someone else'll get some use outaa it too!" },
 ]
 
 var _items = []

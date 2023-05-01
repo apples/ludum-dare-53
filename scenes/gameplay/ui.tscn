@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b5bp2hr1ho58r"]
+[gd_scene load_steps=27 format=3 uid="uid://b5bp2hr1ho58r"]
 
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/main_theme.tres" id="1_3cknp"]
 [ext_resource type="Texture2D" uid="uid://b2uxix3y67o3h" path="res://assets/ui/box.png" id="1_oym84"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_dapv5"]
 [ext_resource type="Script" path="res://scenes/gameplay/ColorRect.gd" id="3_7df5t"]
 [ext_resource type="Script" path="res://scripts/label_sync.gd" id="3_ef8qv"]
+[ext_resource type="Script" path="res://scenes/gameplay/DeployMenuRoot.gd" id="7_wjo20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pih7k"]
 atlas = ExtResource("2_5xf3s")
@@ -127,6 +128,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msce0"]
+bg_color = Color(0, 0, 0, 0.486275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp44w"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("2_dapv5")
 
@@ -181,3 +200,44 @@ offset_right = 2.0
 offset_bottom = 9.0
 color = Color(1, 0.0901961, 0.360784, 0.764706)
 script = ExtResource("3_7df5t")
+
+[node name="DeployMenuRoot" type="Control" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3cknp")
+script = ExtResource("7_wjo20")
+
+[node name="Panel" type="Panel" parent="DeployMenuRoot"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 162.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_msce0")
+
+[node name="ShopListMargin" type="MarginContainer" parent="DeployMenuRoot"]
+layout_mode = 2
+offset_left = 11.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 195.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ShopListPanel" type="PanelContainer" parent="DeployMenuRoot/ShopListMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tp44w")
+
+[node name="DeploymentList" type="VBoxContainer" parent="DeployMenuRoot/ShopListMargin/ShopListPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="exit" from="DeployMenuRoot" to="." method="_on_deploy_menu_root_exit"]
