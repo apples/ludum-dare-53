@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=12 format=3 uid="uid://dgk7y5w8bdjt5"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bdy8ssnjdesdn" path="res://assets/textures/noise512.png" id="4_jokwl"]
 [ext_resource type="Script" path="res://scenes/gameplay/trash_system.gd" id="5_kyuvg"]
 [ext_resource type="PackedScene" uid="uid://coyy7bdw7mjku" path="res://objects/docking_station/docking_station.tscn" id="6_p8cvc"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
+[ext_resource type="PackedScene" uid="uid://i41tlcy3s2r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")

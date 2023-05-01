@@ -29,14 +29,14 @@ tracks/0/path = NodePath("Sprite:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [SubResource("ShaderMaterial_8ihev")]
+"values": [ExtResource("4_l0yn7"), ExtResource("5_hby43"), ExtResource("4_l0yn7"), ExtResource("5_hby43"), ExtResource("4_l0yn7"), ExtResource("5_hby43")]
 }
 
-[sub_resource type="Animation" id="Animation_2e28i"]
-resource_name = "hurt"
+[sub_resource type="Animation" id="Animation_yfk2l"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,10 +44,10 @@ tracks/0/path = NodePath("Sprite:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_l0yn7"), ExtResource("5_hby43"), ExtResource("4_l0yn7"), ExtResource("5_hby43"), ExtResource("4_l0yn7"), ExtResource("5_hby43")]
+"values": [SubResource("ShaderMaterial_8ihev")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_63mds"]

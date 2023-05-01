@@ -23,7 +23,7 @@ var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
 var thruster_count: int = 5
-var health: int = 1
+var health: int = 26
 
 
 var _turn_direction: float
