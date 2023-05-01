@@ -209,7 +209,7 @@ text = "[H to Deploy]"
 
 [node name="DeployMenuRoot" type="Control" parent="."]
 unique_name_in_owner = true
-process_mode = 2
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -259,3 +259,4 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [connection signal="exit" from="DeployMenuRoot" to="." method="_on_deploy_menu_root_exit"]
+[connection signal="visibility_changed" from="DeployMenuRoot" to="." method="_on_deploy_menu_root_visibility_changed"]
