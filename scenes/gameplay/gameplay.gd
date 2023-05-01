@@ -139,6 +139,11 @@ func _on_ui_deploy_item(key):
 	node.global_position = player_ship.global_position
 	node.gameplay_root = self
 	node.player_ship = player_ship
+	
+	if "directed" in info and info.directed:
+		node.global_position += Vector2.RIGHT.rotated(player_ship.rotation) * 16
+		node.rotation = player_ship.rotation
+	
 	deployables.add_child(node)
 	
 	get_tree().paused = false

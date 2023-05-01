@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b5hiau58nmvo6"]
+
+[node name="Joints" type="Node2D"]
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(0, -1)
+node_a = NodePath("../../LeftRigidBody2D")
+node_b = NodePath("../../RightRigidBody2D")
+length = 1.0
+rest_length = 144.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+position = Vector2(96, -1)
+node_a = NodePath("../../LeftRigidBody2D")
+node_b = NodePath("../../RightRigidBody2D")
+length = 1.0
+rest_length = 144.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="."]
+position = Vector2(192, -1)
+node_a = NodePath("../../LeftRigidBody2D")
+node_b = NodePath("../../RightRigidBody2D")
+length = 1.0
+rest_length = 144.0
+
+[node name="GrooveJoint2D" type="GrooveJoint2D" parent="."]
+position = Vector2(96, 0)
+rotation = 3.14159
+node_a = NodePath("../../StaticBody2D")
+node_b = NodePath("../../LeftRigidBody2D")
+length = 80.0
+initial_offset = 8.0
+
+[node name="GrooveJoint2D2" type="GrooveJoint2D" parent="."]
+position = Vector2(96, 0)
+node_a = NodePath("../../StaticBody2D")
+node_b = NodePath("../../RightRigidBody2D")
+length = 80.0
+initial_offset = 9.0

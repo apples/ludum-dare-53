@@ -7,6 +7,7 @@ var _item_infos = [
 	{ key = "thrusters", name = "Thrusters", cost = 4, desc = "Woah these bad boys sure do thrust! Out of sight, out of mind." },
 	{ key = "repair_station", name = "Repair Station", cost = 8, desc = "These repair stations sure come in handy. Maybe someone else'll get some use outaa it too!" },
 	{ key = "map_station", name = "Map Station", cost = 8, desc = "Keep an eye out for your fellow delivery bots!" },
+	{ key = "fence", name = "Fence", cost = 32, desc = "Make way, comin through, wide load, big boy, extra thicc!" },
 ]
 
 var _items = []
