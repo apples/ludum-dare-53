@@ -36,7 +36,7 @@ var health = 15:
 		$player_ship_animations.play("hurt")
 		print("Damage! Health left: ", health)
 		if health <= 0:
-			get_tree().change_scene_to_file(game_over_scene)
+			initiate_death_sequence()
 
 var gas_accumulation: float = 0
 
@@ -120,3 +120,12 @@ func _on_body_entered(body):
 		#print(impact_vector.length())
 		if impact_vector.length() > impact_threshold:
 			health -= 1
+			
+func initiate_death_sequence():
+	$DeathExplosion.visible = true
+	$DeathExplosion.play("default")
+	$DeathInitiatedTimer.start()
+	enable_input = false
+
+func _on_death_initiated_timer_timeout():
+	get_tree().change_scene_to_file(game_over_scene)
