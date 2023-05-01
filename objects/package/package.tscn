@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn7oh"]
 size = Vector2(10.6066, 13.435)
 
-[node name="Package" type="RigidBody2D"]
+[node name="Package" type="RigidBody2D" groups=["package"]]
 collision_layer = 2
 mass = 0.1
 max_contacts_reported = 5

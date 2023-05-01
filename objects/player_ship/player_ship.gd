@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal player_ship_damaged()
+
 @export var angular_acceleration: float = 5000
 @export var black_hole_spawn_distance: float = 32
 @export var black_hole_strength: float = 100
@@ -23,8 +25,18 @@ var game_over_scene = "res://scenes/game_over/game_over.tscn"
 
 var current_black_hole
 var thruster_count: int = 5
-var health: int = 26
+var health = 15:
+	get:
+		return health
+	set(value):
+		health = value
+		player_ship_damaged.emit()
+		$player_ship_animations.play("hurt")
+		print("Damage! Health left: ", health)
+		if health <= 0:
+			get_tree().change_scene_to_file(game_over_scene)
 
+var gas_accumulation: float = 0
 
 var _turn_direction: float
 var _thrust_direction: float
@@ -97,7 +109,3 @@ func _on_body_entered(body):
 		#print(impact_vector.length())
 		if impact_vector.length() > impact_threshold:
 			health -= 1
-			$player_ship_animations.play("hurt")
-			print("Damaging Impact! Health left: ", health)
-			if health == 0:
-				get_tree().change_scene_to_file(game_over_scene)
