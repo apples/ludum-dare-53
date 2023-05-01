@@ -30,6 +30,7 @@ var health = 15:
 		return health
 	set(value):
 		health = value
+		player_ship_damaged.emit()
 		$player_ship_animations.play("hurt")
 		print("Damage! Health left: ", health)
 		if health <= 0:
