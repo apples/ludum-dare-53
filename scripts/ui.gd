@@ -25,10 +25,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_player_ship_player_ship_damaged():
-	var player_ship = get_parent().player_ship
-	%PlayerHealthBar.frame = player_ship.initial_health - player_ship.health
-
 func _deploy_item(key: String):
 	if not key in Deployables.infos:
 		return
@@ -36,6 +32,8 @@ func _deploy_item(key: String):
 	deploy_item.emit(key)
 	
 
-
 func _on_deploy_menu_root_exit():
 	exit_deploy.emit()
+
+func _on_player_ship_player_ship_damaged(amount):
+	%PlayerHealthBar.frame = 15 - amount
