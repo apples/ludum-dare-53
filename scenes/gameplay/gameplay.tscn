@@ -23,11 +23,11 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wsuce"]
 radius = 95.8175
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajg2v"]
-size = Vector2(121.5, 542)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqa1o"]
+radius = 421.142
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3had1"]
-radius = 251.676
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajg2v"]
+size = Vector2(42.5, 542)
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_6ac20")
@@ -143,6 +143,22 @@ script = ExtResource("12_aoifr")
 chance = 0.714
 kind = 1
 
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1440, 9)
+shape = SubResource("CircleShape2D_fqa1o")
+script = ExtResource("12_aoifr")
+kind = 1
+arc_stride = 128.0
+radius_stride = 16.0
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(1440, 9)
+shape = SubResource("CircleShape2D_fqa1o")
+script = ExtResource("12_aoifr")
+kind = 2
+min_difficulty = 1
+gas_rate = 0.2
+
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(392, 183)
 shape = SubResource("CircleShape2D_wsuce")
@@ -174,16 +190,34 @@ script = ExtResource("12_aoifr")
 chance = 0.714
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="TrashSystem2"]
-position = Vector2(935.25, 0)
+position = Vector2(895.75, 0)
 shape = SubResource("RectangleShape2D_ajg2v")
 script = ExtResource("12_aoifr")
+chance = 0.5
 kind = 2
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="TrashSystem2"]
-position = Vector2(802, 3)
-scale = Vector2(0.364, 1)
-shape = SubResource("CircleShape2D_3had1")
+position = Vector2(2151, 0)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
 script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2947, 0)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2542, 0)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+script = ExtResource("12_aoifr")
+chance = 0.5
 kind = 2
 
 [node name="StartTimer" type="Timer" parent="."]

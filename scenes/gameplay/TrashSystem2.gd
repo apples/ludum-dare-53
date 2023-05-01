@@ -23,6 +23,8 @@ func _ready():
 	for c in children:
 		if not c is CollisionShape2D:
 			continue
+		if GameplaySingleton.current_mission and c.min_difficulty > GameplaySingleton.current_mission.difficulty:
+			continue
 		accumulator += c.chance
 		if accumulator >= 1.0:
 			decided_spawns.append(c)
