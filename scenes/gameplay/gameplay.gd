@@ -154,7 +154,11 @@ func _on_ui_deploy_item(key):
 		return
 	
 	print("Deploying item ", key)
-	$deploy_item.play()
+	if key == "fence":
+		$deploy_fence.play()
+	else:
+		$deploy_item.play()
+	
 	var interaction = {
 		type = "structure",
 		key = key,
