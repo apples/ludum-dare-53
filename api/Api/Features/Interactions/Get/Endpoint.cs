@@ -31,7 +31,7 @@ public class Endpoint : Endpoint<Request, Response>
         var interactions = await _dbContext.Interactions
             .Where(i => i.PlayerID != playerID &&
                 i.Level == request.Level &&
-                i.Cycle <= request.Cycle &&
+                //i.Cycle <= request.Cycle &&
                 (includeTypes.Length == 0 || includeTypes.Contains(i.InteractionType)) &&
                 (excludeTypes.Length == 0 || excludeTypes.Contains(i.InteractionType)))
             .OrderByDescending(i => EF.Functions.Random() * i.Cycle)
