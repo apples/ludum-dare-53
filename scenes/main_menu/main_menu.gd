@@ -28,15 +28,20 @@ func check_api_sever():
 
 func _on_play_button_pressed():
 	if $online_mode_toggle.button_pressed:
+		print("Connecting with config %s:%s" % [Configs.username, Configs.user_key])
 		if Configs.user_key == null:
+			print("No user_key found!")
 			$online_mode_details.visible = true
 		else:
-			var serverPlayer = await Api.get_player()
-			if serverPlayer == null:
+			var serverPlayerExists = await Api.get_player()
+			if not serverPlayerExists:
+				print("Player not recognized by server!")
 				$online_mode_details.visible = true
 			else:
+				print("We are GREEEN!")
 				switch_to_gameplay_scene()
 	else:
+		print("We are also GREEEN!")
 		switch_to_gameplay_scene()
 
 func create_random_client_id(): 
