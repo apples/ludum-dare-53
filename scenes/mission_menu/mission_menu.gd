@@ -35,7 +35,8 @@ var _neutral_phrases = [
 # Goodbye phrases said when departing on mission.
 var _goodbye_phrases = [
 	"Sayonara.",
-	"Godspeed."
+	"Godspeed.",
+	"The sector is looking cluttered today. Take it slow!"
 ]
 
 var _items = []

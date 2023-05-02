@@ -8,6 +8,7 @@ var angle = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$SFX/WeeWoo.play()
 	$OutOfBoundsBotAnim.play("default")
 	$ZapAnim.play("default")
 	$ZapAnim.visible = false
@@ -24,10 +25,10 @@ func _on_zap_attack_timer_timeout():
 	out_of_bounds_bot_zapped.emit()
 	$ZapAnim.visible = true
 	$ZapAttackVisibleTimer.start()
+	$SFX/WeeWoo.play()
 
 func _on_zap_attack_visible_timer_timeout():
 	$ZapAnim.visible = false
-
 
 func _on_zap_attack_start_timer_timeout():
 	$ZapAttackTimer.start()
