@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://8efjw8ocgrpe"]
+
+[ext_resource type="PackedScene" uid="uid://b675r7hrdxeou" path="res://objects/hazards/cloud/cloud_hazard.tscn" id="1_7m6pd"]
+[ext_resource type="Texture2D" uid="uid://dge8poxgilmt3" path="res://objects/hazards/cloud/greygoo_hazard.png" id="2_xpkf6"]
+
+[node name="cloud_hazard" instance=ExtResource("1_7m6pd")]
+is_grey = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xpkf6")
