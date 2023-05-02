@@ -21,13 +21,15 @@ func _on_timer_timeout():
 	for p in player_ship.packages:
 		if p.health < p.initial_health:
 			print("Repairing package")
+			$do_healing.play()
 			p.health += 1
-			# TODO: effect/sfx
 			return
 	
 	if player_ship.health < player_ship.initial_health:
 		player_ship.health += 1
 		print("Repairing ship")
+		$do_healing.play()
 		return
 	
+	$healing_done.play()
 	print("Nothing to repair")
