@@ -24,7 +24,6 @@ func _draw():
 	
 	if active:
 		var c = lerp(initial_ping_color, final_ping_color, sqrt(_ping_radius / max_ping_radius))
-		print(c)
 		draw_arc(Vector2.ZERO, _ping_radius, 0, TAU, 16, c, 2)
 
 func _on_body_entered(body):
