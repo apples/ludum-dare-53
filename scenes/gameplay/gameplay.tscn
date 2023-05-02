@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=28 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://objects/follow_camera/follow_camera.gd" id="3_mux8x"]
 [ext_resource type="Script" path="res://scenes/gameplay/buoy_system.gd" id="4_jgiui"]
 [ext_resource type="Texture2D" uid="uid://bdy8ssnjdesdn" path="res://assets/textures/noise512.png" id="4_jokwl"]
-[ext_resource type="Script" path="res://scenes/gameplay/trash_system.gd" id="5_kyuvg"]
 [ext_resource type="PackedScene" uid="uid://coyy7bdw7mjku" path="res://objects/docking_station/docking_station.tscn" id="6_p8cvc"]
 [ext_resource type="Texture2D" uid="uid://o7dtclnf1qeq" path="res://assets/textures/docking_arrow.png" id="7_d3bhu"]
 [ext_resource type="PackedScene" uid="uid://b5bp2hr1ho58r" path="res://scenes/gameplay/ui.tscn" id="8_3q44v"]
@@ -78,9 +77,6 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tseiv"]
-radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ntl86"]
 radius = 16.0
@@ -167,13 +163,6 @@ stabilization_window = 30.0
 [node name="BuoySystem" type="Node" parent="."]
 script = ExtResource("4_jgiui")
 count = 19
-
-[node name="TrashSystem" type="Node" parent="."]
-script = ExtResource("5_kyuvg")
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="TrashSystem"]
-shape = SubResource("CircleShape2D_tseiv")
-target_position = Vector2(0, 0)
 
 [node name="TrashSystem2" type="Node" parent="."]
 script = ExtResource("11_t62iw")

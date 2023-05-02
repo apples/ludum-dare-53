@@ -5,6 +5,7 @@ var medium_trash_scene = preload("res://objects/trash/medium_trash/medium_trash.
 var large_trash_scene = preload("res://objects/trash/large_trash/large_trash.tscn")
 var large_trash_scene2 = preload("res://objects/trash/large_trash2/large_trash2.tscn")
 var cloud_hazard = preload("res://objects/hazards/cloud/cloud_hazard.tscn")
+var grey_cloud_hazard = preload("res://objects/hazards/cloud/cloud_hazard_greygoo.tscn")
 var mine_hazard = preload("res://objects/hazards/mine/mine.tscn")
 
 @onready var shape_cast_2d = $ShapeCast2D
@@ -43,7 +44,9 @@ func _spawn(spawn_shape):
 		Kind.GAS:
 			_spawn_gas(spawn_shape, cloud_hazard)
 		Kind.MINES:
-			_spawn_gas(spawn_shape, mine_hazard)
+			_spawn_typical(spawn_shape, mine_hazard)
+		Kind.GREY_GAS:
+			_spawn_gas(spawn_shape, grey_cloud_hazard)
 
 func _spawn_typical(spawn_shape: CollisionShape2D, obj_scene):
 	
@@ -112,4 +115,5 @@ enum Kind {
 	ROCKS,
 	GAS,
 	MINES,
+	GREY_GAS,
 }

@@ -12,4 +12,5 @@ enum Kind {
 	ROCKS,
 	GAS,
 	MINES,
+	GREY_GAS,
 }
