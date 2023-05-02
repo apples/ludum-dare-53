@@ -129,6 +129,7 @@ func initiate_death_sequence():
 	enable_input = false
 
 func _on_death_initiated_timer_timeout():
+	SaveGame.reload()
 	get_tree().change_scene_to_file(game_over_scene)
 
 func _on_explosion_added_timer_timeout():

@@ -36,6 +36,11 @@ func _ready():
 		_spawn_deployable(i)
 	
 	# TODO: LOAD INTERACTIONS HERE
+	
+	var remote_interactions = await Api.get_interactions("level_1", SaveGame.current.current_cycle, min(5, SaveGame.current.current_cycle))
+	
+	for i in remote_interactions:
+		_spawn_deployable(i.Content)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -87,6 +92,15 @@ func _on_docking_completed_timer_timeout():
 	get_tree().change_scene_to_file(mission_menu_scene)
 	
 	# TODO: SEND INTERACTIONS HERE
+	print(JSON.stringify(_current_interactions))
+	print(await Api.send_interactions("level_1", SaveGame.current.current_cycle,
+		_current_interactions.map(func (x):
+			return {
+				"InteractionType": "PlaceStructure",
+				"Content": JSON.stringify(x),
+			})
+	))
+	_current_interactions = []
 
 func load_mission(mission_info):
 	var num_packages
@@ -144,24 +158,26 @@ func _on_ui_deploy_item(key):
 	var interaction = {
 		type = "structure",
 		key = key,
-		position = player_ship.global_position,
+		position = { x = 0, y = 0 },
 		rotation = 0,
 	}
 	
-	SaveGame.current.inventory[key] -= 1
-	SaveGame.current.deployed_structures.append(interaction)
-	SaveGame.current.deployed_structures = SaveGame.current.deployed_structures.slice(-5)
-	SaveGame.save()
-	
+	var pos = player_ship.global_position
 	
 	var info = Deployables.infos[key]
 	
 	if "directed" in info and info.directed:
-		interaction.position += Vector2.RIGHT.rotated(player_ship.rotation) * 16
+		pos += Vector2.RIGHT.rotated(player_ship.rotation) * 16
 		interaction.rotation = player_ship.rotation
+	
+	interaction.position = { x = pos.x, y = pos.y }
 	
 	_post_interaction(interaction)
 	_spawn_deployable(interaction)
+	
+	SaveGame.current.inventory[key] -= 1
+	SaveGame.current.deployed_structures.append(interaction)
+	SaveGame.current.deployed_structures = SaveGame.current.deployed_structures.slice(-5)
 	
 	get_tree().paused = false
 	ui.deploy_menu_root.visible = false
@@ -180,7 +196,7 @@ func _spawn_deployable(interaction):
 	
 	var info = Deployables.infos[interaction.key]
 	var node = load(info.scene).instantiate()
-	node.global_position = interaction.position
+	node.global_position = Vector2(interaction.position.x, interaction.position.y)
 	node.rotation = interaction.rotation
 	node.gameplay_root = self
 	node.player_ship = player_ship
