@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if connected_to:
+	if connected_to && connected_to != null:
 		self.rotation = connected_to.rotation + relative_angle
 	
 	self.apply_force(self.global_transform.basis_xform(Vector2.RIGHT) * thrust)
