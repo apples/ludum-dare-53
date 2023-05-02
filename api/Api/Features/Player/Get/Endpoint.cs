@@ -18,7 +18,10 @@ public class Endpoint : Endpoint<Request>
         
         if (claimUserName == request.UserName)
         {
-            await SendOkAsync(cancellationToken);
+            await SendOkAsync(new
+            {
+                request.UserName
+            }, cancellationToken);
         }
         else
         {

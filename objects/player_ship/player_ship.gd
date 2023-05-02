@@ -84,6 +84,7 @@ func _process(delta):
 				obj.global_transform.origin = global_position
 				obj.connect_to = packages[-1] if packages.size() > 0 else tail_anchor
 				#packages.add_child(obj)
+				obj.get_parent().remove_child(obj)
 				get_parent().packages.add_child(obj)
 				packages.append(obj)
 				break
