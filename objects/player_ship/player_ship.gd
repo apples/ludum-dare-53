@@ -35,7 +35,6 @@ var health = 15:
 		health = value
 		player_ship_damaged.emit(value)
 		$player_ship_animations.play("hurt")
-		$sfx/take_damage.play()
 		print("Damage! Health left: ", health)
 		if health <= 0 and not death_initiated:
 			$sfx/take_damage.stop()
@@ -124,6 +123,7 @@ func _on_body_entered(body):
 		#print(impact_vector.length())
 		if impact_vector.length() > impact_threshold:
 			health -= 1
+			$sfx/take_damage.play()
 			
 func initiate_death_sequence():
 	death_initiated = true
