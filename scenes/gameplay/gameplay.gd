@@ -40,7 +40,7 @@ func _ready():
 	var remote_interactions = await Api.get_interactions("level_1", SaveGame.current.current_cycle, min(5, SaveGame.current.current_cycle))
 	
 	for i in remote_interactions:
-		_spawn_deployable(i.Content)
+		_spawn_deployable(i.Content, i.UserName)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -190,8 +190,8 @@ func _on_ui_exit_deploy():
 	get_tree().paused = false
 	ui.deploy_menu_root.visible = false
 
-
-func _spawn_deployable(interaction):
+var structure_label_scene = preload("res://scenes/gameplay/structure_label.tscn")
+func _spawn_deployable(interaction, whom = null):
 	assert(interaction.type == "structure")
 	
 	var info = Deployables.infos[interaction.key]
@@ -200,6 +200,11 @@ func _spawn_deployable(interaction):
 	node.rotation = interaction.rotation
 	node.gameplay_root = self
 	node.player_ship = player_ship
+	
+	if whom != null:
+		var label = structure_label_scene.instantiate()
+		label.text = whom
+		node.add_child(label)
 	
 	deployables.add_child(node)
 
