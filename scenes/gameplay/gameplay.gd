@@ -140,10 +140,14 @@ func load_mission(mission_info):
 
 func _on_package_destroyed(package):
 	var i = package.get_index()
-	packages.remove_child(package)
-	if i < packages.get_child_count():
-		packages.get_child(i).connect_to = package.connect_to
+	if i >= 0:
+		packages.remove_child(package)
 	package.queue_free()
+	for ci in range(packages.get_child_count()):
+		if ci == 0:
+			packages.get_child(ci).connect_to = player_ship.tail_anchor
+		else:
+			packages.get_child(ci).connect_to = packages.get_child(ci-1)
 	player_ship.packages = packages.get_children()
 
 

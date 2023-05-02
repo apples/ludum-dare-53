@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cor0us7drjjej" path="res://objects/deployables/station.tscn" id="1_x43ag"]
 [ext_resource type="Script" path="res://objects/deployables/map_station/map_station.gd" id="2_x07g2"]
-[ext_resource type="Texture2D" uid="uid://iyvwal50ng2e" path="res://assets/map_station.png" id="3_mjbey"]
+[ext_resource type="Texture2D" uid="uid://d1oqvmt6e1kql" path="res://assets/Mapping_station.png" id="3_h2v1l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6b1wj"]
 radius = 96.0
@@ -15,7 +15,7 @@ script = ExtResource("2_x07g2")
 shape = SubResource("CircleShape2D_6b1wj")
 
 [node name="StationSprite" parent="." index="1"]
-texture = ExtResource("3_mjbey")
+texture = ExtResource("3_h2v1l")
 
 [node name="Timer" type="Timer" parent="." index="3"]
 
