@@ -10,6 +10,7 @@ var _default_values := {
 	inventory = {
 		thrusters = 0,
 	},
+	deployed_structures = [],
 }
 
 func _ready():
@@ -30,6 +31,12 @@ func reload():
 		return
 	var data = file.get_as_text()
 	current = JSON.parse_string(data)
+	
+	if not "inventory" in current or current.inventory == null:
+		current.inventory = _default_values.inventory.duplicate(true)
+	if "deployed_structures" not in current or current.deployed_structures == null:
+		current.deployed_structures = _default_values.deployed_structures.duplicate(true)
+	
 	print("Loaded save game: ", current)
 
 

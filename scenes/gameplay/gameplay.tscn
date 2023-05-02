@@ -92,7 +92,7 @@ radius = 95.8175
 radius = 421.142
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajg2v"]
-size = Vector2(42.5, 542)
+size = Vector2(42.5, 180)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bxgge"]
 radius = 16.0
@@ -288,6 +288,44 @@ script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
 
+[node name="Gas8" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2416, -128)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="Gas9" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2670, 132)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="HardGas6" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2024, 127)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.737255, 0.470588, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+min_difficulty = 1
+
+[node name="HardGas7" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2278, -126)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.737255, 0.470588, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+min_difficulty = 1
+
 [node name="Gas4" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(2947, 0)
 rotation = 0.78287
@@ -297,6 +335,26 @@ script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
 
+[node name="HardGas10" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2820, 129)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.737255, 0.470588, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+min_difficulty = 1
+
+[node name="HardGas11" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(3073, -127)
+rotation = 0.78287
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.737255, 0.470588, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+min_difficulty = 1
+
 [node name="Gas5" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(2542, 0)
 rotation = -0.776165
@@ -305,6 +363,62 @@ debug_color = Color(0.145098, 0.647059, 0, 0.419608)
 script = ExtResource("12_aoifr")
 chance = 0.5
 kind = 2
+
+[node name="Gas10" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2819, 129)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="Gas11" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(3074, -127)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="Gas6" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2281, -127)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="Gas7" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2020, 130)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.145098, 0.647059, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+
+[node name="HardGas8" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2415, -127)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.737255, 0.470588, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+min_difficulty = 1
+
+[node name="HardGas9" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(2668, 129)
+rotation = -0.776165
+shape = SubResource("RectangleShape2D_ajg2v")
+debug_color = Color(0.737255, 0.470588, 0, 0.419608)
+script = ExtResource("12_aoifr")
+chance = 0.5
+kind = 2
+min_difficulty = 1
 
 [node name="Mines1" type="CollisionShape2D" parent="TrashSystem2"]
 position = Vector2(622, 19)
