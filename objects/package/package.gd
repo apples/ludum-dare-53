@@ -24,6 +24,8 @@ var health = 4:
 			destroyed.emit()
 			print("Package destroyed")
 
+var is_bio: bool = false
+
 var damage_velocity_threshold = 60
 var fragile_health_threshold = 3
 
@@ -35,6 +37,8 @@ signal destroyed()
 
 func _ready():
 	_update_sprite()
+	if is_bio:
+		$CollisionShape2D.scale = Vector2(2,2)
 
 func _physics_process(delta):
 	if connect_to:
@@ -57,10 +61,13 @@ func _on_body_entered(body):
 			health -= 1
 
 func _update_sprite():
-	if health <= fragile_health_threshold:
-		$Sprite2D.texture = fragile_texture
+	if is_bio:
+		$Sprite2D.texture = bio_texture
 	else:
-		$Sprite2D.texture = default_texture
+		if health <= fragile_health_threshold:
+			$Sprite2D.texture = fragile_texture
+		else:
+			$Sprite2D.texture = default_texture
 
 func _hit_effect(dh: int):
 	if not is_inside_tree():
