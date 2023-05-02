@@ -301,7 +301,16 @@ position = Vector2(1359, 9)
 shape = SubResource("CircleShape2D_fqa1o")
 debug_color = Color(1, 0.517647, 0, 0.419608)
 script = ExtResource("12_aoifr")
-kind = 2
+kind = 5
+min_difficulty = 1
+gas_rate = 0.05
+
+[node name="HardGas2" type="CollisionShape2D" parent="TrashSystem2"]
+position = Vector2(3097, 9)
+shape = SubResource("CircleShape2D_fqa1o")
+debug_color = Color(1, 0.517647, 0, 0.419608)
+script = ExtResource("12_aoifr")
+kind = 5
 min_difficulty = 1
 gas_rate = 0.05
 
