@@ -12,11 +12,11 @@ var _easy_missions = [
 ]
 
 var _hard_missions = [
-	{ name = "Fine Glassware", desc = "The people need their wine glasses." },
+	{ name = "Fine Glassware", desc = "Wine glasses are oft needing a resupply at the entertainment district. Careful! Fragile cargo in tow." },
 ]
 
 var _boss_missions = [
-	{ name = "Human Heart", desc = "The people need their heart organs." },
+	{ name = "Human Heart", desc = "You have proven yourself, take this human heart organ cautiously to the next sector!" },
 ]
 
 # Phrases said after each successful delivery.
@@ -28,13 +28,14 @@ var _score_phrases = [
 
 # Neutral dialog phrases. Picked at random.
 var _neutral_phrases = [
-	"Here's the jobs.",
-	"Dont' forget to shop!",
+	"Select a mission you think you can handle. You're not a moonrat, this cheese doesn't come free!",
+	"Select a mission if you've got the guts."
 ]
 
 # Goodbye phrases said when departing on mission.
 var _goodbye_phrases = [
-	"Sayonara."
+	"Sayonara.",
+	"Godspeed."
 ]
 
 var _items = []

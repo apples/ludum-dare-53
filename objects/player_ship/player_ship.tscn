@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnbgjfm0ioyad"]
+[gd_scene load_steps=16 format=3 uid="uid://dnbgjfm0ioyad"]
 
 [ext_resource type="Texture2D" uid="uid://b6imq1foo3y7b" path="res://objects/player_ship/ship.png" id="1_iwfba"]
 [ext_resource type="Script" path="res://objects/player_ship/player_ship.gd" id="1_qnons"]
 [ext_resource type="Shader" path="res://materials/rotsprite/rotsprite.gdshader" id="2_5x1vc"]
-[ext_resource type="Material" path="res://materials/rotsprite/white.tres" id="4_l0yn7"]
+[ext_resource type="Material" uid="uid://cg5djxo7gat2s" path="res://materials/rotsprite/white.tres" id="4_l0yn7"]
 [ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="5_hby43"]
+[ext_resource type="AudioStream" uid="uid://cs5co8am2tpob" path="res://assets/sfx/SpaceshipDamage.wav" id="6_syww0"]
+[ext_resource type="AudioStream" uid="uid://bbc2apf4xhm1c" path="res://assets/sfx/Trustershoot.wav" id="7_vnbdi"]
+[ext_resource type="AudioStream" uid="uid://c3f1j1o6a63cj" path="res://assets/sfx/shipdeath2.wav" id="8_6p6he"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ihev"]
 shader = ExtResource("2_5x1vc")
@@ -106,6 +109,17 @@ one_shot = true
 
 [node name="ExplosionAddedTimer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="take_damage" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_syww0")
+
+[node name="shoot_thruster" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("7_vnbdi")
+
+[node name="death_noise" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("8_6p6he")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathInitiatedTimer" to="." method="_on_death_initiated_timer_timeout"]

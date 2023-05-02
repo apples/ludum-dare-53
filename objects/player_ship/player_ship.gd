@@ -35,8 +35,10 @@ var health = 15:
 		health = value
 		player_ship_damaged.emit(value)
 		$player_ship_animations.play("hurt")
+		$sfx/take_damage.play()
 		print("Damage! Health left: ", health)
 		if health <= 0 and not death_initiated:
+			$sfx/take_damage.stop()
 			initiate_death_sequence()
 
 var gas_accumulation: float = 0
@@ -99,6 +101,7 @@ func _physics_process(delta):
 		SaveGame.current.inventory.thrusters -= 1
 		SaveGame.save()
 		get_parent().add_child(new_thruster)
+		$sfx/shoot_thruster.play()
 	
 	apply_torque(_turn_direction * angular_acceleration)
 	apply_force(_thrust_direction * global_transform.basis_xform(Vector2.RIGHT) * thrust_strength)
@@ -124,6 +127,7 @@ func _on_body_entered(body):
 			
 func initiate_death_sequence():
 	death_initiated = true
+	$sfx/death_noise.play()
 	$DeathInitiatedTimer.start()
 	$ExplosionAddedTimer.start()
 	enable_input = false
