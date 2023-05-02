@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b6imq1foo3y7b" path="res://objects/player_ship/ship.png" id="1_iwfba"]
 [ext_resource type="Script" path="res://objects/player_ship/player_ship.gd" id="1_qnons"]
 [ext_resource type="Shader" path="res://materials/rotsprite/rotsprite.gdshader" id="2_5x1vc"]
-[ext_resource type="Material" path="res://materials/rotsprite/white.tres" id="4_l0yn7"]
+[ext_resource type="Material" uid="uid://cg5djxo7gat2s" path="res://materials/rotsprite/white.tres" id="4_l0yn7"]
 [ext_resource type="Material" uid="uid://c0i07hflossjo" path="res://materials/rotsprite/rotsprite.tres" id="5_hby43"]
 [ext_resource type="AudioStream" uid="uid://cs5co8am2tpob" path="res://assets/sfx/SpaceshipDamage.wav" id="6_syww0"]
 [ext_resource type="AudioStream" uid="uid://bbc2apf4xhm1c" path="res://assets/sfx/Trustershoot.wav" id="7_vnbdi"]
