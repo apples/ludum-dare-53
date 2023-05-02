@@ -110,15 +110,15 @@ func load_mission(mission_info):
 	match mission_info.difficulty:
 		0:
 			num_packages = 3
-			package_hp = 4
+			package_hp = 6
 			package_value = 4
 		1:
 			num_packages = 5
-			package_hp = 2
+			package_hp = 3
 			package_value = 6
 		2:
 			num_packages = 1
-			package_hp = 1
+			package_hp = 2
 			package_value = 900
 	
 	var prev_link = player_ship.tail_anchor
