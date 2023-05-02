@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2prun282q87w"]
+[gd_scene load_steps=14 format=3 uid="uid://b2prun282q87w"]
 
 [ext_resource type="Texture2D" uid="uid://dhbrh67e5vfgu" path="res://objects/oob_bot/oob_bot.png" id="1_6w460"]
 [ext_resource type="Script" path="res://objects/oob_bot/oob_bot.gd" id="1_51hab"]
 [ext_resource type="Texture2D" uid="uid://nhtsaiqd7ucg" path="res://objects/oob_bot/zap.png" id="3_cymec"]
+[ext_resource type="AudioStream" uid="uid://cliknftjxm311" path="res://assets/sfx/WeeWooBot.wav" id="4_swktn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tjxff"]
 atlas = ExtResource("1_6w460")
@@ -91,6 +92,11 @@ autostart = true
 [node name="ZapAttackVisibleTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="WeeWoo" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_swktn")
 
 [connection signal="timeout" from="ZapAttackStartTimer" to="." method="_on_zap_attack_start_timer_timeout"]
 [connection signal="timeout" from="ZapAttackTimer" to="." method="_on_zap_attack_timer_timeout"]
