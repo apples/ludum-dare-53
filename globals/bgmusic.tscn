@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfk50t0tggdu7"]
 
 [ext_resource type="Script" path="res://globals/bgmusic.gd" id="1_7g42x"]
-[ext_resource type="AudioStream" uid="uid://cnmxmndxvri1r" path="res://assets/audio/Gravity Way.ogg" id="1_vegvn"]
-[ext_resource type="AudioStream" uid="uid://bt2af6wh0f653" path="res://assets/audio/Gravity Shoppe.ogg" id="3_dm08j"]
+[ext_resource type="AudioStream" uid="uid://dci2i85c0kvaw" path="res://assets/audio/Gravity_Way_2.ogg" id="2_mg30d"]
+[ext_resource type="AudioStream" uid="uid://diudrqyen11su" path="res://assets/audio/Gravity_Shoppe_2.ogg" id="3_6mte7"]
 
 [node name="bgmusic" type="Node2D"]
 script = ExtResource("1_7g42x")
 
 [node name="Gravity_Way" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_vegvn")
+stream = ExtResource("2_mg30d")
 bus = &"BGM_1"
 
 [node name="Gravity_Shoppe" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_dm08j")
+stream = ExtResource("3_6mte7")
 bus = &"BGM_1"
