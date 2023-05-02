@@ -106,6 +106,7 @@ func load_mission(mission_info):
 	var num_packages
 	var package_hp
 	var package_value
+	var is_bio = false
 	
 	match mission_info.difficulty:
 		0:
@@ -120,6 +121,7 @@ func load_mission(mission_info):
 			num_packages = 1
 			package_hp = 2
 			package_value = 900
+			is_bio = true
 	
 	var prev_link = player_ship.tail_anchor
 	for c in packages.get_children():
@@ -132,6 +134,7 @@ func load_mission(mission_info):
 		package.health = package_hp
 		package.initial_health = package_hp
 		_total_package_health += package_hp
+		package.is_bio = is_bio
 		package.worth = package_value
 		package.destroyed.connect(func (): call_deferred("_on_package_destroyed", package))
 		packages.add_child(package)
