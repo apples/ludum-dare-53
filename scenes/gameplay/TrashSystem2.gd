@@ -38,13 +38,20 @@ func _ready():
 func _spawn(spawn_shape):
 	match spawn_shape.kind:
 		Kind.SMALL_TRASH:
+			shape_cast_2d.shape.radius = 7
 			_spawn_typical(spawn_shape, small_trash_scene)
 		Kind.ROCKS:
+			shape_cast_2d.shape.radius = 16
 			_spawn_typical(spawn_shape, medium_trash_scene)
 		Kind.GAS:
+			shape_cast_2d.shape.radius = 16
 			_spawn_gas(spawn_shape, cloud_hazard)
 		Kind.MINES:
+			shape_cast_2d.shape.radius = 8
 			_spawn_typical(spawn_shape, mine_hazard)
+		Kind.MIXED:
+			shape_cast_2d.shape.radius = 32
+			_spawn_mixed(spawn_shape)
 		Kind.GREY_GAS:
 			_spawn_gas(spawn_shape, grey_cloud_hazard)
 
@@ -74,7 +81,42 @@ func _spawn_typical(spawn_shape: CollisionShape2D, obj_scene):
 		var a = arc_stride / pos.length()
 		pos = pos.rotated(a)
 		pos += pos.normalized() * max(0.5, (radius_stride * (1 - sqrt(pos.length() / radius))))
+
+func _spawn_mixed(spawn_shape: CollisionShape2D):
+	var rng = RandomNumberGenerator.new()
+	var rand = rng.randf()
+	var radius = (spawn_shape.shape as CircleShape2D).radius
+	var arc_stride = spawn_shape.arc_stride
+	var radius_stride: float = spawn_shape.radius_stride
 	
+	var pos = Vector2.RIGHT.rotated(randf_range(0, TAU))
+	
+	var f = 0
+	var s = 0
+	
+	while pos.length() < radius:
+		shape_cast_2d.global_position = spawn_shape.to_global(pos)
+		shape_cast_2d.force_shapecast_update()
+		rand = rng.randf()
+		if not shape_cast_2d.is_colliding():
+			var obj
+			if rand < .5:
+				obj = medium_trash_scene.instantiate()
+			elif rand < .75:
+				obj = small_trash_scene.instantiate()
+			elif rand < .87:
+				obj = large_trash_scene.instantiate()
+			else:
+				obj = large_trash_scene2.instantiate()
+			obj.global_position = spawn_shape.to_global(pos)
+			add_child(obj)
+			s += 1
+		else:
+			f += 1
+		
+		var a = arc_stride / pos.length()
+		pos = pos.rotated(a)
+		pos += pos.normalized() * max(0.5, (radius_stride * (1 - sqrt(pos.length() / radius))))
 
 func _spawn_gas(spawn_shape: CollisionShape2D, obj_scene):
 	var shape = spawn_shape.shape
@@ -115,5 +157,6 @@ enum Kind {
 	ROCKS,
 	GAS,
 	MINES,
+	MIXED,
 	GREY_GAS,
 }

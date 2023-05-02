@@ -74,7 +74,7 @@ func _on_item_clicked(i: int):
 		_items[i].owned = SaveGame.current.inventory[info.key]
 	else:
 		SaveGame.current.inventory[info.key] = 1
-	
+	$bought_item.play()
 	SaveGame.save()
 
 func _on_item_focused(i: int):

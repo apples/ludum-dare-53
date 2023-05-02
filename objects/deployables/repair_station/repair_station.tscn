@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ldiaa8w8wya"]
+[gd_scene load_steps=7 format=3 uid="uid://b6ldiaa8w8wya"]
 
 [ext_resource type="PackedScene" uid="uid://cor0us7drjjej" path="res://objects/deployables/station.tscn" id="1_ys08u"]
 [ext_resource type="Texture2D" uid="uid://blrpl5ha16a36" path="res://assets/Repair_station.png" id="2_nds23"]
 [ext_resource type="Script" path="res://objects/deployables/repair_station/repair_station.gd" id="2_wd2ie"]
+[ext_resource type="AudioStream" uid="uid://bffljbtf5x2e3" path="res://assets/sfx/healing.wav" id="4_y2hsb"]
+[ext_resource type="AudioStream" uid="uid://v5nb86eecjyy" path="res://assets/sfx/donehealing.wav" id="5_64ahh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6b1wj"]
 radius = 96.0
@@ -18,5 +20,11 @@ shape = SubResource("CircleShape2D_6b1wj")
 texture = ExtResource("2_nds23")
 
 [node name="Timer" type="Timer" parent="." index="3"]
+
+[node name="do_healing" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("4_y2hsb")
+
+[node name="healing_done" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("5_64ahh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,7 +8,7 @@ var _default_values := {
 	current_cycle = 1,
 	money = 0,
 	inventory = {
-		thrusters = 0,
+		thrusters = 2,
 	},
 	deployed_structures = [],
 }

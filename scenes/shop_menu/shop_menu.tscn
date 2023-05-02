@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://p7fyrmiso7q7"]
+[gd_scene load_steps=12 format=3 uid="uid://p7fyrmiso7q7"]
 
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_02nj2"]
 [ext_resource type="Script" path="res://scenes/shop_menu/shop_menu.gd" id="1_5eg3u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpfelndvo760m" path="res://assets/textures/shop_keeper2.png" id="3_2ecpr"]
 [ext_resource type="Script" path="res://scenes/shop_menu/dialog_label.gd" id="4_0vb5f"]
 [ext_resource type="Script" path="res://scenes/shop_menu/clickable_panel.gd" id="5_io3g6"]
+[ext_resource type="AudioStream" uid="uid://c76tkoascoi4" path="res://assets/sfx/PurchaseGoods.wav" id="7_aycrl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ov0n"]
 content_margin_left = 5.0
@@ -140,5 +141,8 @@ Third line!"
 autowrap_mode = 3
 text_overrun_behavior = 3
 script = ExtResource("4_0vb5f")
+
+[node name="bought_item" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aycrl")
 
 [connection signal="clicked" from="UI/ShopGroup/DonePanel" to="." method="_on_done_panel_clicked"]
