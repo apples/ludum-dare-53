@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://8cxavae42hg8"]
+[gd_scene load_steps=15 format=3 uid="uid://8cxavae42hg8"]
 
 [ext_resource type="Script" path="res://objects/black_hole/black_hole.gd" id="1_htcia"]
+[ext_resource type="AudioStream" uid="uid://doqu2hmlsdmhd" path="res://assets/sfx/BlackHoleWoop.wav" id="3_t2e2k"]
 [ext_resource type="Texture2D" uid="uid://d1648ub2bpjrq" path="res://objects/black_hole/Black_hole2.png" id="4_jjbtp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fgl44"]
@@ -89,6 +90,11 @@ sprite_frames = SubResource("SpriteFrames_b1jy0")
 autoplay = "default"
 frame = 5
 frame_progress = 0.192931
+
+[node name="black_hole_noises" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t2e2k")
+volume_db = -11.699
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
