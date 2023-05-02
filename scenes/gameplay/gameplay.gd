@@ -81,8 +81,11 @@ func _on_docking_completed_timer_timeout():
 	SaveGame.current.money += 10 # base reward for simply returning alive
 	for c in packages.get_children():
 		SaveGame.current.money += 1 # base reward per package
-		SaveGame.current.money += int(c.worth * c.health / c.initial_health)
-		remaining_health += c.health
+		if "health" in c:
+			SaveGame.current.money += int(c.worth * c.health / c.initial_health)
+			remaining_health += c.health
+		else:
+			SaveGame.current.money += int(c.worth)
 		c.queue_free()
 	
 	GameplaySingleton.delivery_score = 100 * remaining_health / _total_package_health

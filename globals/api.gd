@@ -14,11 +14,13 @@ var api_url = "%s://%s" % [scheme, domain]
 func get_player():
 	var endpoint = "player?username=%s" %[Configs.username]
 	var response = await send_request(endpoint, HTTPClient.METHOD_GET, "", ["Authorization: Basic %s" %[Configs.user_key]])
+	print(response)
 	if response.response_code == 200:
-		return {
-		}
+		print("Got 200 OK")
+		return true
 	else:
-		return null
+		print("Got %s" % response.response_code)
+		return false
 
 func get_api_status() -> bool:
 	const endpoint = "healthcheck"
@@ -119,6 +121,7 @@ func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_he
 
 	# response type = [result, response_code, headers, body]
 	var response = await http_request.request_completed
+	print("send_request response: ", response)
 	if response[0] == 0:
 		var responseBodyString = response[3].get_string_from_utf8()
 		var responseBody = null
