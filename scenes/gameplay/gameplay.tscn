@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b7y7slt0wot4i"]
+[gd_scene load_steps=30 format=3 uid="uid://b7y7slt0wot4i"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_6ac20"]
 [ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_cj313"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dxlcmig3s70rg" path="res://assets/textures/2d_lights_and_shadows_neutral_point_light.webp" id="8_f4gej"]
 [ext_resource type="Script" path="res://scenes/gameplay/TrashSystem2.gd" id="11_t62iw"]
 [ext_resource type="Script" path="res://scenes/gameplay/trash_system_spawn_point.gd" id="12_aoifr"]
+[ext_resource type="AudioStream" uid="uid://db0a77vtl55wc" path="res://assets/sfx/placestation.wav" id="14_lp8pg"]
+[ext_resource type="AudioStream" uid="uid://bibvb7qfayu8a" path="res://assets/sfx/fence.wav" id="15_txgoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8817h"]
 atlas = ExtResource("7_d3bhu")
@@ -1272,6 +1274,12 @@ wait_time = 2.5
 one_shot = true
 
 [node name="Packages" type="Node" parent="."]
+
+[node name="deploy_item" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_lp8pg")
+
+[node name="deploy_fence" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_txgoq")
 
 [connection signal="ship_docked" from="DestinationDockingStation" to="." method="_on_docking_station_ship_docked"]
 [connection signal="player_ship_damaged" from="PlayerShip" to="UI" method="_on_player_ship_player_ship_damaged"]

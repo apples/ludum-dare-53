@@ -25,7 +25,7 @@ var health = 4:
 			print("Package destroyed")
 
 var damage_velocity_threshold = 60
-var fragile_health_threshold = 2
+var fragile_health_threshold = 3
 
 var default_texture = preload("res://assets/pckge_amzn_1.png")
 var fragile_texture = preload("res://assets/pckge_amzn_fragile.png")
