@@ -37,7 +37,7 @@ func _ready():
 	
 	# TODO: LOAD INTERACTIONS HERE
 	
-	var remote_interactions = await Api.get_interactions("level_1", SaveGame.current.current_cycle, min(5, SaveGame.current.current_cycle))
+	var remote_interactions = await Api.get_interactions("level_1", SaveGame.current.current_cycle, 5)
 	
 	for i in remote_interactions:
 		_spawn_deployable(i.Content, i.UserName)
