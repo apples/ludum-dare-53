@@ -103,7 +103,8 @@ func _on_item_clicked(i: int):
 	print("Staring mission %s" % info.name)
 	
 	mission_select_wrapper.visible = false
-	
+	$mission_start.play()
+
 	await say_dialog(_goodbye_phrases)
 	
 	await get_tree().create_timer(2).timeout
