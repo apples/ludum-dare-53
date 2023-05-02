@@ -36,7 +36,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if connect_to:
+	if connect_to && connect_to != null:
 		var d = global_position.distance_to(connect_to.global_position)#connect_to is null when last trash piece breaks
 		if d > radius:
 			var dir = global_position.direction_to(connect_to.global_position)
