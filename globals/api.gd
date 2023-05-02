@@ -9,7 +9,7 @@ extends Node
 # production
 var scheme = "https"
 var domain = "ludum-dare-53-api.rareskelly.com/"
-var api_url = "%s://%s" %[scheme, domain]
+var api_url = "%s://%s" % [scheme, domain]
 
 func get_player():
 	var endpoint = "player?username=%s" %[Configs.username]
@@ -58,7 +58,7 @@ func send_create_player(username: String) -> bool:
 #		})
 #	}
 #])
-func send_interactions(level: String, cycle: int, interactions: Array[Dictionary]):
+func send_interactions(level: String, cycle: int, interactions: Array):
 	const endpoint = "interactions/{level}/{cycle}"
 	var response = await send_request(
 		endpoint.format({"level": level, "cycle": cycle}),
@@ -93,13 +93,13 @@ func send_interactions(level: String, cycle: int, interactions: Array[Dictionary
 #        }
 #    }
 #]
-func get_interactions(level: String, cycle: int) -> Array:
-	const endpoint = "interactions/{level}/{cycle}"
+func get_interactions(level: String, cycle: int, count: int) -> Array:
+	const endpoint = "interactions/{level}/{cycle}?count={count}"
 	var response = await send_request(
-		endpoint.format({"level": level, "cycle": cycle}),
+		endpoint.format({"level": level, "cycle": cycle, "count": count}),
 		HTTPClient.METHOD_GET,
 		"",
-		["Authorization: Basic %s" %[Configs.user_key]])
+		["Authorization: Basic %s" % [Configs.user_key]])
 	
 	if response.response_code == 200:
 		var interactions = response.body.Interactions
@@ -111,6 +111,7 @@ func get_interactions(level: String, cycle: int) -> Array:
 		return []
 
 func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_header = ["Content-Type: application/json"]):
+	print({ endpoint = endpoint, method = method, body = body, })
 	var http_request = HTTPRequest.new()
 	http_request.timeout = 10
 	self.add_child(http_request)
