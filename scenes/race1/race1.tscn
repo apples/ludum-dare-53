@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2an7xjemilq8"]
+
+[ext_resource type="Texture2D" uid="uid://bvve2g154euo" path="res://assets/textures/space4096.png" id="1_r7epi"]
+[ext_resource type="Script" path="res://scenes/race1/race1.gd" id="1_reqcn"]
+[ext_resource type="Texture2D" uid="uid://bdy8ssnjdesdn" path="res://assets/textures/noise512.png" id="2_jqlw1"]
+[ext_resource type="PackedScene" uid="uid://dnbgjfm0ioyad" path="res://objects/player_ship/player_ship.tscn" id="3_gcwmu"]
+[ext_resource type="Script" path="res://objects/follow_camera/follow_camera.gd" id="5_fxmqf"]
+[ext_resource type="Script" path="res://scenes/race1/buoy_path.gd" id="6_h4cc6"]
+
+[sub_resource type="Curve2D" id="Curve2D_nxt3a"]
+_data = {
+"points": PackedVector2Array(-108.353, -47.247, 0, 0, -159, -95, -76.8552, 15.1191, 76.8552, -15.1191, 19, -60, -36.5, -28, 36.5, 28, 173, -81, -19, -32.5, 19, 32.5, 124, 4, 36.5377, -44.0972, -36.5377, 44.0972, 172, 89, 60.4762, 0, -60.4762, 0, -8, 79, -4, 52, 4, -52, -176, 81, -0.629961, 41.5774, 0.629961, -41.5774, -93, 9, 0, 0, 0, 0, -171, -65)
+}
+point_count = 9
+
+[node name="race1" type="Node2D"]
+script = ExtResource("1_reqcn")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+texture = ExtResource("1_r7epi")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_jqlw1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(512, 0)
+texture = ExtResource("2_jqlw1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 512)
+texture = ExtResource("2_jqlw1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(512, 512)
+texture = ExtResource("2_jqlw1")
+
+[node name="PlayerShip" parent="." instance=ExtResource("3_gcwmu")]
+unique_name_in_owner = true
+enable_input = false
+
+[node name="FollowCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
+position_smoothing_enabled = true
+script = ExtResource("5_fxmqf")
+follow_target = NodePath("../PlayerShip")
+center_offset = 30.0
+stabilization_window = 30.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nxt3a")
+script = ExtResource("6_h4cc6")
