@@ -6,6 +6,8 @@ var start_impulse = 350
 
 var package_scene = preload("res://objects/package/package.tscn")
 
+var deployable_list = preload("res://assets/deployables_list.tres")
+
 var _total_package_health = 1
 
 @onready var player_ship = %PlayerShip
@@ -25,10 +27,6 @@ func _ready():
 	else:
 		load_mission({ difficulty = 0 })
 	Bgmusic.PlayGameplayMusic()
-	
-	# preload
-	for k in Deployables.infos:
-		_preloaded_scenes.append(load(Deployables.infos[k].scene))
 	
 	$DockingArrowAnim.play("default")
 	
@@ -178,7 +176,7 @@ func _on_ui_deploy_item(key):
 	
 	var pos = player_ship.global_position
 	
-	var info = Deployables.infos[key]
+	var info = deployable_list.get_by_key(key)
 	
 	if "directed" in info and info.directed:
 		pos += Vector2.RIGHT.rotated(player_ship.rotation) * 16
@@ -208,8 +206,8 @@ var structure_label_scene = preload("res://scenes/gameplay/structure_label.tscn"
 func _spawn_deployable(interaction, whom = null):
 	assert(interaction.type == "structure")
 	
-	var info = Deployables.infos[interaction.key]
-	var node = load(info.scene).instantiate()
+	var info = deployable_list.get_by_key(interaction.key)
+	var node = info.scene.instantiate()
 	node.global_position = Vector2(interaction.position.x, interaction.position.y)
 	node.rotation = interaction.rotation
 	node.gameplay_root = self

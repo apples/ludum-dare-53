@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DeployableStructureList" load_steps=9 format=3 uid="uid://bc2a4tckqsng1"]
+
+[ext_resource type="Script" path="res://resource_types/deployable_structure_list.gd" id="1_k8co2"]
+[ext_resource type="PackedScene" uid="uid://b6ldiaa8w8wya" path="res://objects/deployables/repair_station/repair_station.tscn" id="2_efav7"]
+[ext_resource type="Script" path="res://resource_types/deployable_structure.gd" id="3_6bink"]
+[ext_resource type="PackedScene" uid="uid://ca82x8h7pr20p" path="res://objects/deployables/map_station/map_station.tscn" id="4_grf75"]
+[ext_resource type="PackedScene" uid="uid://cucd3lbdra5oc" path="res://objects/deployables/fence/fence.tscn" id="5_ktakx"]
+
+[sub_resource type="Resource" id="Resource_ynhfx"]
+script = ExtResource("3_6bink")
+key = &""
+name = "Repair Station"
+scene = ExtResource("2_efav7")
+directed = false
+
+[sub_resource type="Resource" id="Resource_3wm5u"]
+script = ExtResource("3_6bink")
+key = &""
+name = "Map Station"
+scene = ExtResource("4_grf75")
+directed = false
+
+[sub_resource type="Resource" id="Resource_bgrur"]
+script = ExtResource("3_6bink")
+key = &""
+name = "Fence"
+scene = ExtResource("5_ktakx")
+directed = true
+
+[resource]
+script = ExtResource("1_k8co2")
+structures = Array[ExtResource("3_6bink")]([SubResource("Resource_ynhfx"), SubResource("Resource_3wm5u"), SubResource("Resource_bgrur")])
+dic = {
+Basis(1, 0, 0, 0, 1, 0, 0, 0, 1): NodePath("Sprite2D")
+}
