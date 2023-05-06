@@ -1,12 +1,12 @@
 extends RigidBody2D
 
+var _textures = [
+	preload("res://objects/trash/large_trash/longstrutjunk.png"),
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var rng = RandomNumberGenerator.new()
-	match (rng.randi_range(0, 0)):
-		0:
-			$Sprite2D.texture = load("res://objects/trash/large_trash/longstrutjunk.png")
+	$Sprite2D.texture = _textures.pick_random()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

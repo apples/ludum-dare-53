@@ -29,7 +29,7 @@ func _ready():
 	# preload
 	for k in Deployables.infos:
 		_preloaded_scenes.append(load(Deployables.infos[k].scene))
-		
+	
 	$DockingArrowAnim.play("default")
 	
 	for i in SaveGame.current.deployed_structures:

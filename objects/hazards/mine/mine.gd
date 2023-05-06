@@ -15,7 +15,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player_ship") || body.is_in_group("package"):
 		body.linear_velocity += (body.global_position - global_position).normalized() * 100
 		body.health -= damage
-		$AnimatedSprite2D.sprite_frames = load("res://objects/hazards/mine/exploding.tres")
+		$AnimatedSprite2D.sprite_frames = preload("res://objects/hazards/mine/exploding.tres")
 		$AnimatedSprite2D.play("default")
 		_exploded = true
 
