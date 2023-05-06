@@ -183,6 +183,18 @@ offset_right = 45.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0, 0.627451, 0, 1)
 
+[node name="error_label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 39.0
+offset_right = 109.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "ERROR:
+Server did not respond."
+autowrap_mode = 2
+
 [node name="online_mode_label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 168.0
