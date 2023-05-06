@@ -7,6 +7,8 @@ var _checking = false
 func _ready():
 	$spinner_wheel.play("default")
 	
+	$version_label.text = ProjectSettings.get_setting("application/config/git_version/version", "(debug)")
+	
 	if Configs.offline_mode:
 		$online_mode_toggle.button_pressed = false
 		$online_mode_toggle.disabled = false

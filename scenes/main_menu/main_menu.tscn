@@ -127,9 +127,9 @@ unique_name_in_owner = true
 
 [node name="logo" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 69.0
+offset_left = 72.0
 offset_top = 4.0
-offset_right = 325.0
+offset_right = 328.0
 offset_bottom = 132.0
 texture = ExtResource("5_jjoul")
 stretch_mode = 2
@@ -151,19 +151,33 @@ offset_bottom = 224.0
 texture = ExtResource("7_cyg5g")
 
 [node name="play_button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 170.0
-offset_right = 232.0
-offset_bottom = 211.0
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+offset_left = 150.0
+offset_top = 169.0
+offset_right = 250.0
+offset_bottom = 204.0
 action_mode = 0
 text = "Play"
 
+[node name="version_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.223529, 0.223529, 0.223529, 1)
+text = "(debug)"
+horizontal_alignment = 1
+
 [node name="online_mode_toggle" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 180.0
+offset_left = 184.0
 offset_top = 143.0
-offset_right = 212.0
+offset_right = 216.0
 offset_bottom = 159.0
 disabled = true
 
@@ -216,7 +230,7 @@ position = Vector2(18, 16)
 sprite_frames = SubResource("SpriteFrames_epeln")
 
 [node name="spinner_wheel" type="AnimatedSprite2D" parent="."]
-position = Vector2(225, 151)
+position = Vector2(228, 151)
 sprite_frames = SubResource("SpriteFrames_4gayk")
 
 [node name="online_mode_details" type="Panel" parent="."]

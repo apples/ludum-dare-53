@@ -36,6 +36,10 @@ window/size/window_width_override=1200
 window/size/window_height_override=672
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/git_version/plugin.cfg")
+
 [input]
 
 turn_left={
