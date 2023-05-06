@@ -11,9 +11,12 @@ var scheme = "https"
 var domain = "ludum-dare-53-api.rareskelly.com/"
 var api_url = "%s://%s" % [scheme, domain]
 
+func _ready():
+	print("Api loaded: ", { api_url = api_url })
+
 func get_player():
 	var endpoint = "player?username=%s" %[Configs.username]
-	var response = await send_request(endpoint, HTTPClient.METHOD_GET, "", ["Authorization: Basic %s" %[Configs.user_key]])
+	var response = await _send_request(endpoint, HTTPClient.METHOD_GET, "", ["Authorization: Basic %s" %[Configs.user_key]])
 	print(response)
 	if response.response_code == 200:
 		print("Got 200 OK")
@@ -24,12 +27,12 @@ func get_player():
 
 func get_api_status() -> bool:
 	const endpoint = "healthcheck"
-	var response = await send_request(endpoint)
+	var response = await _send_request(endpoint)
 	return response.response_code == 200
 		
 func send_create_player(username: String) -> bool:
 	const endpoint = "player"
-	var response = await send_request(endpoint, HTTPClient.METHOD_POST, JSON.stringify({"UserName": username}))
+	var response = await _send_request(endpoint, HTTPClient.METHOD_POST, JSON.stringify({"UserName": username}))
 	if response.response_code != 200:
 		print(response.body)
 		return false
@@ -62,7 +65,7 @@ func send_create_player(username: String) -> bool:
 #])
 func send_interactions(level: String, cycle: int, interactions: Array):
 	const endpoint = "interactions/{level}/{cycle}"
-	var response = await send_request(
+	var response = await _send_request(
 		endpoint.format({"level": level, "cycle": cycle}),
 		HTTPClient.METHOD_POST,
 		JSON.stringify({"Interactions": interactions}),
@@ -97,7 +100,7 @@ func send_interactions(level: String, cycle: int, interactions: Array):
 #]
 func get_interactions(level: String, cycle: int, count: int) -> Array:
 	const endpoint = "interactions/{level}/{cycle}?count={count}"
-	var response = await send_request(
+	var response = await _send_request(
 		endpoint.format({"level": level, "cycle": cycle, "count": count}),
 		HTTPClient.METHOD_GET,
 		"",
@@ -112,8 +115,11 @@ func get_interactions(level: String, cycle: int, count: int) -> Array:
 	else:
 		return []
 
-func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_header = ["Content-Type: application/json"]):
+func _send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_header = ["Content-Type: application/json"]):
 	print({ endpoint = endpoint, method = method, body = body, })
+	if Configs.offline_mode:
+		return _mock_send_request(endpoint, method, body, custom_header)
+	
 	var http_request = HTTPRequest.new()
 	http_request.timeout = 10
 	self.add_child(http_request)
@@ -138,18 +144,33 @@ func send_request(endpoint, method = HTTPClient.METHOD_GET, body = "", custom_he
 			"body": null
 		}
 
-func _on_request_completed(result, response_code, headers, body):
-	print(response_code)
-#    var json = JSON.parse_string(body.get_string_from_utf8())
-#    print(json["name"])
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	print(api_url)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _mock_send_request(endpoint: String, method, body, custom_header):
+	print("    (mocked)")
+	var endpoint_split := endpoint.split("?")
+	var endpoint_path := endpoint_split[0]
+	var path_split := endpoint_path.split("/")
+	var endpoint_name := path_split[0]
+	var path_params := path_split.slice(1)
+	var params := {}
+	var ok := func (response = null):
+		return {
+			response_code = 200,
+			body = response,
+		}
+	
+	if endpoint_split.size() > 1:
+		for p in endpoint_split[1].split("&"):
+			var kv = p.split("=")
+			params[kv[0]] = kv[1]
+	
+	match [method, endpoint_name.to_lower(), path_params]:
+		[HTTPClient.METHOD_GET, "healthcheck", _]:
+			return ok.call()
+		[HTTPClient.METHOD_GET, "player", _]:
+			return ok.call({ UserName = params.username })
+		[HTTPClient.METHOD_POST, "player", _]:
+			return ok.call({ Key = "_" })
+		[HTTPClient.METHOD_GET, "interactions", _]:
+			return ok.call({ Interactions = [] })
+		[HTTPClient.METHOD_POST, "interactions", _]:
+			return ok.call()
