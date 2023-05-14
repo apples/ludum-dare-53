@@ -52,7 +52,7 @@ func _ready():
 	if SaveGame.current.current_cycle > 1:
 		_add_item(_hard_missions.pick_random(), 1)
 	
-	if SaveGame.current.current_cycle > 6:
+	if SaveGame.current.current_cycle > 2:
 		_add_item(_boss_missions.pick_random(), 2)
 	
 	for i in range(_item_infos.size()):

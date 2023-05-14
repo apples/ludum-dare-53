@@ -75,7 +75,7 @@ func _process(delta):
 	_turn_direction = Input.get_axis("turn_left", "turn_right")
 	_thrust_direction = -Input.get_axis("thrust_forward", "thrust_backwards")
 	
-	if Input.is_action_just_pressed("grab"):
+	if Input.is_action_just_pressed("grab") && packages.size() < 5:
 		var objects = $Area2D.get_overlapping_bodies()
 		for obj in objects:
 			if obj.is_in_group("small_trash"):
@@ -83,6 +83,8 @@ func _process(delta):
 #				tethered_objects.push_back(obj)
 				obj.global_transform.origin = global_position
 				obj.connect_to = packages[-1] if packages.size() > 0 else tail_anchor
+				obj.collision_layer = 2
+				obj.collision_mask = 1
 				#packages.add_child(obj)
 				obj.get_parent().remove_child(obj)
 				get_parent().packages.add_child(obj)
