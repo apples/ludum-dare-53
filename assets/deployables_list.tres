@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DeployableStructureList" load_steps=9 format=3 uid="uid://bc2a4tckqsng1"]
+[gd_resource type="Resource" script_class="DeployableStructureList" load_steps=9 format=3 uid="uid://bogvc53g0eqrm"]
 
 [ext_resource type="Script" path="res://resource_types/deployable_structure_list.gd" id="1_k8co2"]
 [ext_resource type="PackedScene" uid="uid://b6ldiaa8w8wya" path="res://objects/deployables/repair_station/repair_station.tscn" id="2_efav7"]
@@ -30,6 +30,3 @@ directed = true
 [resource]
 script = ExtResource("1_k8co2")
 structures = Array[ExtResource("3_6bink")]([SubResource("Resource_ynhfx"), SubResource("Resource_3wm5u"), SubResource("Resource_bgrur")])
-dic = {
-Basis(1, 0, 0, 0, 1, 0, 0, 0, 1): NodePath("Sprite2D")
-}
